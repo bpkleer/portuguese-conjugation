@@ -1,3 +1,5 @@
-# portuguese conjugation
+# Training portuguese conjugation
 
-Conjugation Trainer for local iOS App
+This is code for a local iOS app which can be used to train portuguese conjugation. 
+
+
