@@ -3,92 +3,110 @@
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "size" : "20x20"
+      "size" : "20x20",
+      "filename" : "brazil40.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "3x",
-      "size" : "20x20"
+      "size" : "20x20",
+      "filename" : "brazil60.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "size" : "29x29"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "29x29"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "40x40"
+      "size" : "29x29",
+      "filename" : "brazil58.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "3x",
-      "size" : "40x40"
+      "size" : "29x29",
+      "filename" : "brazil87.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "size" : "60x60"
+      "size" : "40x40",
+      "filename" : "brazil80.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "3x",
-      "size" : "60x60"
+      "size" : "40x40",
+      "filename" : "brazil120.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "2x",
+      "size" : "60x60",
+      "filename" : "brazil120.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x",
+      "size" : "60x60",
+      "filename" : "brazil180.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "size" : "20x20"
+      "size" : "20x20",
+      "filename" : "brazil20.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "size" : "20x20"
+      "size" : "20x20",
+      "filename" : "brazil40.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "size" : "29x29"
+      "size" : "29x29",
+      "filename" : "brazil29.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "size" : "29x29"
+      "size" : "29x29",
+      "filename" : "brazil58.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "size" : "40x40"
+      "size" : "40x40",
+      "filename" : "brazil40.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "size" : "40x40"
+      "size" : "40x40",
+      "filename" : "brazil80.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "size" : "76x76"
+      "size" : "76x76",
+      "filename" : "brazil76.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "size" : "76x76"
+      "size" : "76x76",
+      "filename" : "brazil152.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "size" : "83.5x83.5"
+      "size" : "83.5x83.5",
+      "filename" : "brazil167.png"
     },
     {
       "idiom" : "ios-marketing",
       "scale" : "1x",
-      "size" : "1024x1024"
+      "size" : "1024x1024",
+      "filename" : "brazil1024.png"
     }
   ],
   "info" : {
