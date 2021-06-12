@@ -112,7 +112,8 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    TextField("Digite sua dica!", text: $tipp)
+                    TextField("Digite sua dica!",
+                              text: $tipp)
                         .padding(.all, 5)
                         .disableAutocorrection(true)
                         .multilineTextAlignment(.center)
@@ -140,7 +141,7 @@ struct ContentView: View {
                                 verbHilfe = setVerb()
                                 verb = verbHilfe[0]
                             }
-                        }
+                        } .disabled(tipp == "")
                         .alert(isPresented:$showingAlert) {
                             Alert(
                                 title: Text(message + "\n") + Text("\nÜbersetzung: " + String(verbHilfe[2])),
@@ -312,7 +313,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let perfeitoIr = ["i", "iu", "iu", "imos", "iram", "iram"]
     let perfeitoSer = ["fui", "foi", "foi", "fomos", "foram", "foram"]
     let perfeitoEstar = ["estive", "esteve", "esteve", "estivemos", "estiveram", "estiveram"]
-    let perfeitoIra = ["fui", "foi", "foi", "fomos", "foram", "foram"]
     let perfeitoVir = ["vim", "veio", "veio", "viemos", "vieram", "vieram"]
     let perfeitoTer = ["tive", "teve", "teve", "tivemos", "tiveram", "tiveram"]
     let perfeitoFazer = ["fiz", "fez", "fez", "fizemos", "fizeram", "fizeram"]
@@ -496,14 +496,11 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir" {
             endung = perfeitoIr[numberInArray]
             aim = stamm + endung
-        } else if verbo[1] == "ser" {
+        } else if verbo[1] == "ser" || verbo[1] == "ira" {
             endung = perfeitoSer[numberInArray]
             aim = endung
         } else if verbo[1] == "estar" {
             endung = perfeitoEstar[numberInArray]
-            aim = endung
-        } else if verbo[1] == "estar" {
-            endung = perfeitoIra[numberInArray]
             aim = endung
         } else if verbo[1] == "vir" {
             endung = perfeitoVir[numberInArray]
@@ -638,6 +635,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "estar" {
             endung = futuroSimplesAr[numberInArray]
+            aim = stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ver" || verbo[1] == "ter" || verbo[1] == "ler" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
             endung = futuroSimplesEr[numberInArray]
             aim = stamm + endung
