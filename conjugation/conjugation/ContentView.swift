@@ -120,6 +120,7 @@ struct ContentView: View {
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     
                     
+                    
                     // }
                     Spacer()
                     
@@ -142,7 +143,7 @@ struct ContentView: View {
                         }
                         .alert(isPresented:$showingAlert) {
                             Alert(
-                                title: Text(message + "\n") + Text("\nKorrekte Form ist: " + ziel + "\n") + Text("\nÜbersetzung: " + String(verbHilfe[2])),
+                                title: Text(message + "\n") + Text("\nÜbersetzung: " + String(verbHilfe[2])),
                                 dismissButton: .default(Text("Okay")) {
                                     person = setPerson()
                                     sing = setAnzahl()
@@ -153,12 +154,13 @@ struct ContentView: View {
                             )
                         }
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        
                     }
                 }
                 Spacer()
             }
         }
-        .environmentObject(userSettings)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     //Methods
     
@@ -1048,9 +1050,9 @@ func pruefen(eingabe: String, ziel: String) -> Bool {
 func createAlertMessage(result: Bool, ziel: String) -> String {
     var alertMessage: String = ""
     if result == true {
-        alertMessage = "Deine Eingabe war korrekt! :)"
+        alertMessage = "Deine Eingabe war korrekt! :)" 
     } else {
-        alertMessage = "Deine Eingabe war falsch! :("
+        alertMessage = "Deine Eingabe war falsch! :( \n" + "\n Korrekte Form ist: " + ziel
     }
     return alertMessage
 }
@@ -1062,4 +1064,4 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-
+// + Text("\nKorrekte Form ist: " + ziel + "\n")
