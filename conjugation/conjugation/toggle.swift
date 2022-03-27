@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+
 struct ToggleStates: View {
-    @ObservedObject var userSettings = UserSettings()
+    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
         ScrollView(.vertical) {
@@ -21,52 +22,52 @@ struct ToggleStates: View {
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
-                .onChange(of: userSettings.isPresenteInd, perform: { value in
+                .onChange(of: self.userSettings.isPresenteInd, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isPerfeitoInd, perform: { value in
+                .onChange(of: self.userSettings.isPerfeitoInd, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isImperfeitoInd, perform: { value in
+                .onChange(of: self.userSettings.isImperfeitoInd, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isPerfeitoCompInd, perform: { value in
+                .onChange(of: self.userSettings.isPerfeitoCompInd, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isPMQPInd, perform: { value in
+                .onChange(of: self.userSettings.isPMQPInd, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isFuturoIInd, perform: { value in
+                .onChange(of: self.userSettings.isFuturoIInd, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isFuturoIIInd, perform: { value in
+                .onChange(of: self.userSettings.isFuturoIIInd, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isPresenteSub, perform: { value in
+                .onChange(of: self.userSettings.isPresenteSub, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isPerfeitoSub, perform: { value in
+                .onChange(of: self.userSettings.isPerfeitoSub, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isImperfeitoSub, perform: { value in
+                .onChange(of: self.userSettings.isImperfeitoSub, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isPMQPSub, perform: { value in
+                .onChange(of: self.userSettings.isPMQPSub, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isFuturoISub, perform: { value in
+                .onChange(of: self.userSettings.isFuturoISub, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isFuturoIISub, perform: { value in
+                .onChange(of: self.userSettings.isFuturoIISub, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isCondicionalI, perform: { value in
+                .onChange(of: self.userSettings.isCondicionalI, perform: { value in
                     atLeastOneTempus()
                 })
-                .onChange(of: userSettings.isCondicionalII, perform: { value in
+                .onChange(of: self.userSettings.isCondicionalII, perform: { value in
                     atLeastOneTempus()
                 })
-                
+                                
                 Toggle(isOn: $userSettings.isPerfeitoInd, label: {
                     Text("Perfeito Simples Indicativo")
                         .font(.subheadline)
@@ -145,13 +146,13 @@ struct ToggleStates: View {
             
             VStack (spacing: 7.5) {
                 Toggle(isOn: $userSettings.isCondicionalI, label: {
-                    Text("Condicional I")
+                    Text("Futuro do Préterito (Condicional I)")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
                 
                 Toggle(isOn: $userSettings.isCondicionalII, label: {
-                    Text("Condicional II")
+                    Text("Futuro do Préterito Composto (Condicional II)")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
@@ -161,9 +162,12 @@ struct ToggleStates: View {
         }
     }
     
+    //methods
+    
+    
     func atLeastOneTempus() {
-        if userSettings.isPresenteInd == false && userSettings.isPerfeitoInd == false && userSettings.isImperfeitoInd == false && userSettings.isPerfeitoCompInd == false && userSettings.isPMQPInd == false && userSettings.isFuturoIInd == false && userSettings.isFuturoIIInd == false && userSettings.isPresenteSub == false && userSettings.isPerfeitoSub == false && userSettings.isImperfeitoSub == false && userSettings.isPMQPSub == false && userSettings.isFuturoIISub == false && userSettings.isFuturoIISub == false && userSettings.isCondicionalI == false && userSettings.isCondicionalII == false {
-            userSettings.isPresenteInd = true
+        if self.userSettings.isPresenteInd == false && self.userSettings.isPerfeitoInd == false && self.userSettings.isImperfeitoInd == false && self.userSettings.isPerfeitoCompInd == false && self.userSettings.isPMQPInd == false && self.userSettings.isFuturoIInd == false && self.userSettings.isFuturoIIInd == false && self.userSettings.isPresenteSub == false && self.userSettings.isPerfeitoSub == false && self.userSettings.isImperfeitoSub == false && self.userSettings.isPMQPSub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isCondicionalI == false && self.userSettings.isCondicionalII == false {
+            self.userSettings.isPresenteInd = true
         }
     }
 }
@@ -171,6 +175,7 @@ struct ToggleStates: View {
 struct ToggleStates_Preview: PreviewProvider {
     static var previews: some View {
         ToggleStates()
+            .environmentObject(UserSettings())  // assign environment
     }
 }
 

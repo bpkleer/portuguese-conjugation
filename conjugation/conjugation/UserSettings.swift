@@ -14,11 +14,13 @@ class UserSettings: ObservableObject {
             UserDefaults.standard.set(isPresenteInd, forKey: "isPresenteInd")
         }
     }
+    
     @Published var isPerfeitoInd: Bool {
         didSet{
             UserDefaults.standard.set(isPerfeitoInd, forKey: "isPerfeitoInd")
         }
     }
+    
     @Published var isImperfeitoInd: Bool {
         didSet{
             UserDefaults.standard.set(isImperfeitoInd, forKey: "isImperfeitoInd")
@@ -84,23 +86,24 @@ class UserSettings: ObservableObject {
             UserDefaults.standard.set(isCondicionalII, forKey: "isCondicionalII")
         }
     }
+    
+    
     init() {
         self.isPresenteInd = UserDefaults.standard.object(forKey: "isPresenteInd") as? Bool ?? true
-        self.isPerfeitoInd = UserDefaults.standard.object(forKey: "isPerfeitoInd") as? Bool ?? true
-        self.isImperfeitoInd = UserDefaults.standard.object(forKey: "isImperfeitoInd") as? Bool ?? true
-        self.isPerfeitoCompInd = UserDefaults.standard.object(forKey: "isPerfeitoCompInd") as? Bool ?? true
-        self.isPMQPInd = UserDefaults.standard.object(forKey: "isPMQPInd") as? Bool ?? true
-        self.isFuturoIInd = UserDefaults.standard.object(forKey: "isFuturoIInd") as? Bool ?? true
-        self.isFuturoIIInd = UserDefaults.standard.object(forKey: "isFuturoIIInd") as? Bool ?? true
-        self.isPresenteSub = UserDefaults.standard.object(forKey: "isPresenteSub") as? Bool ?? true
-        self.isPerfeitoSub = UserDefaults.standard.object(forKey: "isPerfeitoSub") as? Bool ?? true
-        self.isImperfeitoSub = UserDefaults.standard.object(forKey: "isImperfeitoSub") as? Bool ?? true
+        self.isPerfeitoInd = UserDefaults.standard.object(forKey: "isPerfeitoInd") as? Bool ?? false
+        self.isImperfeitoInd = UserDefaults.standard.object(forKey: "isImperfeitoInd") as? Bool ?? false
+        self.isPerfeitoCompInd = UserDefaults.standard.object(forKey: "isPerfeitoCompInd") as? Bool ?? false
+        self.isPMQPInd = UserDefaults.standard.object(forKey: "isPMQPInd") as? Bool ?? false
+        self.isFuturoIInd = UserDefaults.standard.object(forKey: "isFuturoIInd") as? Bool ?? false
+        self.isFuturoIIInd = UserDefaults.standard.object(forKey: "isFuturoIIInd") as? Bool ?? false
+        self.isPresenteSub = UserDefaults.standard.object(forKey: "isPresenteSub") as? Bool ?? false
+        self.isPerfeitoSub = UserDefaults.standard.object(forKey: "isPerfeitoSub") as? Bool ?? false
+        self.isImperfeitoSub = UserDefaults.standard.object(forKey: "isImperfeitoSub") as? Bool ?? false
         self.isPMQPSub = UserDefaults.standard.object(forKey: "isPMQPSub") as? Bool ?? false
         self.isFuturoISub = UserDefaults.standard.object(forKey: "isFuturoISub") as? Bool ?? false
         self.isFuturoIISub = UserDefaults.standard.object(forKey: "isFuturoIISub") as? Bool ?? false
         self.isCondicionalI = UserDefaults.standard.object(forKey: "isCondicionalI") as? Bool ?? false
         self.isCondicionalII = UserDefaults.standard.object(forKey: "isCondicionalII") as? Bool ?? false
-        
     }
 }
 

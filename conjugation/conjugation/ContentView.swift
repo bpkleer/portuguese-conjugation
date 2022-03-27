@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct ContentView: View {
     // Properties
     @State var person: Int = 0
@@ -22,9 +23,9 @@ struct ContentView: View {
     @State var message: String = " "
     @State var proveHidden: Bool = true
     @State var obtenhaHidden: Bool = false
-    @State var allTempus: Array<String> = [""]
-    @ObservedObject var userSettings = UserSettings()
-    
+    @State var allTempus: Array<String> = ["Presente Indicativo"]
+    @EnvironmentObject var userSettings: UserSettings
+    @FocusState private var isTextFocused: Bool
     // Person variable
     let personArray = [1, 2, 3]
     
@@ -113,16 +114,33 @@ struct ContentView: View {
                     Spacer()
                     
                     TextField("Digite sua dica!",
-                              text: $tipp)
+                              text: $tipp,
+                              onCommit: {
+                        showingAlert = true
+                        ziel = trainAim(pessoa: person, numero: sing, caso: tempus, verbo: verbHilfe)
+                        ergebnis = pruefen(eingabe: tipp, ziel: ziel)
+                        message = createAlertMessage(result: ergebnis, ziel: ziel)
+                        tipp = ""
+                        obtenhaHidden = true
+                        if showingAlert == false {
+                            person = setPerson()
+                            sing = setAnzahl()
+                            tempus = setTempus()
+                            verbHilfe = setVerb()
+                            verb = verbHilfe[0]
+                        }
+                        isTextFocused = false
+                    }
+                    )
                         .padding(.all, 5)
                         .disableAutocorrection(true)
                         .multilineTextAlignment(.center)
                         .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    
-                    
-                    
+                        .focused($isTextFocused)
+                                        
                     // }
+                    
                     Spacer()
                     
                     //visibility Change versuchen
@@ -141,6 +159,7 @@ struct ContentView: View {
                                 verbHilfe = setVerb()
                                 verb = verbHilfe[0]
                             }
+                            isTextFocused = false
                         } .disabled(tipp == "")
                         .alert(isPresented:$showingAlert) {
                             Alert(
@@ -163,6 +182,9 @@ struct ContentView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
+
+    
+    
     //Methods
     
     func setPerson() -> (Int) {
@@ -178,70 +200,154 @@ struct ContentView: View {
     
     // hier anpassen auf allTempus!
     func setTempus() -> (String) {
-        allTempus = ["Presente Indicativo",
-                     "Pretérito Perfeito Indicativo",
-                     "Pretérito Imperfeito Indicativo",
-                     "Pretérito Perfeito Composto Indicativo",
-                     "Pretérito Mais-que-Perfeito Composto Indicativo",
-                     "Futuro Simples Indicativo",
-                     "Futuro de Presente Composto Indicativo",
-                     "Presente Subjunctivo",
-                     "Pretérito Perfeito Subjunctivo",
-                     "Pretérito Imperfeito Subjunctivo",
-                     "Pretérito Mais-que-Perfeito Composto Subjunctivo",
-                     "Futuro Subjunctivo",
-                     "Futuro Composto Subjunctivo",
-                     "Futuro do Pretérito Simples Subjunctivo",
-                     "Futuro do Pretérito Composto Subjunctivo"]
-        
-        // If Abfragen zum Aussoriteren von Tempi
-        
-        if userSettings.isPresenteInd == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Presente Indicativo")!)
+        if self.userSettings.isPresenteInd == false {
+            if allTempus.contains("Presente Indicativo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Presente Indicativo")!)
+            }
         }
-        if userSettings.isPerfeitoInd == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Perfeito Indicativo")!)
+        if self.userSettings.isPresenteInd == true {
+            if !(allTempus.contains("Presente Indicativo")) {
+                allTempus.append("Presente Indicativo")
+            }
         }
-        if userSettings.isImperfeitoInd == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Imperfeito Indicativo")!)
+        if self.userSettings.isPerfeitoInd == false {
+            if allTempus.contains("Perfeito Simples Indicativo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Perfeito Simples Indicativo")!)
+            }
         }
-        if userSettings.isPerfeitoCompInd == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Perfeito Composto Indicativo")!)
+        if self.userSettings.isPerfeitoInd == true {
+            if !(allTempus.contains("Perfeito Simples Indicativo")) {
+                allTempus.append("Perfeito Simples Indicativo")
+            }
         }
-        if userSettings.isPMQPInd == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Composto Indicativo")!)
+        if self.userSettings.isImperfeitoInd == false {
+            if allTempus.contains("Imperfeito Indicativo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Imperfeito Indicativo")!)
+            }
         }
-        if userSettings.isFuturoIInd == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Futuro Simples Indicativo")!)
+        if self.userSettings.isImperfeitoInd == true{
+            if !(allTempus.contains("Imperfeito Indicativo")) {
+                allTempus.append("Imperfeito Indicativo")
+            }
         }
-        if userSettings.isFuturoIIInd == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Futuro de Presente Composto Indicativo")!)
+        if self.userSettings.isPerfeitoCompInd == false {
+            if allTempus.contains("Perfeito Composto Indicativo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Perfeito Composto Indicativo")!)
+            }
         }
-        if userSettings.isPresenteSub == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Presente Subjunctivo")!)
+        if self.userSettings.isPerfeitoCompInd == true {
+            if !(allTempus.contains("Perfeito Composto Indicativo")) {            allTempus.append("Perfeito Composto Indicativo")
+            }
         }
-        if userSettings.isPerfeitoSub == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Perfeito Subjunctivo")!)
+        if self.userSettings.isPMQPInd == false {
+            if allTempus.contains("Pretérito Mais-que-Perfeito Indicativo") {            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Indicativo")!)
+            }
         }
-        if userSettings.isImperfeitoSub == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Imperfeito Subjunctivo")!)
+        if self.userSettings.isPMQPInd == true {
+            if !(allTempus.contains("Pretérito Mais-que-Perfeito Indicativo")) {
+                allTempus.append("Pretérito Mais-que-Perfeito Indicativo")
+            }
         }
-        if userSettings.isPMQPSub == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Composto Subjunctivo")!)
+        if self.userSettings.isFuturoIInd == false {
+            if allTempus.contains("Futuro Simples Indicativo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Futuro Simples Indicativo")!)
+            }
         }
-        if userSettings.isFuturoISub == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Futuro Subjunctivo")!)
+        if self.userSettings.isFuturoIInd == true {
+            if !(allTempus.contains("Futuro Simples Indicativo")) {
+                allTempus.append("Futuro Simples Indicativo")
+            }
         }
-        if userSettings.isFuturoIISub == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Futuro Composto Subjunctivo")!)
+        if self.userSettings.isFuturoIIInd == false {
+            if allTempus.contains("Futuro Composto Indicativo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Futuro Composto Indicativo")!)
+            }
         }
-        if userSettings.isCondicionalI == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Futuro do Pretérito Simples Subjunctivo")!)
+        if userSettings.isFuturoIIInd == true {
+            if !(allTempus.contains("Futuro Composto Indicativo")) {
+                allTempus.append("Futuro Composto Indicativo")
+            }
         }
-        if userSettings.isCondicionalII == false {
-            allTempus.remove(at: allTempus.firstIndex(of: "Futuro do Pretérito Composto Subjunctivo")!)
+        if self.userSettings.isPresenteSub == false {
+            if allTempus.contains("Presente Subjunctivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Presente Subjunctivo")!)
+            }
         }
-        
+        if self.userSettings.isPresenteSub == true {
+            if !(allTempus.contains("Presente Subjunctivo")) {
+                allTempus.append("Presente Subjunctivo")
+            }
+        }
+        if self.userSettings.isPerfeitoSub == false {
+            if allTempus.contains("Perfeito Simples Subjunctivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Perfeito Simples Subjunctivo")!)
+            }
+        }
+        if self.userSettings.isPerfeitoSub == true {
+            if !(allTempus.contains("Perfeito Simples Subjunctivo")) {
+                allTempus.append("Perfeito Simples Subjunctivo")
+            }
+        }
+        if self.userSettings.isImperfeitoSub == false {
+            if allTempus.contains("Imperfeito Subjunctivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Imperfeito Subjunctivo")!)
+            }
+        }
+        if self.userSettings.isImperfeitoSub == true {
+            if !(allTempus.contains("Imperfeito Subjunctivo")) {
+                allTempus.append("Imperfeito Subjunctivo")
+            }
+        }
+        if self.userSettings.isPMQPSub == false {
+            if allTempus.contains("Pretérito Mais-que-Perfeito Subjunctivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Subjunctivo")!)
+            }
+        }
+        if self.userSettings.isPMQPSub == true {
+            if !(allTempus.contains("Pretérito Mais-que-Perfeito Subjunctivo")) {
+                allTempus.append("Pretérito Mais-que-Perfeito Subjunctivo")
+            }
+        }
+        if self.userSettings.isFuturoISub == false {
+            if allTempus.contains("Futuro Simples Subjuncitvo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Futuro Simples Subjuncitvo")!)
+            }
+        }
+        if self.userSettings.isFuturoISub == true {
+            if !(allTempus.contains("Futuro Simples Subjuncitvo")) {
+                allTempus.append("Futuro Simples Subjuncitvo")
+            }
+        }
+        if self.userSettings.isFuturoIISub == false {
+            if allTempus.contains("Futuro Composto Subjunctivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Futuro Composto Subjunctivo")!)
+            }
+        }
+        if self.userSettings.isFuturoIISub == true {
+            if !(allTempus.contains("Futuro Composto Subjunctivo")) {
+                allTempus.append("Futuro Composto Subjunctivo")
+            }
+        }
+        if self.userSettings.isCondicionalI == false {
+            if allTempus.contains("Futuro do Préterito (Condicional I)") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Futuro do Préterito (Condicional I)")!)
+            }
+        }
+        if self.userSettings.isCondicionalI == true {
+            if !(allTempus.contains("Futuro do Préterito (Condicional I)")) {
+                allTempus.append("Futuro do Préterito (Condicional I)")
+            }
+        }
+        if self.userSettings.isCondicionalII == false {
+            if allTempus.contains("Futuro do Préterito Composto (Condicional II)") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Futuro do Préterito Composto (Condicional II)")!)
+            }
+        }
+        if self.userSettings.isCondicionalII == true {
+            if !(allTempus.contains("Futuro do Préterito Composto (Condicional II)")) {
+                allTempus.append("Futuro do Préterito Composto (Condicional II)")
+            }
+        }
         let trainTempus = allTempus.randomElement()!
         
         return (trainTempus)
@@ -296,7 +402,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteVir = ["venho", "vem", "vem", "vimos", "vêm", "vêm"]
     let presenteVer = ["vejo", "vê", "vê", "vemos", "vêem", "vêem"]
     let presenteTer = ["tenho", "tem", "tem", "temos", "têm", "têm"]
-    let presenteLer = ["leio","lê", "lê", "lemos", "leem", "leem"]
+    let presenteLer = ["leio", "lê", "lê", "lemos", "leem", "leem"]
     let presenteFazer = ["faço", "faz", "faz", "fazemos", "fazem", "fazem"]
     let presenteIzer = ["go", "z", "z", "zemos", "zem", "zem"]
     let presenteTrazer = ["trago", "traz", "traz", "trazemos", "trazem", "trazem"]
@@ -408,7 +514,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let futuroSubPor = ["puser", "puser", "puser", "pusermos", "puserem", "puserem"]
     
     // Condicional
-    // Condicional I Futuro do Pretérito Simples Subjunctivo
+    // Condicional I  érito Simples
     let condicionalIAr = ["aria", "aria", "aria", "aríamos", "ariam", "ariam"]
     let condicionalIEr = ["eria", "eria", "eria", "eríamos", "eriam", "eriam"]
     let condicionalIIr = ["iria", "iria", "iria", "iríamos", "iriam", "iriam"]
@@ -434,6 +540,8 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "ir" {
             endung = presenteIr[numberInArray]
             aim = stamm + endung
+        } else if verbo[1] == "ira" {
+            endung = presenteIra[numberInArray]
         } else if verbo[1] == "ser" {
             endung = presenteSer[numberInArray]
             aim = endung
@@ -485,7 +593,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = presenteOir[numberInArray]
             aim = stamm + endung
         }
-    } else if caso == "Pretérito Perfeito Indicativo" {
+    } else if caso == "Perfeito Simples Indicativo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" {
             endung = perfeitoAr[numberInArray]
@@ -531,7 +639,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = perfeitoPor[numberInArray]
             aim = endung
         }
-    } else if caso == "Pretérito Imperfeito Indicativo" {
+    } else if caso == "Imperfeito Indicativo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "estar" {
             endung = imperfeitoAr[numberInArray]
@@ -555,7 +663,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = imperfeitoPor[numberInArray]
             aim = endung
         }
-    } else if caso == "Pretérito Perfeito Composto Indicativo" {
+    } else if caso == "Perfeito Composto Indicativo" {
         hilfsverb  = ppcHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -593,7 +701,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Pretérito Mais-que-Perfeito Composto Indicativo" {
+    } else if caso == "Pretérito Mais-que-Perfeito Indicativo" {
         hilfsverb  = pmqpHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -655,7 +763,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = futuroSimplesPor[numberInArray]
             aim = endung
         }
-    } else if caso == "Futuro de Presente Composto Indicativo" {
+    } else if caso == "Futuro Composto Indicativo" {
         hilfsverb  = futcomHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -751,7 +859,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = presenteSubOir[numberInArray]
             aim = stamm + endung
         }
-    } else if caso == "Pretérito Perfeito Subjunctivo" {
+    } else if caso == "Perfeito Simples Subjunctivo" {
         hilfsverb  = perfeitoSubHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -789,7 +897,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Pretérito Imperfeito Subjunctivo" {
+    } else if caso == "Imperfeito Subjunctivo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" {
             endung = imperfeitoSubAr[numberInArray]
@@ -838,7 +946,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = imperfeitoSubPor[numberInArray]
             aim = endung
         }
-    } else if caso == "Pretérito Mais-que-Perfeito Composto Subjunctivo"{
+    } else if caso == "Pretérito Mais-que-Perfeito Subjunctivo"{
         hilfsverb  = pmqpCompSubHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -876,7 +984,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Futuro Subjunctivo" {
+    } else if caso == "Futuro Simples Subjuncitvo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" {
             endung = futuroSubAr[numberInArray]
@@ -963,7 +1071,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Futuro do Pretérito Simples Subjunctivo"{
+    } else if caso == "Futuro do Préterito (Condicional I)"{
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "estar" {
             endung = condicionalIAr[numberInArray]
@@ -991,7 +1099,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = condicionalIPor[numberInArray]
             aim = endung
         }
-    } else if caso == "Futuro do Pretérito Composto Subjunctivo"{
+    } else if caso == "Futuro do Préterito Composto (Condicional II)"{
         hilfsverb  = condIIHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -1030,8 +1138,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         }
     }
-    
-    
     return (aim)
 }
 
@@ -1058,8 +1164,10 @@ func createAlertMessage(result: Bool, ziel: String) -> String {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(UserSettings())  // assign environment
     }
 }
+
 
 
 // + Text("\nKorrekte Form ist: " + ziel + "\n")
