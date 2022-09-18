@@ -354,7 +354,7 @@ struct ContentView: View {
     }
     
     func setVerb() -> (Array<String>) {
-        let rndNumber = Int.random(in: 0...verbArray.count)
+        let rndNumber = Int.random(in: 0...verbArray.count - 1)
         let trainVerb = verbArray[rndNumber]
         return (trainVerb)
     }
@@ -430,9 +430,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let perfeitoPor = ["pus", "pôs", "pôs", "pusemos", "puseram", "puseram"]
     
     // Imperfeito
-    let imperfeitoAr = ["ava", "ava", "ava", "ávamos", "avam"]
-    let imperfeitoEr = ["ia", "ia", "ia", "íamos", "iam"]
-    let imperfeitoIr = ["ia", "ia", "ia", "íamos", "iam"]
+    let imperfeitoAr = ["ava", "ava", "ava", "ávamos", "avam", "avam"]
+    let imperfeitoEr = ["ia", "ia", "ia", "íamos", "iam", "iam"]
+    let imperfeitoIr = ["ia", "ia", "ia", "íamos", "iam", "iam"]
     let imperfeitoSer = ["era", "era", "era", "éramos", "eram", "eram"]
     let imperfeitoVir = ["vinha", "vinha", "vinha", "vinhamos", "vinham", "vinham"]
     let imperfeitoTer = ["tinha", "tinha", "tinha", "tínhamos", "tinham", "tinham"]
@@ -460,9 +460,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     
     // Subjunctivo
     // Presente Subjunctivo
-    let presenteSubAr = ["e", "e", "e", "emos", "em"]
-    let presenteSubEr = ["a", "a", "a", "amos", "am"]
-    let presenteSubIr = ["a", "a", "a", "amos", "am"]
+    let presenteSubAr = ["e", "e", "e", "emos", "em", "em"]
+    let presenteSubEr = ["a", "a", "a", "amos", "am", "am"]
+    let presenteSubIr = ["a", "a", "a", "amos", "am", "am"]
     let presenteSubSer = ["seja", "seja", "seja", "sejamos", "sejam", "sejam"]
     let presenteSubEstar = ["esteja", "esteja", "esteja", "estejamos", "estejam", "estejam"]
     let presenteSubIra = ["vá", "vá", "vá", "vamos", "vão", "vão"]
@@ -1138,6 +1138,12 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         }
     }
+
+    stamm = "";
+    endung = "";
+    hilfsverb = "";
+    numberInArray = 0;
+    
     return (aim)
 }
 
@@ -1148,6 +1154,8 @@ func pruefen(eingabe: String, ziel: String) -> Bool {
     } else {
         ergebnis = false
     }
+
+    
     return ergebnis
 }
 

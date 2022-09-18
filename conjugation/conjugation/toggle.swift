@@ -166,7 +166,7 @@ struct ToggleStates: View {
     
     
     func atLeastOneTempus() {
-        if self.userSettings.isPresenteInd == false && self.userSettings.isPerfeitoInd == false && self.userSettings.isImperfeitoInd == false && self.userSettings.isPerfeitoCompInd == false && self.userSettings.isPMQPInd == false && self.userSettings.isFuturoIInd == false && self.userSettings.isFuturoIIInd == false && self.userSettings.isPresenteSub == false && self.userSettings.isPerfeitoSub == false && self.userSettings.isImperfeitoSub == false && self.userSettings.isPMQPSub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isCondicionalI == false && self.userSettings.isCondicionalII == false {
+        if self.userSettings.isPresenteInd == false && self.userSettings.isPerfeitoInd == false && self.userSettings.isImperfeitoInd == false && self.userSettings.isPerfeitoCompInd == false && self.userSettings.isPMQPInd == false && self.userSettings.isFuturoIInd == false && self.userSettings.isFuturoIIInd == false && self.userSettings.isPresenteSub == false && self.userSettings.isPerfeitoSub == false && self.userSettings.isImperfeitoSub == false && self.userSettings.isPMQPSub == false && self.userSettings.isFuturoISub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isCondicionalI == false && self.userSettings.isCondicionalII == false {
             self.userSettings.isPresenteInd = true
         }
     }
