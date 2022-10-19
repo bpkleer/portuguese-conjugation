@@ -111,8 +111,7 @@ struct ContentView: View {
                         .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
                     
-                    Spacer()
-                    
+                                       
                     TextField("Digite sua dica!",
                               text: $tipp,
                               onCommit: {
@@ -137,7 +136,8 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                         .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        .focused($isTextFocused)
+                        
+                        
                                         
                     // }
                     
