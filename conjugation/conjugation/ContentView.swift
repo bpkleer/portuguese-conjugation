@@ -119,7 +119,6 @@ struct ContentView: View {
                         ziel = trainAim(pessoa: person, numero: sing, caso: tempus, verbo: verbHilfe)
                         ergebnis = pruefen(eingabe: tipp, ziel: ziel)
                         message = createAlertMessage(result: ergebnis, ziel: ziel)
-                        tipp = ""
                         obtenhaHidden = true
                         if showingAlert == false {
                             person = setPerson()
@@ -131,13 +130,13 @@ struct ContentView: View {
                         isTextFocused = false
                     }
                     )
-                        .padding(.all, 5)
-                        .disableAutocorrection(true)
-                        .multilineTextAlignment(.center)
-                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        
-                        
+
+                    .padding(.all, 5)
+                    .disableAutocorrection(true)
+                    .multilineTextAlignment(.center)
+                    .autocapitalization(.none)
+                    .font(.title)
+                    .focused($isTextFocused)
                                         
                     // }
                     
@@ -170,6 +169,7 @@ struct ContentView: View {
                                     tempus = setTempus()
                                     verbHilfe = setVerb()
                                     verb = verbHilfe[0]
+                                    tipp = ""
                                 }
                             )
                         }
@@ -1175,7 +1175,3 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(UserSettings())  // assign environment
     }
 }
-
-
-
-// + Text("\nKorrekte Form ist: " + ziel + "\n")
