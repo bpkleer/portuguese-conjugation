@@ -675,6 +675,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
             endung = participioEr
             aim = hilfsverb + " " + stamm + endung
+        } else if verbo[0] == "abrir" {
+            endung = participioAbrir
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
             endung = participioIr
             aim = hilfsverb + " " + stamm + endung
@@ -686,7 +689,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "ver" {
             endung = participioVer
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "fazer" {
             endung = participioFazer
             aim = hilfsverb + " " + endung
@@ -696,9 +699,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         } else if verbo[1] == "por" {
             endung = participioPor
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "abrir" {
-            endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
     } else if caso == "Pretérito Mais-que-Perfeito Indicativo" {
@@ -713,6 +713,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
             endung = participioEr
             aim = hilfsverb + " " + stamm + endung
+        } else if verbo[0] == "abrir" {
+            endung = participioAbrir
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
             endung = participioIr
             aim = hilfsverb + " " + stamm + endung
@@ -724,7 +727,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "ver" {
             endung = participioVer
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "fazer" {
             endung = participioFazer
             aim = hilfsverb + " " + endung
@@ -734,9 +737,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         } else if verbo[1] == "por" {
             endung = participioPor
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "abrir" {
-            endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
     } else if caso == "Futuro Simples Indicativo" {
@@ -775,6 +775,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
             endung = participioEr
             aim = hilfsverb + " " + stamm + endung
+        } else if verbo[0] == "abrir" {
+            endung = participioAbrir
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
             endung = participioIr
             aim = hilfsverb + " " + stamm + endung
@@ -786,7 +789,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "ver" {
             endung = participioVer
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "fazer" {
             endung = participioFazer
             aim = hilfsverb + " " + endung
@@ -796,9 +799,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         } else if verbo[1] == "por" {
             endung = participioPor
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "abrir" {
-            endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
     } else if caso == "Presente Subjunctivo" {
@@ -871,6 +871,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
             endung = participioEr
             aim = hilfsverb + " " + stamm + endung
+        } else if verbo[0] == "abrir" {
+            endung = participioAbrir
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
             endung = participioIr
             aim = hilfsverb + " " + stamm + endung
@@ -892,9 +895,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         } else if verbo[1] == "por" {
             endung = participioPor
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "abrir" {
-            endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
     } else if caso == "Imperfeito Subjunctivo" {
@@ -958,6 +958,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
             endung = participioEr
             aim = hilfsverb + " " + stamm + endung
+        } else if verbo[0] == "abrir" {
+            endung = participioAbrir
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
             endung = participioIr
             aim = hilfsverb + " " + stamm + endung
@@ -969,7 +972,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "ver" {
             endung = participioVer
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "fazer" {
             endung = participioFazer
             aim = hilfsverb + " " + endung
@@ -979,9 +982,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         } else if verbo[1] == "por" {
             endung = participioPor
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "abrir" {
-            endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
     } else if caso == "Futuro Simples Subjuncitvo" {
@@ -1045,6 +1045,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
             endung = participioEr
             aim = hilfsverb + " " + stamm + endung
+        } else if verbo[0] == "abrir" {
+            endung = participioAbrir
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
             endung = participioIr
             aim = hilfsverb + " " + stamm + endung
@@ -1056,7 +1059,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "ver" {
             endung = participioVer
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "fazer" {
             endung = participioFazer
             aim = hilfsverb + " " + endung
@@ -1066,9 +1069,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         } else if verbo[1] == "por" {
             endung = participioPor
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "abrir" {
-            endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
     } else if caso == "Futuro do Préterito (Condicional I)"{
@@ -1111,6 +1111,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" {
             endung = participioEr
             aim = hilfsverb + " " + stamm + endung
+        } else if verbo[0] == "abrir" {
+            endung = participioAbrir
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
             endung = participioIr
             aim = hilfsverb + " " + stamm + endung
@@ -1122,7 +1125,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "ver" {
             endung = participioVer
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + endung
         } else if verbo[1] == "fazer" {
             endung = participioFazer
             aim = hilfsverb + " " + endung
@@ -1132,9 +1135,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = hilfsverb + " " + endung
         } else if verbo[1] == "por" {
             endung = participioPor
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "abrir" {
-            endung = participioAbrir
             aim = hilfsverb + " " + endung
         }
     }
