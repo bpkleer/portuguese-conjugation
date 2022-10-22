@@ -41,6 +41,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .center) {
+                Spacer()
+                Spacer()
+                
                 Text("Treino de conjugação")
                     .font(.title)
                     .fontWeight(.heavy)
