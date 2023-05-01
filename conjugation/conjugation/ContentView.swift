@@ -24,8 +24,6 @@ struct ContentView: View {
     @State var proveHidden: Bool = true
     @State var obtenhaHidden: Bool = false
     @State var allTempus: Array<String> = ["Presente Indicativo"]
-    @State var correto: Int = 0
-    @State var falso: Int = 0
     @EnvironmentObject var userSettings: UserSettings
     @FocusState private var isTextFocused: Bool
     // Person variable
@@ -43,9 +41,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .center) {
-                Spacer()
-                Spacer()
-                
                 Text("Treino de conjugação")
                     .font(.title)
                     .fontWeight(.heavy)
@@ -92,19 +87,6 @@ struct ContentView: View {
                 Spacer()
                 
                 VStack(spacing: 35) {
-                    Text("Correto: " + String(correto) + " / Falso: " + String(falso))
-                        .foregroundColor(.blue)
-                        .padding(/*@START_MENU_TOKEN@*/.all, 0.0/*@END_MENU_TOKEN@*/)
-                    
-                    Button(action: {
-                        correto = 0
-                        falso = 0
-                    }){ HStack(spacing: 0) {
-                        Text("Reiniciar o números").foregroundColor(.blue)
-                        Image(systemName: "arrow.2.squarepath")
-                            .scaleEffect(1.0)
-                            .rotationEffect(.degrees(180))
-                    }}.padding(/*@START_MENU_TOKEN@*/.all, 0.0/*@END_MENU_TOKEN@*/)
                     
                     Spacer()
                     
@@ -136,8 +118,6 @@ struct ContentView: View {
                         showingAlert = true
                         ziel = trainAim(pessoa: person, numero: sing, caso: tempus, verbo: verbHilfe)
                         ergebnis = pruefen(eingabe: tipp, ziel: ziel)
-                        correto = add(result: ergebnis, richtig: correto)
-                        falso = substract(result: ergebnis, falsch: falso)
                         message = createAlertMessage(result: ergebnis, ziel: ziel)
                         obtenhaHidden = true
                         if showingAlert == false {
@@ -1175,29 +1155,8 @@ func pruefen(eingabe: String, ziel: String) -> Bool {
         ergebnis = false
     }
 
+    
     return ergebnis
-}
-
-func add(result: Bool, richtig: Int) -> Int {
-    let summe: Int
-    if result == true {
-        summe = richtig + 1
-    } else {
-        summe = richtig
-    }
-    
-    return summe
-}
-
-func substract(result: Bool, falsch: Int) -> Int {
-    let summe: Int
-    if result == false {
-        summe = falsch + 1
-    } else {
-        summe = falsch
-    }
-    
-    return summe
 }
 
 func createAlertMessage(result: Bool, ziel: String) -> String {
