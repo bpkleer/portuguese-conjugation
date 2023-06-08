@@ -37,13 +37,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A5EDECF2669130000E3CFB8 /* Multiselection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Multiselection;
-			sourceTree = "<group>";
-		};
 		4A5EDEDD2669271800E3CFB8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -55,7 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				4ACB40062664C8A000A34D34 /* conjugation */,
-				4A5EDECF2669130000E3CFB8 /* Multiselection */,
 				4ACB40052664C8A000A34D34 /* Products */,
 			);
 			sourceTree = "<group>";

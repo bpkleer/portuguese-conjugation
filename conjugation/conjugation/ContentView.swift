@@ -1,16 +1,12 @@
-//
-//  Training.swift
-//  conjugation
-//
-//  Created by Philipp Kleer on 01.06.21.
-//
+// Portuguese Conjugation app (not every special verbs)
+// Created by Philipp Kleer, last changes 2023-06-08
 
 import SwiftUI
 
 @available(iOS 16.0, *)
 
 struct ContentView: View {
-    // Properties
+    // variables for body view
     @State var person: Int = 0
     @State var sing: String = ""
     @State var sub = ""
@@ -25,22 +21,29 @@ struct ContentView: View {
     @State var proveHidden: Bool = true
     @State var obtenhaHidden: Bool = false
     @State var allTempus: Array<String> = ["Presente Indicativo"]
+    
+    // variables to count wrong and false answers
     @State var correto: Int = 0
     @State var falso: Int = 0
+    
+    // to check that same tense will not repeated in the last three times (with more than 4 tenses chosen)
     @State var lastcase: Array<String> = ["", "", ""]
     @State var countcase: Int = 0
     @State var trainTempus: String = ""
+    
+    // environment
     @EnvironmentObject var userSettings: UserSettings
     @FocusState private var isTextFocused: Bool
     // Person variable
     let personArray = [1, 2, 3]
     
-    // Singular oder Plural Variable
+    // Singular or Plural Variable
     let anzahlArray = ["Singular", "Plural"]
     
-    //Verben
+    // verbs
     let verbArray = [["comprar", "ar", "kaufen"], ["vender", "er", "verkaufen"], ["dividir", "ir", "teilen, aufteilen"],["ser", "ser", "sein"], ["estar", "estar", "sein"], ["ir", "ira", "gehen"], ["vir", "vir", "kommen"], ["ver", "ver", "sehen, ansehen"], ["ter", "ter", "haben"], ["ler", "ler", "lesen"], ["fazer", "fazer", "machen, tun"], ["dizer", "izer", "sagen, sprechen"], ["trazer", "trazer", "bringen, tragen"], ["saber", "saber", "wissen, können"], ["poder", "poder", "können, dürfen"], ["querer", "querer", "wollen"], ["pôr", "por", "setzen, stellen, legen"], ["levar", "ar", "bringen, mitnehmen"], ["dormir", "oir", "schlafen"], ["conhecer", "er", "kennen, kennenlernen"], ["pagar", "ar", "bezahlen"], ["atravessar", "ar", "überqueren, durchqueren"], ["assistir", "ir", "zuschauen, sehen, helfen"], ["decidir", "ir", "entscheiden, beschließen"], ["sentir", "ir", "fühlen, empfinden"], ["abrir", "ir", "öffnen"], ["arrumar", "ar", "aufräumen, organisieren"], ["lavar", "ar", "waschen"], ["limpar", "ar", "putzen, reinigen"], ["deixar", "ar", "erlauben, lassen, aufgeben"], ["falar", "ar", "sprechen"], ["cumprimentar", "ar", "begrüßen, grüßen"], ["responder", "er", "antworten, beantworten"], ["recomendar", "ar", "empfehlen, raten"], ["precisar", "ar", "benötigen, brauchen (mit de)"], ["procurar", "ar", "suchen"], ["passar", "ar", "(vorbei)gehen", "verbringen"], ["comer", "er", "essen"], ["beber", "er", "trinken"], ["ganhar", "ar", "gewinnen, verdienen"], ["melhorar", "ar", "verbessern"], ["cuidar", "ar", "aufpassen, sorgen (mit de)"], ["confiar", "ar", "vertrauen, hoffen auf (mit em)"], ["pensar", "ar", "denken, glauben (an mit em)"], ["deitar", "ar", "hinlegen, legen"], ["acordar", "ar", "aufwachen"], ["gostar", "ar", "mögen, gefallen"], ["discutir", "ir", "diskutieren"], ["acompanhar", "ar", "begleiten, mitmachen"], ["levantar", "ar", "aufbrechen, aufstehen"], ["acontecer", "er", "passieren, geschehen"], ["desagradecer", "er", "missfallen"], ["detestar", "ar", "hassen, verabschauen"], ["significar", "ar", "bedeuten, meinen"], ["tornar", "ar", "(tornar-se) werden"]]
     
+    // not yet integrated
     //let verbArrayCair = [["agraudar", "ar", "agraud"], ["ajesuitar", "ar", "ajesuit"], ["ajuizar", "ar", "ajuiz"], ["alaudar", "ar", "alaud"], ["altruizar", "ar", "altruiz"], ["amiudar", "ar", "amiud"], ["arcaizar", "ar", "arcaiz"], ["arruinar", "ar", "arruin"], ["ataudar", "ar", "ataud"], ["comboiar", "ar", "combai"], ["desajuizar", "ar", "desajuiz"], ["desataudar", "ar", "desataud"], ["desenraizar", "ar", "desenraiz"], ["desraizar", "ar", "desraiz"], ["embuizar", "ar", "embuiz"], ["enfaiscar", "ar", "enfaisc"], ["enraizar", "ar", "enraiz"], ["ensaudar", "ar", "ensaud"], ["enviuvar", "ar", "enviuv"], ["esfaiscar", "ar", "esfaisc"], ["esmiudar", "ar", "esmiud"], ["faiscar", "ar", "faisc"], ["gaudar", "ar", "gaud"], ["hebraizar", "ar", "hebraiz"], ["heroizar", "ar", "heroiz"], ["judaizar", "ar", "judaiz"], ["maleinar", "ar", "malein"], ["miudar", "ar", "miud"], ["mobilar", "ar", "mobil"], ["plebeizar", "ar", "plebeiz"], ["ressaudar", "ar", "ressaud"], ["saudar", "ar", "saud"]]
     
     
@@ -48,14 +51,7 @@ struct ContentView: View {
         NavigationView{
             VStack(alignment: .center) {
                 
-                Text("Treino de conjugação")
-                    .font(.title)
-                    .fontWeight(.heavy)
-                    .foregroundColor(Color("style"))
-                    .multilineTextAlignment(.center)
-                    .padding(.all, 25)
-                    .cornerRadius(5)
-                
+                // choosing tenses
                 NavigationLink(destination: ToggleStates()) {
                     Text("Conjugações")
                         .font(.title2)
@@ -64,7 +60,7 @@ struct ContentView: View {
                     Image(systemName: "chevron.forward.circle")
                         .scaleEffect(1.5)
                         .foregroundColor(Color("style"))
-                }
+                }.padding(.top, 40)
                 
                 if obtenhaHidden == false {
                     Button(action: {
@@ -85,14 +81,12 @@ struct ContentView: View {
                     .padding(/*@START_MENU_TOKEN@*/.all, 0.0/*@END_MENU_TOKEN@*/)
                         
                     }
-                } else {
-                    Spacer()
                 }
                 
                 VStack(spacing: 35) {
                     Text("Correto: " + String(correto) + " / Falso: " + String(falso))
                         .foregroundColor(Color("style"))
-                        .padding(.all, 0.0)
+                        .padding(.top, 20)
                     
                     Button(action: {
                         correto = 0
@@ -191,26 +185,26 @@ struct ContentView: View {
                         
                     }
                 }
-                Spacer()
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
     //Methods
-    
+    // get the person for conjugation
     func setPerson() -> (Int) {
         let trainPerson = personArray.randomElement()!
         return trainPerson
     }
     
+    // get plural or singular for conjugation
     func setAnzahl() -> (String) {
         let trainAnzahl = anzahlArray.randomElement()!
         
         return trainAnzahl
     }
     
-    // hier anpassen auf allTempus!
+    // get tempus for conjugation
     func setTempus() -> (String) {
         if self.userSettings.isPresenteInd == false {
             if allTempus.contains("Presente Indicativo") {
@@ -361,9 +355,7 @@ struct ContentView: View {
             }
         }
         
-        // some problem here mit start von empty array
-        // include somewhere countcase = countcase + 1
-        // problem with repeat, needs to be skipped if lastcase.isEmpty
+        // if more than 3 tenses, it will control that one tense does not get repeated too fast (check of last three)
         if allTempus.count > 3 {
             if lastcase == ["", "", ""] {
                 trainTempus = allTempus.randomElement()!
@@ -394,6 +386,7 @@ struct ContentView: View {
         return (trainTempus)
     }
     
+    // get verb for conjugation
     func setVerb() -> (Array<String>) {
         let rndNumber = Int.random(in: 0...verbArray.count - 1)
         let trainVerb = verbArray[rndNumber]
@@ -401,7 +394,7 @@ struct ContentView: View {
     }
 }
 
-
+    // get solution for conjugation
 func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -> String {
     var aim: String = ""
     var stamm: String = ""
@@ -1188,6 +1181,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     return (aim)
 }
 
+// check user result against solution
 func pruefen(eingabe: String, ziel: String) -> Bool {
     let ergebnis: Bool
     if eingabe == ziel {
@@ -1199,6 +1193,7 @@ func pruefen(eingabe: String, ziel: String) -> Bool {
     return ergebnis
 }
 
+// set counter for correct results
 func add(result: Bool, richtig: Int) -> Int {
     let summe: Int
     if result == true {
@@ -1210,6 +1205,7 @@ func add(result: Bool, richtig: Int) -> Int {
     return summe
 }
 
+// set counter for wrong results
 func substract(result: Bool, falsch: Int) -> Int {
     let summe: Int
     if result == false {
@@ -1221,6 +1217,7 @@ func substract(result: Bool, falsch: Int) -> Int {
     return summe
 }
 
+// create alert message for results (correct or wrong)
 func createAlertMessage(result: Bool, ziel: String) -> String {
     var alertMessage: String = ""
     if result == true {
@@ -1231,6 +1228,7 @@ func createAlertMessage(result: Bool, ziel: String) -> String {
     return alertMessage
 }
 
+// provide structure
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
