@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
+
 struct ContentView: View {
     // Properties
     @State var person: Int = 0
@@ -17,7 +18,7 @@ struct ContentView: View {
     @State var verb = ""
     @State var verbHilfe: Array<String> = [""]
     @State var tipp: String = ""
-    @State var ziel:String = ""
+    @State var ziel: String = ""
     @State private var showingAlert = false
     @State var ergebnis: Bool = false
     @State var message: String = " "
@@ -26,6 +27,9 @@ struct ContentView: View {
     @State var allTempus: Array<String> = ["Presente Indicativo"]
     @State var correto: Int = 0
     @State var falso: Int = 0
+    @State var lastcase: Array<String> = ["", "", ""]
+    @State var countcase: Int = 0
+    @State var trainTempus: String = ""
     @EnvironmentObject var userSettings: UserSettings
     @FocusState private var isTextFocused: Bool
     // Person variable
@@ -43,28 +47,23 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .center) {
-                Spacer()
-                Spacer()
                 
                 Text("Treino de conjugação")
                     .font(.title)
                     .fontWeight(.heavy)
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color("style"))
                     .multilineTextAlignment(.center)
-                    .padding(.all, 2.0)
+                    .padding(.all, 25)
                     .cornerRadius(5)
-                
-                Spacer()
-                
-                Spacer()
                 
                 NavigationLink(destination: ToggleStates()) {
                     Text("Conjugações")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.blue)
+                        .foregroundColor(Color("style"))
                     Image(systemName: "chevron.forward.circle")
                         .scaleEffect(1.5)
+                        .foregroundColor(Color("style"))
                 }
                 
                 if obtenhaHidden == false {
@@ -77,36 +76,34 @@ struct ContentView: View {
                         proveHidden = false
                         obtenhaHidden = true
                     }){ HStack(spacing: 0) {
-                        Text("Comece o treino!").fontWeight(.semibold).padding().font(.title)
+                        Text("Comece o treino!").fontWeight(.semibold).padding().font(.title).foregroundColor(Color("style"))
                         Image(systemName: "restart")
                             .scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
                             .rotationEffect(.degrees(180))
+                            .foregroundColor(Color("style"))
                     }
                     .padding(/*@START_MENU_TOKEN@*/.all, 0.0/*@END_MENU_TOKEN@*/)
-                    
+                        
                     }
                 } else {
                     Spacer()
                 }
                 
-                Spacer()
-                
                 VStack(spacing: 35) {
                     Text("Correto: " + String(correto) + " / Falso: " + String(falso))
-                        .foregroundColor(.blue)
-                        .padding(/*@START_MENU_TOKEN@*/.all, 0.0/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(Color("style"))
+                        .padding(.all, 0.0)
                     
                     Button(action: {
                         correto = 0
                         falso = 0
                     }){ HStack(spacing: 0) {
-                        Text("Reiniciar o números").foregroundColor(.blue)
+                        Text("Reiniciar o números").foregroundColor(Color("style"))
                         Image(systemName: "arrow.2.squarepath")
                             .scaleEffect(1.0)
                             .rotationEffect(.degrees(180))
-                    }}.padding(/*@START_MENU_TOKEN@*/.all, 0.0/*@END_MENU_TOKEN@*/)
-                    
-                    Spacer()
+                            .foregroundColor(Color("style"))
+                    }}.padding(.all, 0.0)
                     
                     HStack() {
                         Text(String(person) + ". " + sing)
@@ -114,22 +111,22 @@ struct ContentView: View {
                             .lineLimit(1)
                             .padding(0.0)
                             .font(.title)
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color("style"))
                             .frame(width: 200.0)
                         
                     }
                     
                     Text(String(tempus))
                         .font(.title2)
-                        .foregroundColor(.blue)
-                        .multilineTextAlignment(.trailing)
+                        .foregroundColor(Color("style"))
+                        .multilineTextAlignment(.center)
                     
                     Text(String(verb))
                         .font(.title)
-                        .foregroundColor(.blue)
                         .multilineTextAlignment(.center)
+                        .foregroundColor(Color("style"))
                     
-                                       
+                    
                     TextField("Digite sua dica!",
                               text: $tipp,
                               onCommit: {
@@ -150,17 +147,13 @@ struct ContentView: View {
                         isTextFocused = false
                     }
                     )
-
+                    
                     .padding(.all, 5)
                     .disableAutocorrection(true)
                     .multilineTextAlignment(.center)
                     .autocapitalization(.none)
                     .font(.title)
                     .focused($isTextFocused)
-                                        
-                    // }
-                    
-                    Spacer()
                     
                     //visibility Change versuchen
                     if proveHidden == false {
@@ -180,20 +173,21 @@ struct ContentView: View {
                             }
                             isTextFocused = false
                         } .disabled(tipp == "")
-                        .alert(isPresented:$showingAlert) {
-                            Alert(
-                                title: Text(message + "\n") + Text("\nÜbersetzung: " + String(verbHilfe[2])),
-                                dismissButton: .default(Text("Okay")) {
-                                    person = setPerson()
-                                    sing = setAnzahl()
-                                    tempus = setTempus()
-                                    verbHilfe = setVerb()
-                                    verb = verbHilfe[0]
-                                    tipp = ""
-                                }
-                            )
-                        }
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .alert(isPresented:$showingAlert) {
+                                Alert(
+                                    title: Text(message + "\n") + Text("\nÜbersetzung: " + String(verbHilfe[2])),
+                                    dismissButton: .default(Text("Okay")) {
+                                        person = setPerson()
+                                        sing = setAnzahl()
+                                        tempus = setTempus()
+                                        verbHilfe = setVerb()
+                                        verb = verbHilfe[0]
+                                        tipp = ""
+                                    }
+                                )
+                            }
+                            .font(.title)
+                            .foregroundColor(Color("style"))
                         
                     }
                 }
@@ -202,8 +196,6 @@ struct ContentView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-
-    
     
     //Methods
     
@@ -368,8 +360,37 @@ struct ContentView: View {
                 allTempus.append("Futuro do Préterito Composto (Condicional II)")
             }
         }
-        let trainTempus = allTempus.randomElement()!
         
+        // some problem here mit start von empty array
+        // include somewhere countcase = countcase + 1
+        // problem with repeat, needs to be skipped if lastcase.isEmpty
+        if allTempus.count > 3 {
+            if lastcase == ["", "", ""] {
+                trainTempus = allTempus.randomElement()!
+                lastcase[0] = trainTempus
+                countcase = countcase + 1
+            } else {
+                repeat {
+                    trainTempus = allTempus.randomElement()!
+                } while (lastcase.contains(trainTempus))
+                
+                countcase = countcase + 1
+                
+                if countcase > 3 {
+                    countcase = 0
+                    lastcase[0] = trainTempus
+                } else if countcase == 3 {
+                    lastcase[2] = trainTempus
+                } else if countcase == 2 {
+                    lastcase[1] = trainTempus
+                } else if countcase == 1 {
+                    lastcase[0] = trainTempus
+                }
+                
+            }
+        } else {
+            trainTempus = allTempus.randomElement()!
+        }
         return (trainTempus)
     }
     
@@ -1203,9 +1224,9 @@ func substract(result: Bool, falsch: Int) -> Int {
 func createAlertMessage(result: Bool, ziel: String) -> String {
     var alertMessage: String = ""
     if result == true {
-        alertMessage = "Deine Eingabe war korrekt! :)" 
+        alertMessage = "✅ Deine Eingabe war korrekt! 🚀"
     } else {
-        alertMessage = "Deine Eingabe war falsch! :( \n" + "\n Korrekte Form ist: " + ziel
+        alertMessage = "🙅🏽‍♂️ Deine Eingabe war falsch! ❌ \n" + "\n Korrekte Form ist: " + ziel
     }
     return alertMessage
 }
