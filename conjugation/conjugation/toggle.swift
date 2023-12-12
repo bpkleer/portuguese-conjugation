@@ -22,48 +22,48 @@ struct ToggleStates: View {
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
-                .onChange(of: self.userSettings.isPresenteInd, perform: { value in
+                .onChange(of: self.userSettings.isPresenteInd) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isPerfeitoInd, perform: { value in
+                }
+                .onChange(of: self.userSettings.isPerfeitoInd){oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isImperfeitoInd, perform: { value in
+                }
+                .onChange(of: self.userSettings.isImperfeitoInd) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isPerfeitoCompInd, perform: { value in
+                }
+                .onChange(of: self.userSettings.isPerfeitoCompInd) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isPMQPInd, perform: { value in
+                }
+                .onChange(of: self.userSettings.isPMQPInd) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isFuturoIInd, perform: { value in
+                }
+                .onChange(of: self.userSettings.isFuturoIInd) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isFuturoIIInd, perform: { value in
+                }
+                .onChange(of: self.userSettings.isFuturoIIInd) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isPresenteSub, perform: { value in
+                }
+                .onChange(of: self.userSettings.isPresenteSub) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isPerfeitoSub, perform: { value in
+                }
+                .onChange(of: self.userSettings.isPerfeitoSub) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isImperfeitoSub, perform: { value in
+                }
+                .onChange(of: self.userSettings.isImperfeitoSub) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isPMQPSub, perform: { value in
+                }
+                .onChange(of: self.userSettings.isPMQPSub) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isFuturoISub, perform: { value in
+                }
+                .onChange(of: self.userSettings.isFuturoISub) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isFuturoIISub, perform: { value in
+                }
+                .onChange(of: self.userSettings.isFuturoIISub) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
-                .onChange(of: self.userSettings.isCondicionalI, perform: { value in
+                }
+                .onChange(of: self.userSettings.isCondicionalI) { oldvalue, newvalue in
                     atLeastOneTempus()
-                })
+                }
                 .onChange(of: self.userSettings.isCondicionalII, perform: { value in
                     atLeastOneTempus()
                 })

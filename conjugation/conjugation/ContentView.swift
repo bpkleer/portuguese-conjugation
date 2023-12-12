@@ -35,7 +35,8 @@ struct ContentView: View {
     @EnvironmentObject var userSettings: UserSettings
     @FocusState private var isTextFocused: Bool
     // Person variable
-    let personArray = [1, 2, 3]
+    // second person excluded, because not important in português do Brasil
+    let personArray = [1, 3]
     
     // Singular or Plural Variable
     let anzahlArray = ["Singular", "Plural"]
@@ -504,6 +505,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubVer = ["veja", "veja", "veja", "vejamos", "vejam", "vejam"]
     let presenteSubTer = ["tenha", "tenha", "tenha", "tenhamos", "tenham", "tenham"]
     let presenteSubLer = ["leia", "leia", "leia", "leiamos", "leiam", "leiam"]
+    let presenteSubConhecer = ["conheça", "conheças", "conheça", "conheçamos", "conheçais", "conheçam"]
     let presenteSubFazer = ["faça", "faças", "faça", "façamos", "façam", "façam"]
     let presenteSubIzer = ["ga", "ga", "ga", "gamos", "gam", "gam"]
     let presenteSubSaber = ["saiba", "saiba", "saiba", "saibamos", "saibam", "saibam"]
@@ -840,6 +842,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[1] == "ar" {
             endung = presenteSubAr[numberInArray]
             aim = stamm + endung
+        } else if verbo[0] == "conhecer" {
+            endung = presenteSubConhecer[numberInArray]
+            aim = endung
         } else if verbo[1] == "er" {
             endung = presenteSubEr[numberInArray]
             aim = stamm + endung
