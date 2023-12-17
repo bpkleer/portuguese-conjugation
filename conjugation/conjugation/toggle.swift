@@ -64,7 +64,7 @@ struct ToggleStates: View {
                 .onChange(of: self.userSettings.isCondicionalI) { oldvalue, newvalue in
                     atLeastOneTempus()
                 }
-                .onChange(of: self.userSettings.isCondicionalII, perform: { value in
+                .onChange(of: self.userSettings.isCondicionalII) perform: { value in
                     atLeastOneTempus()
                 })
                                 
