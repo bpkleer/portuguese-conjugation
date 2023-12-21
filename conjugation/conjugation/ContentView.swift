@@ -512,6 +512,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubPoder = ["possa", "possa", "possa", "possamos", "possam", "possam"]
     let presenteSubPerder = ["perca", "perca", "perca", "percamos", "percam", "percam"]
     let presenteSubQuerer = ["queira", "queira", "queira", "queiramos", "queiram", "queiram"]
+    let presenteSubSignificar = ["signifique", "signifique", "signifique", "signifiquemos", "urmam", "signifiquem"]
     let presenteSubPor = ["ponha", "ponha", "ponha", "ponhamos", "ponham", "ponham"]
     let presenteSubOir = ["urma", "urma", "urma", "urmamos", "urmam", "urmam"]
     
@@ -839,12 +840,14 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         }
     } else if caso == "Presente Subjunctivo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "ar" {
-            endung = presenteSubAr[numberInArray]
-            aim = stamm + endung
-        } else if verbo[0] == "conhecer" {
+        if verbo[0] == "conhecer" {
             endung = presenteSubConhecer[numberInArray]
             aim = endung
+        } else if verbo[0] == "significar" {
+            endung = presenteSubSignificar[numberInArray]
+        } else if verbo[1] == "ar" {
+            endung = presenteSubAr[numberInArray]
+            aim = stamm + endung
         } else if verbo[1] == "er" {
             endung = presenteSubEr[numberInArray]
             aim = stamm + endung

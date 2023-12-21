@@ -22,57 +22,52 @@ struct ToggleStates: View {
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
-                .onChange(of: self.userSettings.isPresenteInd) { oldvalue, newvalue in
+                .onChange(of: [self.userSettings.isPresenteInd, self.userSettings.isPerfeitoInd, self.userSettings.isImperfeitoInd, self.userSettings.isPerfeitoCompInd, self.userSettings.isPMQPInd, self.userSettings.isFuturoIInd, self.userSettings.isFuturoIIInd, self.userSettings.isPresenteSub, self.userSettings.isPerfeitoSub, self.userSettings.isImperfeitoSub, self.userSettings.isPMQPSub, self.userSettings.isFuturoISub, self.userSettings.isFuturoIISub, self.userSettings.isCondicionalI, self.userSettings.isCondicionalII]) { oldvalue, newvalue in
                     atLeastOneTempus()
                 }
-                .onChange(of: self.userSettings.isPerfeitoInd){oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isImperfeitoInd) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isPerfeitoCompInd) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isPMQPInd) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isFuturoIInd) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isFuturoIIInd) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isPresenteSub) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isPerfeitoSub) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isImperfeitoSub) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isPMQPSub) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isFuturoISub) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isFuturoIISub) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isCondicionalI) { oldvalue, newvalue in
-                    atLeastOneTempus()
-                }
-                .onChange(of: self.userSettings.isCondicionalII) perform: { value in
-                    atLeastOneTempus()
-                })
-                                
-                Toggle(isOn: $userSettings.isPerfeitoInd, label: {
-                    Text("Perfeito Simples Indicativo")
-                        .font(.subheadline)
-                })
-                .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                // old solution before .onChange was changed (iOS 17)
+                //.onChange(of: self.userSettings.isPresenteInd) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isPerfeitoInd){oldvalue, newvalue in
+                //    atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isImperfeitoInd) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isPerfeitoCompInd) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isPMQPInd) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isFuturoIInd) { oldvalue, newvalue in
+                 //   atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isFuturoIIInd) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+               // }
+               // .onChange(of: self.userSettings.isPresenteSub) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+               // }
+                //.onChange(of: self.userSettings.isPerfeitoSub) { oldvalue, newvalue in
+                 //   atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isImperfeitoSub) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isPMQPSub) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isFuturoISub) { oldvalue, newvalue in
+                  //  atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isFuturoIISub) { oldvalue, newvalue in
+                 //   atLeastOneTempus()
+                //}
+                //.onChange(of: self.userSettings.isCondicionalII) { oldvalue, newvalue in
+                //    atLeastOneTempus()
+                //}
                 
                 Toggle(isOn: $userSettings.isImperfeitoInd, label: {
                     Text("Imperfeito Indicativo")
