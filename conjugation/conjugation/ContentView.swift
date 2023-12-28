@@ -42,7 +42,7 @@ struct ContentView: View {
     let anzahlArray = ["Singular", "Plural"]
     
     // verbs
-    let verbArray = [["comprar", "ar", "kaufen"], ["vender", "er", "verkaufen"], ["dividir", "ir", "teilen, aufteilen"],["ser", "ser", "sein"], ["estar", "estar", "sein"], ["ir", "ira", "gehen"], ["vir", "vir", "kommen"], ["ver", "ver", "sehen, ansehen"], ["ter", "ter", "haben"], ["ler", "ler", "lesen"], ["fazer", "fazer", "machen, tun"], ["dizer", "izer", "sagen, sprechen"], ["trazer", "trazer", "bringen, tragen"], ["saber", "saber", "wissen, können"], ["poder", "poder", "können, dürfen"], ["querer", "querer", "wollen"], ["pôr", "por", "setzen, stellen, legen"], ["levar", "ar", "bringen, mitnehmen"], ["dormir", "oir", "schlafen"], ["conhecer", "er", "kennen, kennenlernen"], ["pagar", "ar", "bezahlen"], ["atravessar", "ar", "überqueren, durchqueren"], ["assistir", "ir", "zuschauen, sehen, helfen"], ["decidir", "ir", "entscheiden, beschließen"], ["sentir", "ir", "fühlen, empfinden"], ["abrir", "ir", "öffnen"], ["arrumar", "ar", "aufräumen, organisieren"], ["lavar", "ar", "waschen"], ["limpar", "ar", "putzen, reinigen"], ["deixar", "ar", "erlauben, lassen, aufgeben"], ["falar", "ar", "sprechen"], ["cumprimentar", "ar", "begrüßen, grüßen"], ["responder", "er", "antworten, beantworten"], ["recomendar", "ar", "empfehlen, raten"], ["precisar", "ar", "benötigen, brauchen (mit de)"], ["procurar", "ar", "suchen"], ["passar", "ar", "(vorbei)gehen", "verbringen"], ["comer", "er", "essen"], ["beber", "er", "trinken"], ["ganhar", "ar", "gewinnen, verdienen"], ["melhorar", "ar", "verbessern"], ["cuidar", "ar", "aufpassen, sorgen (mit de)"], ["confiar", "ar", "vertrauen, hoffen auf (mit em)"], ["pensar", "ar", "denken, glauben (an mit em)"], ["deitar", "ar", "hinlegen, legen"], ["acordar", "ar", "aufwachen"], ["gostar", "ar", "mögen, gefallen"], ["discutir", "ir", "diskutieren"], ["acompanhar", "ar", "begleiten, mitmachen"], ["levantar", "ar", "aufbrechen, aufstehen"], ["acontecer", "er", "passieren, geschehen"], ["desagradecer", "er", "missfallen"], ["detestar", "ar", "hassen, verabschauen"], ["significar", "ar", "bedeuten, meinen"], ["tornar", "ar", "(tornar-se) werden"]]
+    let verbArray = [["comprar", "ar", "kaufen"], ["vender", "er", "verkaufen"], ["dividir", "ir", "teilen, aufteilen"],["ser", "ser", "sein"], ["estar", "estar", "sein"], ["ir", "ira", "gehen"], ["vir", "vir", "kommen"], ["ver", "ver", "sehen, ansehen"], ["ter", "ter", "haben"], ["ler", "ler", "lesen"], ["fazer", "fazer", "machen, tun"], ["dizer", "izer", "sagen, sprechen"], ["trazer", "trazer", "bringen, tragen"], ["saber", "saber", "wissen, können"], ["poder", "poder", "können, dürfen"], ["querer", "querer", "wollen"], ["pôr", "por", "setzen, stellen, legen"], ["levar", "ar", "bringen, mitnehmen"], ["dormir", "oir", "schlafen"], ["conhecer", "er", "kennen, kennenlernen"], ["pagar", "ar", "bezahlen"], ["atravessar", "ar", "überqueren, durchqueren"], ["assistir", "ir", "zuschauen, sehen, helfen"], ["decidir", "ir", "entscheiden, beschließen"], ["sentir", "ir", "fühlen, empfinden"], ["abrir", "ir", "öffnen"], ["arrumar", "ar", "aufräumen, organisieren"], ["lavar", "ar", "waschen"], ["limpar", "ar", "putzen, reinigen"], ["deixar", "ar", "erlauben, lassen, aufgeben"], ["falar", "ar", "sprechen"], ["cumprimentar", "ar", "begrüßen, grüßen"], ["responder", "er", "antworten, beantworten"], ["recomendar", "ar", "empfehlen, raten"], ["precisar", "ar", "benötigen, brauchen (mit de)"], ["procurar", "ar", "suchen"], ["passar", "ar", "(vorbei)gehen", "verbringen"], ["comer", "er", "essen"], ["beber", "er", "trinken"], ["ganhar", "ar", "gewinnen, verdienen"], ["melhorar", "ar", "verbessern"], ["cuidar", "ar", "aufpassen, sorgen (mit de)"], ["confiar", "ar", "vertrauen, hoffen auf (mit em)"], ["pensar", "ar", "denken, glauben (an mit em)"], ["deitar", "ar", "hinlegen, legen"], ["acordar", "ar", "aufwachen"], ["gostar", "ar", "mögen, gefallen"], ["discutir", "ir", "diskutieren"], ["acompanhar", "ar", "begleiten, mitmachen"], ["levantar", "ar", "aufbrechen, aufstehen"], ["acontecer", "er", "passieren, geschehen"], ["desagradecer", "er", "missfallen"], ["detestar", "ar", "hassen, verabschauen"], ["significar", "ar", "bedeuten, meinen"], ["tornar", "ar", "(tornar-se) werden"], ["sortear", "ear", "auslosen"], ["passear", "ear", "spazieren gehen"]]
     
     // not yet integrated
     //let verbArrayCair = [["agraudar", "ar", "agraud"], ["ajesuitar", "ar", "ajesuit"], ["ajuizar", "ar", "ajuiz"], ["alaudar", "ar", "alaud"], ["altruizar", "ar", "altruiz"], ["amiudar", "ar", "amiud"], ["arcaizar", "ar", "arcaiz"], ["arruinar", "ar", "arruin"], ["ataudar", "ar", "ataud"], ["comboiar", "ar", "combai"], ["desajuizar", "ar", "desajuiz"], ["desataudar", "ar", "desataud"], ["desenraizar", "ar", "desenraiz"], ["desraizar", "ar", "desraiz"], ["embuizar", "ar", "embuiz"], ["enfaiscar", "ar", "enfaisc"], ["enraizar", "ar", "enraiz"], ["ensaudar", "ar", "ensaud"], ["enviuvar", "ar", "enviuv"], ["esfaiscar", "ar", "esfaisc"], ["esmiudar", "ar", "esmiud"], ["faiscar", "ar", "faisc"], ["gaudar", "ar", "gaud"], ["hebraizar", "ar", "hebraiz"], ["heroizar", "ar", "heroiz"], ["judaizar", "ar", "judaiz"], ["maleinar", "ar", "malein"], ["miudar", "ar", "miud"], ["mobilar", "ar", "mobil"], ["plebeizar", "ar", "plebeiz"], ["ressaudar", "ar", "ressaud"], ["saudar", "ar", "saud"]]
@@ -432,6 +432,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteEr = ["o", "e", "e", "emos", "em", "em"]
     let presenteIr = ["o", "e", "e", "imos", "em", "em"]
     let presenteSer = ["sou", "é", "é", "somos", "são", "são"]
+    let presenteEar = ["io", "ia", "ia", "amos", "iam", "iam"]
     let presenteEstar = ["estou", "está", "está", "estamos", "estão", "estão"]
     let presenteIra = ["vou", "vai", "vai", "vamos", "vão", "vão"]
     let presenteVir = ["venho", "vem", "vem", "vimos", "vêm", "vêm"]
@@ -498,6 +499,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubAr = ["e", "e", "e", "emos", "em", "em"]
     let presenteSubEr = ["a", "a", "a", "amos", "am", "am"]
     let presenteSubIr = ["a", "a", "a", "amos", "am", "am"]
+    let presenteSubEar = ["ie", "ie" , "ie", "emos", "iem", "iem"]
     let presenteSubSer = ["seja", "seja", "seja", "sejamos", "sejam", "sejam"]
     let presenteSubEstar = ["esteja", "esteja", "esteja", "estejamos", "estejam", "estejam"]
     let presenteSubIra = ["vá", "vá", "vá", "vamos", "vão", "vão"]
@@ -551,7 +553,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let futuroSubPor = ["puser", "puser", "puser", "pusermos", "puserem", "puserem"]
     
     // Condicional
-    // Condicional I  érito Simples
+    // Condicional I  Pretérito Simples
     let condicionalIAr = ["aria", "aria", "aria", "aríamos", "ariam", "ariam"]
     let condicionalIEr = ["eria", "eria", "eria", "eríamos", "eriam", "eriam"]
     let condicionalIIr = ["iria", "iria", "iria", "iríamos", "iriam", "iriam"]
@@ -570,6 +572,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" {
             endung = presenteAr[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "ear" {
+            endung = presenteEar[numberInArray]
             aim = stamm + endung
         } else if verbo[1] == "er" {
             endung = presenteEr[numberInArray]
@@ -632,7 +637,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         }
     } else if caso == "Perfeito Simples Indicativo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "ar" {
+        if verbo[1] == "ar" || verbo[1] == "ear" {
             endung = perfeitoAr[numberInArray]
             aim = stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "perder" {
@@ -678,7 +683,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         }
     } else if caso == "Imperfeito Indicativo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "ar" || verbo[1] == "estar" {
+        if verbo[1] == "ar" || verbo[1] == "estar" || verbo[1] == "ear" {
             endung = imperfeitoAr[numberInArray]
             aim = stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ver" || verbo[1] == "ler" || verbo[1] == "fazer" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -706,7 +711,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "dizer" {
             endung = participioDizer
             aim = hilfsverb + " " + endung
-        } else if verbo[1] == "ar" || verbo[1] == "estar" {
+        } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
             endung = participioAr
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -744,7 +749,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "dizer" {
             endung = participioDizer
             aim = hilfsverb + " " + endung
-        } else if verbo[1] == "ar" || verbo[1] == "estar" {
+        } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
             endung = participioAr
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -778,7 +783,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         }
     } else if caso == "Futuro Simples Indicativo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "ar" || verbo[1] == "estar" {
+        if verbo[1] == "ar" || verbo[1] == "ear" ||  verbo[1] == "estar" {
             endung = futuroSimplesAr[numberInArray]
             aim = stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ver" || verbo[1] == "ter" || verbo[1] == "ler" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -806,7 +811,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "dizer" {
             endung = participioDizer
             aim = hilfsverb + " " + endung
-        } else if verbo[1] == "ar" || verbo[1] == "estar" {
+        } else if verbo[1] == "ar" || verbo[1] == "ear" ||  verbo[1] == "estar" {
             endung = participioAr
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -847,6 +852,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = presenteSubSignificar[numberInArray]
         } else if verbo[1] == "ar" {
             endung = presenteSubAr[numberInArray]
+            aim = stamm + endung
+        }  else if verbo[1] == "ear" {
+            endung = presenteSubEar[numberInArray]
             aim = stamm + endung
         } else if verbo[1] == "er" {
             endung = presenteSubEr[numberInArray]
@@ -907,7 +915,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "dizer" {
             endung = participioDizer
             aim = hilfsverb + " " + endung
-        } else if verbo[1] == "ar" || verbo[1] == "estar" {
+        } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
             endung = participioAr
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -941,7 +949,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         }
     } else if caso == "Imperfeito Subjunctivo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "ar" {
+        if verbo[1] == "ar" || verbo[1] == "ear" {
             endung = imperfeitoSubAr[numberInArray]
             aim = stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler"  || verbo[1] == "perder" {
@@ -994,7 +1002,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "dizer" {
             endung = participioDizer
             aim = hilfsverb + " " + endung
-        } else if verbo[1] == "ar" || verbo[1] == "estar" {
+        } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
             endung = participioAr
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -1028,7 +1036,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         }
     } else if caso == "Futuro Simples Subjuncitvo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "ar" {
+        if verbo[1] == "ar" || verbo[1] == "ear" {
             endung = futuroSubAr[numberInArray]
             aim = stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler"  || verbo[1] == "perder" {
@@ -1081,7 +1089,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "dizer" {
             endung = participioDizer
             aim = hilfsverb + " " + endung
-        } else if verbo[1] == "ar" || verbo[1] == "estar" {
+        } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
             endung = participioAr
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -1115,7 +1123,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         }
     } else if caso == "Futuro do Préterito (Condicional I)"{
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "ar" || verbo[1] == "estar" {
+        if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
             endung = condicionalIAr[numberInArray]
             aim = stamm + endung
         } else if verbo[1] == "er" || verbo[1] == "ver"  || verbo[1] == "ter" || verbo[1] == "ler" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
@@ -1147,10 +1155,10 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "dizer" {
             endung = participioDizer
             aim = hilfsverb + " " + endung
-        } else if verbo[1] == "ar" || verbo[1] == "estar" {
+        } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
             endung = participioAr
             aim = hilfsverb + " " + stamm + endung
-        } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" {
+        } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
             endung = participioEr
             aim = hilfsverb + " " + stamm + endung
         } else if verbo[0] == "abrir" {
@@ -1229,9 +1237,9 @@ func substract(result: Bool, falsch: Int) -> Int {
 func createAlertMessage(result: Bool, ziel: String) -> String {
     var alertMessage: String = ""
     if result == true {
-        alertMessage = "✅ Deine Eingabe war korrekt! 🚀"
+        alertMessage = "✅ Arrasou! A sua dica foi correta. 🚀"
     } else {
-        alertMessage = "🙅🏽‍♂️ Deine Eingabe war falsch! ❌ \n" + "\n Korrekte Form ist: " + ziel
+        alertMessage = "🙅🏽‍♂️ Esta vez não! ❌ \n" + "\n A forma correta é: " + ziel
     }
     return alertMessage
 }
