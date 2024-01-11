@@ -75,7 +75,7 @@ struct ContentView: View {
                     }){ HStack(spacing: 0) {
                         Text("Comece o treino!").fontWeight(.semibold).padding().font(.title).foregroundColor(Color("style"))
                         Image(systemName: "restart")
-                            .scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
+                            .scaleEffect(2.0)
                             .rotationEffect(.degrees(180))
                             .foregroundColor(Color("style"))
                     }
@@ -114,7 +114,9 @@ struct ContentView: View {
                     Text(String(tempus))
                         .font(.title2)
                         .foregroundColor(Color("style"))
+                        .frame(width: 350)
                         .multilineTextAlignment(.center)
+                        
                     
                     Text(String(verb))
                         .font(.title)
@@ -170,7 +172,7 @@ struct ContentView: View {
                         } .disabled(tipp == "")
                             .alert(isPresented:$showingAlert) {
                                 Alert(
-                                    title: Text(message + "\n") + Text("\nÜbersetzung: " + String(verbHilfe[2])),
+                                    title: Text(message),
                                     dismissButton: .default(Text("Okay")) {
                                         person = setPerson()
                                         sing = setAnzahl()
@@ -246,6 +248,14 @@ struct ContentView: View {
             if !(allTempus.contains("Perfeito Composto Indicativo")) {            allTempus.append("Perfeito Composto Indicativo")
             }
         }
+        if self.userSettings.isPMQPCompInd == false {
+            if allTempus.contains("Pretérito Mais-que-Perfeito Composto Indicativo") {            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Composto Indicativo")!)
+            }
+        }
+        if self.userSettings.isPMQPCompInd == true {
+            if !(allTempus.contains("Pretérito Mais-que-Perfeito Composto Indicativo")) {            allTempus.append("Pretérito Mais-que-Perfeito Composto Indicativo")
+            }
+        }
         if self.userSettings.isPMQPInd == false {
             if allTempus.contains("Pretérito Mais-que-Perfeito Indicativo") {            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Indicativo")!)
             }
@@ -276,63 +286,63 @@ struct ContentView: View {
             }
         }
         if self.userSettings.isPresenteSub == false {
-            if allTempus.contains("Presente Subjunctivo") {
-                allTempus.remove(at: allTempus.firstIndex(of: "Presente Subjunctivo")!)
+            if allTempus.contains("Presente Subjuntivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Presente Subjuntivo")!)
             }
         }
         if self.userSettings.isPresenteSub == true {
-            if !(allTempus.contains("Presente Subjunctivo")) {
-                allTempus.append("Presente Subjunctivo")
+            if !(allTempus.contains("Presente Subjuntivo")) {
+                allTempus.append("Presente Subjuntivo")
             }
         }
         if self.userSettings.isPerfeitoSub == false {
-            if allTempus.contains("Perfeito Simples Subjunctivo") {
-                allTempus.remove(at: allTempus.firstIndex(of: "Perfeito Simples Subjunctivo")!)
+            if allTempus.contains("Perfeito Simples Subjuntivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Perfeito Simples Subjuntivo")!)
             }
         }
         if self.userSettings.isPerfeitoSub == true {
-            if !(allTempus.contains("Perfeito Simples Subjunctivo")) {
-                allTempus.append("Perfeito Simples Subjunctivo")
+            if !(allTempus.contains("Perfeito Simples Subjuntivo")) {
+                allTempus.append("Perfeito Simples Subjuntivo")
             }
         }
         if self.userSettings.isImperfeitoSub == false {
-            if allTempus.contains("Imperfeito Subjunctivo") {
-                allTempus.remove(at: allTempus.firstIndex(of: "Imperfeito Subjunctivo")!)
+            if allTempus.contains("Imperfeito Subjuntivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Imperfeito Subjuntivo")!)
             }
         }
         if self.userSettings.isImperfeitoSub == true {
-            if !(allTempus.contains("Imperfeito Subjunctivo")) {
-                allTempus.append("Imperfeito Subjunctivo")
+            if !(allTempus.contains("Imperfeito Subjuntivo")) {
+                allTempus.append("Imperfeito Subjuntivo")
             }
         }
         if self.userSettings.isPMQPSub == false {
-            if allTempus.contains("Pretérito Mais-que-Perfeito Subjunctivo") {
-                allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Subjunctivo")!)
+            if allTempus.contains("Pretérito Mais-que-Perfeito Subjuntivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Subjuntivo")!)
             }
         }
         if self.userSettings.isPMQPSub == true {
-            if !(allTempus.contains("Pretérito Mais-que-Perfeito Subjunctivo")) {
-                allTempus.append("Pretérito Mais-que-Perfeito Subjunctivo")
+            if !(allTempus.contains("Pretérito Mais-que-Perfeito Subjuntivo")) {
+                allTempus.append("Pretérito Mais-que-Perfeito Subjuntivo")
             }
         }
         if self.userSettings.isFuturoISub == false {
-            if allTempus.contains("Futuro Simples Subjuncitvo") {
-                allTempus.remove(at: allTempus.firstIndex(of: "Futuro Simples Subjuncitvo")!)
+            if allTempus.contains("Futuro Simples Subjuntivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Futuro Simples Subjuntivo")!)
             }
         }
         if self.userSettings.isFuturoISub == true {
-            if !(allTempus.contains("Futuro Simples Subjuncitvo")) {
-                allTempus.append("Futuro Simples Subjuncitvo")
+            if !(allTempus.contains("Futuro Simples Subjuntivo")) {
+                allTempus.append("Futuro Simples Subjuntivo")
             }
         }
         if self.userSettings.isFuturoIISub == false {
-            if allTempus.contains("Futuro Composto Subjunctivo") {
-                allTempus.remove(at: allTempus.firstIndex(of: "Futuro Composto Subjunctivo")!)
+            if allTempus.contains("Futuro Composto Subjuntivo") {
+                allTempus.remove(at: allTempus.firstIndex(of: "Futuro Composto Subjuntivo")!)
             }
         }
         if self.userSettings.isFuturoIISub == true {
-            if !(allTempus.contains("Futuro Composto Subjunctivo")) {
-                allTempus.append("Futuro Composto Subjunctivo")
+            if !(allTempus.contains("Futuro Composto Subjuntivo")) {
+                allTempus.append("Futuro Composto Subjuntivo")
             }
         }
         if self.userSettings.isCondicionalI == false {
@@ -415,19 +425,19 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     // Futuro COmposto
     let futcomHv = ["terei", "terá", "terá", "teremos", "terão", "terão"]
     
-    // Perfeito Subjunctivo
+    // Perfeito Subjuntivo
     let perfeitoSubHv = ["tenha", "tenha", "tenha", "tenhamos", "tenham", "tenham"]
     
-    // Pretérito Mais-que-Perfeito Composto Subjunctivo
+    // Pretérito Mais-que-Perfeito Composto Subjuntivo
     let pmqpCompSubHv = ["tivesse", "tivesse", "tivesse", "tivéssemos", "tivessem", "tivessem"]
     
-    // Futuro Composto Subjunctivo
+    // Futuro Composto Subjuntivo
     let futuroCompSubHv = ["tiver", "tiver", "tiver", "tivermos", "tiverem", "tiverem"]
     
     // Condicional II
     let condIIHv = ["teria", "teria", "teria", "teríamos", "teriam", "teriam"]
     
-    //Presente
+    //Presente Indicativo
     let presenteAr = ["o", "a", "a", "amos", "am", "am"]
     let presenteEr = ["o", "e", "e", "emos", "em", "em"]
     let presenteIr = ["o", "e", "e", "imos", "em", "em"]
@@ -449,7 +459,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presentePor = ["ponho", "põe", "põe", "pomos", "pôem", "põem"]
     let presenteOir = ["urmo", "orme", "orme", "ormimos", "ormem", "ormem"]
     
-    // Perfeito
+    // Perfeito INdicativo
     let perfeitoAr = ["ei", "ou", "ou", "ámos", "aram", "aram"]
     let perfeitoEr = ["i", "eu", "eu", "emos", "eram", "eram"]
     let perfeitoIr = ["i", "iu", "iu", "imos", "iram", "iram"]
@@ -465,7 +475,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let perfeitoQuerer = ["quis", "quis", "quis", "quisemos", "quiseram", "quiseram"]
     let perfeitoPor = ["pus", "pôs", "pôs", "pusemos", "puseram", "puseram"]
     
-    // Imperfeito
+    // Imperfeito Indicativo
     let imperfeitoAr = ["ava", "ava", "ava", "ávamos", "avam", "avam"]
     let imperfeitoEr = ["ia", "ia", "ia", "íamos", "iam", "iam"]
     let imperfeitoIr = ["ia", "ia", "ia", "íamos", "iam", "iam"]
@@ -474,7 +484,24 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let imperfeitoTer = ["tinha", "tinha", "tinha", "tínhamos", "tinham", "tinham"]
     let imperfeitoPor = ["punha", "punha", "punha", "púnhamos", "punham", "punham"]
     
-    // Futuro Simples
+    // Mais-que-perfeito Indicativo
+    let pmqpAr = ["a", "a", "a", "áramos", "am", "am"]
+    let pmqpEr = ["a", "a", "a", "êramos", "am", "am"]
+    let pmqpIr = ["a", "a", "a", "íramos", "am", "am"]
+    let pmqpSer = ["foraa", "fora", "fora", "fôramos", "foram", "foram"]
+    let pmqpEstar = ["estivera", "estivera", "estivera", "estivéramos", "estiveram", "estiveram"]
+    let pmqpVir = ["viera", "viera", "viera", "viéramos", "vieram", "vieram"]
+    let pmqpVer = ["vira", "vira", "vira", "víramos", "viram", "viram"]
+    let pmqpTer = ["tivera", "tivera", "tivera", "tivéramos", "tiveram", "tiveram"]
+    let pmqpFazer = ["fizera", "fizera", "fizera", "fizéramos", "fizeram", "fizeram"]
+    let pmqpIzer = ["ssera", "ssera", "ssera", "sséramos", "sseram", "sseram"]
+    let pmqpTrazer = ["trouxera", "trouxera", "trouxera", "trouxéramos", "trouxeram", "trouxeram"]
+    let pmqpSaber = ["soubera", "soubera", "soubera", "soubéramos", "souberam", "souberam"]
+    let pmqpPoder = ["pudera", "pudera", "pudera", "pudéramos", "puderam", "puderam"]
+    let pmqpQuerer = ["quisera", "quisera", "quisera", "quiséramos", "quiseram", "quiseram"]
+    let pmqpPor = ["pusera", "pusera", "pusera", "puséramos", "puseram", "puseram"]
+
+    // Futuro Simples Indicativo
     let futuroSimplesAr = ["arei", "ará", "ará", "aremos", "arão", "arão"]
     let futuroSimplesEr = ["erei", "erá", "erá", "eremos", "erão", "erão"]
     let futuroSimplesIr = ["irei", "irá", "irá", "iremos", "irão", "irão"]
@@ -494,8 +521,8 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let participioPor = "posto"
     let participioAbrir = "aberto"
     
-    // Subjunctivo
-    // Presente Subjunctivo
+    // Subjuntivo
+    // Presente Subjuntivo
     let presenteSubAr = ["e", "e", "e", "emos", "em", "em"]
     let presenteSubEr = ["a", "a", "a", "amos", "am", "am"]
     let presenteSubIr = ["a", "a", "a", "amos", "am", "am"]
@@ -508,6 +535,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubTer = ["tenha", "tenha", "tenha", "tenhamos", "tenham", "tenham"]
     let presenteSubLer = ["leia", "leia", "leia", "leiamos", "leiam", "leiam"]
     let presenteSubConhecer = ["conheça", "conheças", "conheça", "conheçamos", "conheçais", "conheçam"]
+    let presenteSubPagar = ["pague", "pague", "pague", "paguemos", "paguem", "paguem"]
     let presenteSubFazer = ["faça", "faças", "faça", "façamos", "façam", "façam"]
     let presenteSubIzer = ["ga", "ga", "ga", "gamos", "gam", "gam"]
     let presenteSubSaber = ["saiba", "saiba", "saiba", "saibamos", "saibam", "saibam"]
@@ -518,10 +546,10 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubPor = ["ponha", "ponha", "ponha", "ponhamos", "ponham", "ponham"]
     let presenteSubOir = ["urma", "urma", "urma", "urmamos", "urmam", "urmam"]
     
-    // Pretérito Imperfeito Subjunctivo
+    // Pretérito Imperfeito Subjuntivo
     let imperfeitoSubAr = ["asse", "asse", "asse", "ássemos", "assem", "assem"]
     let imperfeitoSubEr = ["esse", "esse", "esse", "éssemos", "essem", "essem"]
-    let imperfeitoSubIr = ["isse", "isse", "isse", "issemos", "issem", "issem"]
+    let imperfeitoSubIr = ["isse", "isse", "isse", "íssemos", "issem", "issem"]
     let imperfeitoSubSer = ["fosse", "fosse", "fosse", "fôssemos", "fossem", "fossem"]
     let imperfeitoSubEstar = ["estivesse", "estivesse", "estivesse", "estivéssemos", "estivessem", "estivessem"]
     let imperfeitoSubIra = ["fosse", "fosse", "fosse", "fôssemos", "fossem", "fossem"]
@@ -535,7 +563,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let imperfeitoSubQuerer = ["quisesse", "quisesse", "quisesse", "quiséssemos", "quisessem", "quisessem"]
     let imperfeitoSubPor = ["pusesse", "pusesse", "pusesse", "puséssemos", "pusessem", "pusessem"]
     
-    // Futuro Subjunctivo
+    // Futuro Subjuntivo
     let futuroSubAr = ["ar", "ar", "ar", "armos", "arem", "arem"]
     let futuroSubEr = ["er", "er", "er", "ermos", "erem", "erem"]
     let futuroSubIr = ["ir", "ir", "ir", "irmos", "irem", "irem"]
@@ -589,9 +617,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             aim = endung
         } else if verbo[1] == "estar" {
             endung = presenteEstar[numberInArray]
-            aim = endung
-        } else if verbo[1] == "estar" {
-            endung = presenteIra[numberInArray]
             aim = endung
         } else if verbo[1] == "vir" {
             endung = presenteVir[numberInArray]
@@ -743,7 +768,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioPor
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Pretérito Mais-que-Perfeito Indicativo" {
+    } else if caso == "Pretérito Mais-que-Perfeito Composto Indicativo" {
         hilfsverb  = pmqpHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -780,6 +805,68 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "por" {
             endung = participioPor
             aim = hilfsverb + " " + endung
+        }
+    } else if caso == "Pretérito Mais-que-Perfeito Indicativo" {
+        // Hier brauche ich die 3. Person Plural Perfeito
+        // dann konjugation
+        // mit hilfsverb eventuell arbeiten und dann die sonderstellungen machen.
+        
+        stamm = String(verbo[0])
+        if verbo[1] == "ar" || verbo[1] == "ear" {
+            if pessoa == 1 && numero == "Plural" {
+                stamm = String(verbo[0].dropLast(2))
+            }
+            endung = pmqpAr[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "perder" {
+            if pessoa == 1 && numero == "Plural" {
+                stamm = String(verbo[0].dropLast(2))
+            }
+            endung = pmqpEr[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir" {
+            if pessoa == 1 && numero == "Plural" {
+                stamm = String(verbo[0].dropLast(2))
+            }
+            endung = pmqpIr[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "ser" || verbo[1] == "ira" {
+            endung = pmqpSer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "estar" {
+            endung = pmqpEstar[numberInArray]
+            aim = endung
+        } else if verbo[1] == "vir" {
+            endung = pmqpVir[numberInArray]
+            aim = endung
+        } else if verbo[1] == "ver" {
+            endung = pmqpVer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "ter" {
+            endung = pmqpTer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "fazer" {
+            endung = pmqpFazer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "izer" {
+            stamm = String(verbo[0].dropLast(3))
+            endung = pmqpIzer[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "trazer" {
+            endung = pmqpTrazer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "saber" {
+            endung = pmqpSaber[numberInArray]
+            aim = endung
+        } else if verbo[1] == "poder" {
+            endung = pmqpPoder[numberInArray]
+            aim = endung
+        } else if verbo[1] == "querer" {
+            endung = pmqpQuerer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "por" {
+            endung = pmqpPor[numberInArray]
+            aim = endung
         }
     } else if caso == "Futuro Simples Indicativo" {
         stamm = String(verbo[0].dropLast(2))
@@ -843,11 +930,13 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioPor
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Presente Subjunctivo" {
+    } else if caso == "Presente Subjuntivo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "conhecer" {
             endung = presenteSubConhecer[numberInArray]
             aim = endung
+        } else if verbo[0] == "pagar" {
+            endung = presenteSubPagar[numberInArray]
         } else if verbo[0] == "significar" {
             endung = presenteSubSignificar[numberInArray]
         } else if verbo[1] == "ar" {
@@ -909,7 +998,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = presenteSubOir[numberInArray]
             aim = stamm + endung
         }
-    } else if caso == "Perfeito Simples Subjunctivo" {
+    } else if caso == "Perfeito Simples Subjuntivo" {
         hilfsverb  = perfeitoSubHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -947,7 +1036,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioPor
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Imperfeito Subjunctivo" {
+    } else if caso == "Imperfeito Subjuntivo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "ear" {
             endung = imperfeitoSubAr[numberInArray]
@@ -996,7 +1085,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = imperfeitoSubPor[numberInArray]
             aim = endung
         }
-    } else if caso == "Pretérito Mais-que-Perfeito Subjunctivo"{
+    } else if caso == "Pretérito Mais-que-Perfeito Subjuntivo"{
         hilfsverb  = pmqpCompSubHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -1034,7 +1123,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioPor
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Futuro Simples Subjuncitvo" {
+    } else if caso == "Futuro Simples Subjuntivo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "ear" {
             endung = futuroSubAr[numberInArray]
@@ -1083,7 +1172,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = futuroSubPor[numberInArray]
             aim = endung
         }
-    } else if caso == "Futuro Composto Subjunctivo" {
+    } else if caso == "Futuro Composto Subjuntivo" {
         hilfsverb  = futuroCompSubHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {

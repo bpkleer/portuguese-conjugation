@@ -36,6 +36,11 @@ class UserSettings: ObservableObject {
             UserDefaults.standard.set(isPMQPInd, forKey: "isPMQPInd")
         }
     }
+    @Published var isPMQPCompInd: Bool {
+        didSet{
+            UserDefaults.standard.set(isPMQPCompInd, forKey: "isPMQPCompInd")
+        }
+    }
     @Published var isFuturoIInd: Bool {
         didSet{
             UserDefaults.standard.set(isFuturoIInd, forKey: "isFuturoIInd")
@@ -94,6 +99,7 @@ class UserSettings: ObservableObject {
         self.isImperfeitoInd = UserDefaults.standard.object(forKey: "isImperfeitoInd") as? Bool ?? false
         self.isPerfeitoCompInd = UserDefaults.standard.object(forKey: "isPerfeitoCompInd") as? Bool ?? false
         self.isPMQPInd = UserDefaults.standard.object(forKey: "isPMQPInd") as? Bool ?? false
+        self.isPMQPCompInd = UserDefaults.standard.object(forKey: "isPMQPCompInd") as? Bool ?? false
         self.isFuturoIInd = UserDefaults.standard.object(forKey: "isFuturoIInd") as? Bool ?? false
         self.isFuturoIIInd = UserDefaults.standard.object(forKey: "isFuturoIIInd") as? Bool ?? false
         self.isPresenteSub = UserDefaults.standard.object(forKey: "isPresenteSub") as? Bool ?? false
