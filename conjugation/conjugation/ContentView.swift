@@ -170,7 +170,7 @@ struct ContentView: View {
                         } .disabled(tipp == "")
                             .alert(isPresented:$showingAlert) {
                                 Alert(
-                                    title: Text(message + "\n") + Text("\nÜbersetzung: " + String(verbHilfe[2])),
+                                    title: Text(message),
                                     dismissButton: .default(Text("Okay")) {
                                         person = setPerson()
                                         sing = setAnzahl()
@@ -244,6 +244,14 @@ struct ContentView: View {
         }
         if self.userSettings.isPerfeitoCompInd == true {
             if !(allTempus.contains("Perfeito Composto Indicativo")) {            allTempus.append("Perfeito Composto Indicativo")
+            }
+        }
+        if self.userSettings.isPMQPCompInd == false {
+            if allTempus.contains("Pretérito Mais-que-Perfeito Composto Indicativo") {            allTempus.remove(at: allTempus.firstIndex(of: "Pretérito Mais-que-Perfeito Composto Indicativo")!)
+            }
+        }
+        if self.userSettings.isPMQPCompInd == true {
+            if !(allTempus.contains("Pretérito Mais-que-Perfeito Composto Indicativo")) {            allTempus.append("Pretérito Mais-que-Perfeito Composto Indicativo")
             }
         }
         if self.userSettings.isPMQPInd == false {
@@ -474,6 +482,23 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let imperfeitoTer = ["tinha", "tinha", "tinha", "tínhamos", "tinham", "tinham"]
     let imperfeitoPor = ["punha", "punha", "punha", "púnhamos", "punham", "punham"]
     
+    // Mais-que-perfeito
+    let pmqpAr = ["a", "a", "a", "áramos", "am", "am"]
+    let pmqpEr = ["a", "a", "a", "êramos", "am", "am"]
+    let pmqpIr = ["a", "a", "a", "íramos", "am", "am"]
+    let pmqpSer = ["foraa", "fora", "fora", "fôramos", "foram", "foram"]
+    let pmqpEstar = ["estivera", "estivera", "estivera", "estivéramos", "estiveram", "estiveram"]
+    let pmqpVir = ["viera", "viera", "viera", "viéramos", "vieram", "vieram"]
+    let pmqpVer = ["vira", "vira", "vira", "víramos", "viram", "viram"]
+    let pmqpTer = ["tivera", "tivera", "tivera", "tivéramos", "tiveram", "tiveram"]
+    let pmqpFazer = ["fizera", "fizera", "fizera", "fizéramos", "fizeram", "fizeram"]
+    let pmqpIzer = ["ssera", "ssera", "ssera", "sséramos", "sseram", "sseram"]
+    let pmqpTrazer = ["trouxera", "trouxera", "trouxera", "trouxéramos", "trouxeram", "trouxeram"]
+    let pmqpSaber = ["soubera", "soubera", "soubera", "soubéramos", "souberam", "souberam"]
+    let pmqpPoder = ["pudera", "pudera", "pudera", "pudéramos", "puderam", "puderam"]
+    let pmqpQuerer = ["quisera", "quisera", "quisera", "quiséramos", "quiseram", "quiseram"]
+    let pmqpPor = ["pusera", "pusera", "pusera", "puséramos", "puseram", "puseram"]
+
     // Futuro Simples
     let futuroSimplesAr = ["arei", "ará", "ará", "aremos", "arão", "arão"]
     let futuroSimplesEr = ["erei", "erá", "erá", "eremos", "erão", "erão"]
@@ -743,7 +768,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             endung = participioPor
             aim = hilfsverb + " " + endung
         }
-    } else if caso == "Pretérito Mais-que-Perfeito Indicativo" {
+    } else if caso == "Pretérito Mais-que-Perfeito Composto Indicativo" {
         hilfsverb  = pmqpHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
@@ -780,6 +805,68 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "por" {
             endung = participioPor
             aim = hilfsverb + " " + endung
+        }
+    } else if caso == "Pretérito Mais-que-Perfeito Indicativo" {
+        // Hier brauche ich die 3. Person Plural Perfeito
+        // dann konjugation
+        // mit hilfsverb eventuell arbeiten und dann die sonderstellungen machen.
+        
+        stamm = String(verbo[0])
+        if verbo[1] == "ar" || verbo[1] == "ear" {
+            if pessoa == 1 && numero == "Plural" {
+                stamm = String(verbo[0].dropLast(2))
+            }
+            endung = pmqpAr[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "perder" {
+            if pessoa == 1 && numero == "Plural" {
+                stamm = String(verbo[0].dropLast(2))
+            }
+            endung = pmqpEr[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir" {
+            if pessoa == 1 && numero == "Plural" {
+                stamm = String(verbo[0].dropLast(2))
+            }
+            endung = pmqpIr[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "ser" || verbo[1] == "ira" {
+            endung = pmqpSer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "estar" {
+            endung = pmqpEstar[numberInArray]
+            aim = endung
+        } else if verbo[1] == "vir" {
+            endung = pmqpVir[numberInArray]
+            aim = endung
+        } else if verbo[1] == "ver" {
+            endung = pmqpVer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "ter" {
+            endung = pmqpTer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "fazer" {
+            endung = pmqpFazer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "izer" {
+            stamm = String(verbo[0].dropLast(3))
+            endung = pmqpIzer[numberInArray]
+            aim = stamm + endung
+        } else if verbo[1] == "trazer" {
+            endung = pmqpTrazer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "saber" {
+            endung = pmqpSaber[numberInArray]
+            aim = endung
+        } else if verbo[1] == "poder" {
+            endung = pmqpPoder[numberInArray]
+            aim = endung
+        } else if verbo[1] == "querer" {
+            endung = pmqpQuerer[numberInArray]
+            aim = endung
+        } else if verbo[1] == "por" {
+            endung = pmqpPor[numberInArray]
+            aim = endung
         }
     } else if caso == "Futuro Simples Indicativo" {
         stamm = String(verbo[0].dropLast(2))

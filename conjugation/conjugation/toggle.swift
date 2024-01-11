@@ -85,6 +85,12 @@ struct ToggleStates: View {
                     Text("Pretérito Mais-que-Perfeito Indicativo")
                         .font(.subheadline)
                 })
+                .padding(.horizontal, 15.0)
+                
+                Toggle(isOn: $userSettings.isPMQPCompInd, label: {
+                    Text("Pretérito Mais-que-perfeito\ncomposto Indicativo")
+                        .font(.subheadline)
+                })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
                 
                 Toggle(isOn: $userSettings.isFuturoIInd, label: {
@@ -141,13 +147,13 @@ struct ToggleStates: View {
             
             VStack (spacing: 7.5) {
                 Toggle(isOn: $userSettings.isCondicionalI, label: {
-                    Text("Futuro do Préterito (Condicional I)")
+                    Text("Futuro do Préterito\n(Condicional I)")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
                 
                 Toggle(isOn: $userSettings.isCondicionalII, label: {
-                    Text("Futuro do Préterito Composto (Condicional II)")
+                    Text("Futuro do Préterito Composto\n(Condicional II)")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
@@ -161,7 +167,7 @@ struct ToggleStates: View {
     
     
     func atLeastOneTempus() {
-        if self.userSettings.isPresenteInd == false && self.userSettings.isPerfeitoInd == false && self.userSettings.isImperfeitoInd == false && self.userSettings.isPerfeitoCompInd == false && self.userSettings.isPMQPInd == false && self.userSettings.isFuturoIInd == false && self.userSettings.isFuturoIIInd == false && self.userSettings.isPresenteSub == false && self.userSettings.isPerfeitoSub == false && self.userSettings.isImperfeitoSub == false && self.userSettings.isPMQPSub == false && self.userSettings.isFuturoISub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isCondicionalI == false && self.userSettings.isCondicionalII == false {
+        if self.userSettings.isPresenteInd == false && self.userSettings.isPerfeitoInd == false && self.userSettings.isImperfeitoInd == false && self.userSettings.isPerfeitoCompInd == false && self.userSettings.isPMQPInd == false && self.userSettings.isPMQPCompInd == false && self.userSettings.isFuturoIInd == false && self.userSettings.isFuturoIIInd == false && self.userSettings.isPresenteSub == false && self.userSettings.isPerfeitoSub == false && self.userSettings.isImperfeitoSub == false && self.userSettings.isPMQPSub == false && self.userSettings.isFuturoISub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isCondicionalI == false && self.userSettings.isCondicionalII == false {
             self.userSettings.isPresenteInd = true
         }
     }
