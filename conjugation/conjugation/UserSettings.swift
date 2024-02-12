@@ -9,6 +9,18 @@ import Foundation
 import Combine
 
 class UserSettings: ObservableObject {
+    @Published var irregulares: Bool {
+        didSet{
+            UserDefaults.standard.set(irregulares, forKey: "irregulares")
+        }
+    }
+    
+    @Published var regulares: Bool {
+        didSet{
+            UserDefaults.standard.set(regulares, forKey: "regulares")
+        }
+    }
+    
     @Published var isPresenteInd: Bool {
         didSet{
             UserDefaults.standard.set(isPresenteInd, forKey: "isPresenteInd")
@@ -110,6 +122,9 @@ class UserSettings: ObservableObject {
         self.isFuturoIISub = UserDefaults.standard.object(forKey: "isFuturoIISub") as? Bool ?? false
         self.isCondicionalI = UserDefaults.standard.object(forKey: "isCondicionalI") as? Bool ?? false
         self.isCondicionalII = UserDefaults.standard.object(forKey: "isCondicionalII") as? Bool ?? false
+        self.irregulares = UserDefaults.standard.object(forKey: "irregulares") as? Bool ?? true
+        self.regulares = UserDefaults.standard.object(forKey: "regulares") as? Bool ?? true
+
     }
 }
 

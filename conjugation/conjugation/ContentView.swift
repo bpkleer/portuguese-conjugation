@@ -27,6 +27,10 @@ struct ContentView: View {
     @State var falso: Int = 0
     
     // to check that same tense will not repeated in the last three times (with more than 4 tenses chosen)
+    @State var lastverb: [[String]] = []
+    @State var trainVerb: [String] = []
+    @State var countarray: Int = 0
+    
     @State var lastcase: Array<String> = ["", "", ""]
     @State var countcase: Int = 0
     @State var trainTempus: String = ""
@@ -42,11 +46,9 @@ struct ContentView: View {
     let anzahlArray = ["Singular", "Plural"]
     
     // verbs
-    let verbArray = [["comprar", "ar", "kaufen"], ["vender", "er", "verkaufen"], ["dividir", "ir", "teilen, aufteilen"],["ser", "ser", "sein"], ["estar", "estar", "sein"], ["ir", "ira", "gehen"], ["vir", "vir", "kommen"], ["ver", "ver", "sehen, ansehen"], ["ter", "ter", "haben"], ["ler", "ler", "lesen"], ["fazer", "fazer", "machen, tun"], ["dizer", "izer", "sagen, sprechen"], ["trazer", "trazer", "bringen, tragen"], ["saber", "saber", "wissen, können"], ["poder", "poder", "können, dürfen"], ["querer", "querer", "wollen"], ["pôr", "por", "setzen, stellen, legen"], ["levar", "ar", "bringen, mitnehmen"], ["dormir", "oir", "schlafen"], ["conhecer", "er", "kennen, kennenlernen"], ["pagar", "ar", "bezahlen"], ["atravessar", "ar", "überqueren, durchqueren"], ["assistir", "ir", "zuschauen, sehen, helfen"], ["decidir", "ir", "entscheiden, beschließen"], ["sentir", "ir", "fühlen, empfinden"], ["abrir", "ir", "öffnen"], ["arrumar", "ar", "aufräumen, organisieren"], ["lavar", "ar", "waschen"], ["limpar", "ar", "putzen, reinigen"], ["deixar", "ar", "erlauben, lassen, aufgeben"], ["falar", "ar", "sprechen"], ["cumprimentar", "ar", "begrüßen, grüßen"], ["responder", "er", "antworten, beantworten"], ["recomendar", "ar", "empfehlen, raten"], ["precisar", "ar", "benötigen, brauchen (mit de)"], ["procurar", "ar", "suchen"], ["passar", "ar", "(vorbei)gehen", "verbringen"], ["comer", "er", "essen"], ["beber", "er", "trinken"], ["ganhar", "ar", "gewinnen, verdienen"], ["melhorar", "ar", "verbessern"], ["cuidar", "ar", "aufpassen, sorgen (mit de)"], ["confiar", "ar", "vertrauen, hoffen auf (mit em)"], ["pensar", "ar", "denken, glauben (an mit em)"], ["deitar", "ar", "hinlegen, legen"], ["acordar", "ar", "aufwachen"], ["gostar", "ar", "mögen, gefallen"], ["discutir", "ir", "diskutieren"], ["acompanhar", "ar", "begleiten, mitmachen"], ["levantar", "ar", "aufbrechen, aufstehen"], ["acontecer", "er", "passieren, geschehen"], ["desagradecer", "er", "missfallen"], ["detestar", "ar", "hassen, verabschauen"], ["significar", "ar", "bedeuten, meinen"], ["tornar", "ar", "(tornar-se) werden"], ["sortear", "ear", "auslosen"], ["passear", "ear", "spazieren gehen"]]
+    let verbArray = [["comprar", "ar", "kaufen"], ["vender", "er", "verkaufen"], ["dividir", "ir", "teilen, aufteilen"], ["ler", "ler", "lesen"], ["dizer", "izer", "sagen, sprechen"], ["levar", "ar", "bringen, mitnehmen"], ["dormir", "oir", "schlafen"], ["conhecer", "er", "kennen, kennenlernen"], ["pagar", "ar", "bezahlen"], ["atravessar", "ar", "überqueren, durchqueren"], ["assistir", "ir", "zuschauen, sehen, helfen"], ["decidir", "ir", "entscheiden, beschließen"], ["sentir", "ir", "fühlen, empfinden"], ["abrir", "ir", "öffnen"], ["arrumar", "ar", "aufräumen, organisieren"], ["lavar", "ar", "waschen"], ["limpar", "ar", "putzen, reinigen"], ["deixar", "ar", "erlauben, lassen, aufgeben"], ["falar", "ar", "sprechen"], ["cumprimentar", "ar", "begrüßen, grüßen"], ["responder", "er", "antworten, beantworten"], ["recomendar", "ar", "empfehlen, raten"], ["precisar", "ar", "benötigen, brauchen (mit de)"], ["procurar", "ar", "suchen"], ["passar", "ar", "(vorbei)gehen", "verbringen"], ["comer", "er", "essen"], ["beber", "er", "trinken"], ["ganhar", "ar", "gewinnen, verdienen"], ["melhorar", "ar", "verbessern"], ["cuidar", "ar", "aufpassen, sorgen (mit de)"], ["confiar", "ar", "vertrauen, hoffen auf (mit em)"], ["pensar", "ar", "denken, glauben (an mit em)"], ["deitar", "ar", "hinlegen, legen"], ["acordar", "ar", "aufwachen"], ["gostar", "ar", "mögen, gefallen"], ["discutir", "ir", "diskutieren"], ["acompanhar", "ar", "begleiten, mitmachen"], ["levantar", "ar", "aufbrechen, aufstehen"], ["acontecer", "er", "passieren, geschehen"], ["desagradecer", "er", "missfallen"], ["detestar", "ar", "hassen, verabschauen"], ["significar", "ar", "bedeuten, meinen"], ["tornar", "ar", "(tornar-se) werden"], ["sortear", "ear", "auslosen"], ["passear", "ear", "spazieren gehen"]]
     
-    // not yet integrated
-    //let verbArrayCair = [["agraudar", "ar", "agraud"], ["ajesuitar", "ar", "ajesuit"], ["ajuizar", "ar", "ajuiz"], ["alaudar", "ar", "alaud"], ["altruizar", "ar", "altruiz"], ["amiudar", "ar", "amiud"], ["arcaizar", "ar", "arcaiz"], ["arruinar", "ar", "arruin"], ["ataudar", "ar", "ataud"], ["comboiar", "ar", "combai"], ["desajuizar", "ar", "desajuiz"], ["desataudar", "ar", "desataud"], ["desenraizar", "ar", "desenraiz"], ["desraizar", "ar", "desraiz"], ["embuizar", "ar", "embuiz"], ["enfaiscar", "ar", "enfaisc"], ["enraizar", "ar", "enraiz"], ["ensaudar", "ar", "ensaud"], ["enviuvar", "ar", "enviuv"], ["esfaiscar", "ar", "esfaisc"], ["esmiudar", "ar", "esmiud"], ["faiscar", "ar", "faisc"], ["gaudar", "ar", "gaud"], ["hebraizar", "ar", "hebraiz"], ["heroizar", "ar", "heroiz"], ["judaizar", "ar", "judaiz"], ["maleinar", "ar", "malein"], ["miudar", "ar", "miud"], ["mobilar", "ar", "mobil"], ["plebeizar", "ar", "plebeiz"], ["ressaudar", "ar", "ressaud"], ["saudar", "ar", "saud"]]
-    
+    let verbIrrArray = [["ser", "ser", "sein"], ["estar", "estar", "sein"], ["ir", "ira", "gehen"], ["vir", "vir", "kommen"], ["ver", "ver", "sehen, ansehen"], ["ter", "ter", "haben"], ["fazer", "fazer", "machen, tun"], ["dizer", "izer", "sagen, sprechen"], ["trazer", "trazer", "bringen, tragen"], ["saber", "saber", "wissen, können"], ["poder", "poder", "können, dürfen"], ["querer", "querer", "wollen"], ["pôr", "por", "setzen, stellen, legen"]]
     
     var body: some View {
         NavigationView{
@@ -116,13 +118,12 @@ struct ContentView: View {
                         .foregroundColor(Color("style"))
                         .frame(width: 350)
                         .multilineTextAlignment(.center)
-                        
+                    
                     
                     Text(String(verb))
                         .font(.title)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color("style"))
-                    
                     
                     TextField("Digite sua dica!",
                               text: $tipp,
@@ -197,14 +198,14 @@ struct ContentView: View {
     // get the person for conjugation
     func setPerson() -> (Int) {
         let trainPerson = personArray.randomElement()!
-        return trainPerson
+        return(trainPerson)
     }
     
     // get plural or singular for conjugation
     func setAnzahl() -> (String) {
         let trainAnzahl = anzahlArray.randomElement()!
         
-        return trainAnzahl
+        return(trainAnzahl)
     }
     
     // get tempus for conjugation
@@ -394,14 +395,84 @@ struct ContentView: View {
         } else {
             trainTempus = allTempus.randomElement()!
         }
-        return (trainTempus)
+        return(trainTempus)
+    }
+    
+    // function to set verb arry
+    func setVerbArray(irregular: [[String]], regular: [[String]]) -> ([[String]]) {
+        if userSettings.irregulares == true && userSettings.regulares == false {
+            let testArray = irregular
+            return(testArray)
+        } else if userSettings.irregulares == false && userSettings.regulares == true {
+            let testArray = regular
+            return(testArray)
+        } else {
+            let testArray = irregular + regular
+            return(testArray)
+        }
     }
     
     // get verb for conjugation
     func setVerb() -> (Array<String>) {
-        let rndNumber = Int.random(in: 0...verbArray.count - 1)
-        let trainVerb = verbArray[rndNumber]
-        return (trainVerb)
+    
+        if userSettings.irregulares == false && userSettings.regulares == true {
+                let rndNumber = Int.random(in: 0...verbArray.count - 1)
+                let trainVerb = verbArray[rndNumber]
+                return (trainVerb)
+        } else if userSettings.irregulares == true && userSettings.regulares == false {
+                let rndNumber = Int.random(in: 0...verbIrrArray.count - 1)
+                let trainVerb = verbIrrArray[rndNumber]
+            return (trainVerb)
+        } else {
+            let testArray = verbArray + verbIrrArray
+            let rndNumber = Int.random(in: 0...testArray.count - 1)
+            let trainVerb = testArray[rndNumber]
+            return (trainVerb)
+        }
+        
+            
+      // below does not work
+  //      let testArray = setVerbArray(irregular: verbIrrArray, regular: verbArray)
+        
+   //     if lastverb == [] {
+   //         let rndNumber = Int.random(in: 0...testArray.count - 1)
+//            trainVerb = testArray[rndNumber]
+ //           lastverb[0] = trainVerb
+ //           countarray = countarray + 1
+ //           return(trainVerb)
+ //       } else {
+ //           repeat {
+ //               trainVerb = testArray.randomElement()!
+ //           } while (lastverb.contains(trainVerb))
+            
+  //          countcase = countcase + 1
+            
+  //          if countcase > 10 {
+   //             countcase = 0
+    //            lastverb[0] = trainVerb
+   //         } else if countcase == 10 {
+   //             lastverb[9] = trainVerb
+   //         } else if countcase == 9 {
+   //             lastverb[8] = trainVerb
+   //         } else if countcase == 8 {
+   //             lastverb[7] = trainVerb
+  //          } else if countcase == 7 {
+   //             lastverb[6] = trainVerb
+   //         } else if countcase == 5 {
+   //            lastverb[4] = trainVerb
+   //         } else if countcase == 4 {
+   //             lastverb[3] = trainVerb
+   //         } else if countcase == 3 {
+   //             lastverb[2] = trainVerb
+   //         } else if countcase == 2 {
+   //             lastverb[1] = trainVerb
+   //        } else if countcase == 1 {
+   //             lastverb[0] = trainVerb
+   //         }
+            
+   //     }
+        
+   //     return(trainVerb)
     }
 }
 
@@ -1283,7 +1354,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     hilfsverb = "";
     numberInArray = 0;
     
-    return (aim)
+    return(aim)
 }
 
 // check user result against solution
@@ -1295,7 +1366,7 @@ func pruefen(eingabe: String, ziel: String) -> Bool {
         ergebnis = false
     }
 
-    return ergebnis
+    return(ergebnis)
 }
 
 // set counter for correct results
@@ -1307,7 +1378,7 @@ func add(result: Bool, richtig: Int) -> Int {
         summe = richtig
     }
     
-    return summe
+    return(summe)
 }
 
 // set counter for wrong results
@@ -1319,7 +1390,7 @@ func substract(result: Bool, falsch: Int) -> Int {
         summe = falsch
     }
     
-    return summe
+    return(summe)
 }
 
 // create alert message for results (correct or wrong)
@@ -1330,7 +1401,7 @@ func createAlertMessage(result: Bool, ziel: String) -> String {
     } else {
         alertMessage = "🙅🏽‍♂️ Esta vez não! ❌ \n" + "\n A forma correta é: " + ziel
     }
-    return alertMessage
+    return(alertMessage)
 }
 
 // provide structure

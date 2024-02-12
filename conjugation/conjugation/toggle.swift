@@ -13,104 +13,105 @@ struct ToggleStates: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            Text("Escolhe as conjugações!")
+            Text("Escolhe os verbos e as conjugações!")
                 .font(.title2)
+                .foregroundColor(Color("style"))
             
             VStack (spacing: 7.5) {
+                Text("Verbos")
+                    .foregroundColor(Color("style"))
+                
+                Toggle(isOn: $userSettings.regulares, label: {
+                    Text("verbos regulares")
+                        .font(.subheadline)
+                })
+                .padding(.horizontal, 15.0)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
+                .onChange(of: [self.userSettings.regulares, self.userSettings.irregulares]) { oldvalue, newvalue in
+                    atLeastOneVerbGroup()
+                }
+                
+                Toggle(isOn: $userSettings.irregulares, label: {
+                    Text("verbos irregulares")
+                        .font(.subheadline)
+                })
+                .padding(.horizontal, 15.0)
+                .padding([.bottom], 20)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
+            }
+            
+            
+            VStack (spacing: 7.5) {
+                Text("Conjugações")
+                    .foregroundColor(Color("style"))
                 Toggle(isOn: $userSettings.isPresenteInd, label: {
                     Text("Presente Indicativo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 .onChange(of: [self.userSettings.isPresenteInd, self.userSettings.isPerfeitoInd, self.userSettings.isImperfeitoInd, self.userSettings.isPerfeitoCompInd, self.userSettings.isPMQPInd, self.userSettings.isFuturoIInd, self.userSettings.isFuturoIIInd, self.userSettings.isPresenteSub, self.userSettings.isPerfeitoSub, self.userSettings.isImperfeitoSub, self.userSettings.isPMQPSub, self.userSettings.isFuturoISub, self.userSettings.isFuturoIISub, self.userSettings.isCondicionalI, self.userSettings.isCondicionalII]) { oldvalue, newvalue in
                     atLeastOneTempus()
                 }
-                // old solution before .onChange was changed (iOS 17)
-                //.onChange(of: self.userSettings.isPresenteInd) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isPerfeitoInd){oldvalue, newvalue in
-                //    atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isImperfeitoInd) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isPerfeitoCompInd) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isPMQPInd) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isFuturoIInd) { oldvalue, newvalue in
-                 //   atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isFuturoIIInd) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-               // }
-               // .onChange(of: self.userSettings.isPresenteSub) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-               // }
-                //.onChange(of: self.userSettings.isPerfeitoSub) { oldvalue, newvalue in
-                 //   atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isImperfeitoSub) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isPMQPSub) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isFuturoISub) { oldvalue, newvalue in
-                  //  atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isFuturoIISub) { oldvalue, newvalue in
-                 //   atLeastOneTempus()
-                //}
-                //.onChange(of: self.userSettings.isCondicionalII) { oldvalue, newvalue in
-                //    atLeastOneTempus()
-                //}
-                
+
                 Toggle(isOn: $userSettings.isPerfeitoInd, label: {
                     Text("Perfeito Indicativo")
                         .font(.subheadline)
                 })
                 .padding(.horizontal, 15.0)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isImperfeitoInd, label: {
                     Text("Imperfeito Indicativo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isPerfeitoCompInd, label: {
                     Text("Perfeito Composto Indicativo")
                         .font(.subheadline)
                 })
                 .padding(.horizontal, 15.0)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isPMQPInd, label: {
                     Text("Pretérito Mais-que-Perfeito Indicativo")
                         .font(.subheadline)
                 })
                 .padding(.horizontal, 15.0)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isPMQPCompInd, label: {
                     Text("Pretérito Mais-que-perfeito\ncomposto Indicativo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isFuturoIInd, label: {
                     Text("Futuro Simples Indicativo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
-                
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isFuturoIIInd, label: {
                     Text("Futuro Composto Indicativo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
             }.frame(maxWidth: .infinity)
             
             VStack (spacing: 7.5){
@@ -119,36 +120,48 @@ struct ToggleStates: View {
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isPerfeitoSub, label: {
                     Text("Perfeito Simples Subjuntivo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isImperfeitoSub, label: {
                     Text("Imperfeito Subjuntivo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isPMQPSub, label: {
                     Text("Pretérito Mais-que-Perfeito Subjuntivo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isFuturoISub, label: {
                     Text("Futuro Simples Subjuncitvo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isFuturoIISub, label: {
                     Text("Futuro Composto Subjuntivo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
             }.frame(maxWidth: .infinity)
             
             VStack (spacing: 7.5) {
@@ -157,12 +170,16 @@ struct ToggleStates: View {
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isCondicionalII, label: {
                     Text("Futuro do Préterito Composto\n(Condicional II)")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
+                .tint(Color("style"))
+                .foregroundColor(Color("style"))
             }.frame(maxWidth: .infinity)
             
             Spacer()
@@ -175,6 +192,12 @@ struct ToggleStates: View {
     func atLeastOneTempus() {
         if self.userSettings.isPresenteInd == false && self.userSettings.isPerfeitoInd == false && self.userSettings.isImperfeitoInd == false && self.userSettings.isPerfeitoCompInd == false && self.userSettings.isPMQPInd == false && self.userSettings.isPMQPCompInd == false && self.userSettings.isFuturoIInd == false && self.userSettings.isFuturoIIInd == false && self.userSettings.isPresenteSub == false && self.userSettings.isPerfeitoSub == false && self.userSettings.isImperfeitoSub == false && self.userSettings.isPMQPSub == false && self.userSettings.isFuturoISub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isCondicionalI == false && self.userSettings.isCondicionalII == false {
             self.userSettings.isPresenteInd = true
+        }
+    }
+    
+    func atLeastOneVerbGroup() {
+        if self.userSettings.regulares == false && self.userSettings.irregulares == false {
+            self.userSettings.regulares = true
         }
     }
 }
