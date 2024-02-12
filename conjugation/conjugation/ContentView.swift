@@ -616,6 +616,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubSignificar = ["signifique", "signifique", "signifique", "signifiquemos", "urmam", "signifiquem"]
     let presenteSubPor = ["ponha", "ponha", "ponha", "ponhamos", "ponham", "ponham"]
     let presenteSubOir = ["urma", "urma", "urma", "urmamos", "urmam", "urmam"]
+    let presenteSubDesagradecer = ["desagradeça", "desagradeça", "desagradeça", "desagradeçamos", "desagradeçam", "desagradeçam"]
     
     // Pretérito Imperfeito Subjuntivo
     let imperfeitoSubAr = ["asse", "asse", "asse", "ássemos", "assem", "assem"]
@@ -1006,10 +1007,15 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "conhecer" {
             endung = presenteSubConhecer[numberInArray]
             aim = endung
+        } else if verbo[0] == "desagradecer" {
+            endung = presenteSubDesagradecer[numberInArray]
+            aim = endung
         } else if verbo[0] == "pagar" {
             endung = presenteSubPagar[numberInArray]
+            aim = endung
         } else if verbo[0] == "significar" {
             endung = presenteSubSignificar[numberInArray]
+            aim = endung
         } else if verbo[1] == "ar" {
             endung = presenteSubAr[numberInArray]
             aim = stamm + endung
