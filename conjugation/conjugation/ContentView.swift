@@ -671,6 +671,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     if caso == "Presente Indicativo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "conhecer" || verbo[0] == "acontecer" {
+            stamm = String(verbo[0].dropLast(3))
             aim = stamm + presenteConhecer[numberInArray]
         } else if verbo[1] == "ar" {
             aim = stamm + presenteAr[numberInArray]
