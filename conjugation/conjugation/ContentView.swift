@@ -480,7 +480,6 @@ struct ContentView: View {
 func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -> String {
     var aim: String = ""
     var stamm: String = ""
-    var endung: String = ""
     var hilfsverb: String = ""
     var numberInArray: Int = 0
     
@@ -529,6 +528,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteQuerer = ["quero", "quer", "quer", "queremos", "querem", "querem"]
     let presentePor = ["ponho", "põe", "põe", "pomos", "pôem", "põem"]
     let presenteOir = ["urmo", "orme", "orme", "ormimos", "ormem", "ormem"]
+    let presenteConhecer = ["ço", "ce", "ce", "cemos", "cem", "cem"]
     
     // Perfeito INdicativo
     let perfeitoAr = ["ei", "ou", "ou", "ámos", "aram", "aram"]
@@ -605,7 +605,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubVer = ["veja", "veja", "veja", "vejamos", "vejam", "vejam"]
     let presenteSubTer = ["tenha", "tenha", "tenha", "tenhamos", "tenham", "tenham"]
     let presenteSubLer = ["leia", "leia", "leia", "leiamos", "leiam", "leiam"]
-    let presenteSubConhecer = ["conheça", "conheças", "conheça", "conheçamos", "conheçais", "conheçam"]
+    let presenteSubConhecer = ["ça", "ças", "ça", "çamos", "çais", "çam"]
     let presenteSubPagar = ["pague", "pague", "pague", "paguemos", "paguem", "paguem"]
     let presenteSubFazer = ["faça", "faças", "faça", "façamos", "façam", "façam"]
     let presenteSubIzer = ["ga", "ga", "ga", "gamos", "gam", "gam"]
@@ -670,693 +670,498 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     
     if caso == "Presente Indicativo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "ar" {
-            endung = presenteAr[numberInArray]
-            aim = stamm + endung
+        if verbo[0] == "conhecer" || verbo[0] == "acontecer" {
+            aim = stamm + presenteConhecer[numberInArray]
+        } else if verbo[1] == "ar" {
+            aim = stamm + presenteAr[numberInArray]
         } else if verbo[1] == "ear" {
-            endung = presenteEar[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteEar[numberInArray]
         } else if verbo[1] == "er" {
-            endung = presenteEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteEr[numberInArray]
         } else if verbo[1] == "ir" {
-            endung = presenteIr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteIr[numberInArray]
         } else if verbo[1] == "ira" {
-            endung = presenteIra[numberInArray]
+            aim = presenteIra[numberInArray]
         } else if verbo[1] == "ser" {
-            endung = presenteSer[numberInArray]
-            aim = endung
+            aim = presenteSer[numberInArray]
         } else if verbo[1] == "estar" {
-            endung = presenteEstar[numberInArray]
-            aim = endung
+            aim = presenteEstar[numberInArray]
         } else if verbo[1] == "vir" {
-            endung = presenteVir[numberInArray]
-            aim = endung
+            aim = presenteVir[numberInArray]
         } else if verbo[1] == "ver" {
-            endung = presenteVer[numberInArray]
-            aim = endung
+            aim = presenteVer[numberInArray]
         } else if verbo[1] == "ter" {
-            endung = presenteTer[numberInArray]
-            aim = endung
+            aim = presenteTer[numberInArray]
         } else if verbo[1] == "ler" {
-            endung = presenteLer[numberInArray]
-            aim = endung
+            aim = presenteLer[numberInArray]
         } else if verbo[1] == "fazer" {
-            endung = presenteFazer[numberInArray]
-            aim = endung
+            aim = presenteFazer[numberInArray]
+        } else if verbo[1] == "trazer" {
+            aim = presenteTrazer[numberInArray]
+        } else if verbo[1] == "saber" {
+            aim = presenteSaber[numberInArray]
+        } else if verbo[1] == "poder" {
+            aim = presentePoder[numberInArray]
+        } else if verbo[1] == "perder" {
+            aim = presentePerder[numberInArray]
+        } else if verbo[1] == "querer" {
+            aim = presenteQuerer[numberInArray]
+        } else if verbo[1] == "por" {
+            aim = presentePor[numberInArray]
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(3))
-            endung = presenteIzer[numberInArray]
-            aim = stamm + endung
-        } else if verbo[1] == "trazer" {
-            endung = presenteTrazer[numberInArray]
-            aim = endung
-        } else if verbo[1] == "saber" {
-            endung = presenteSaber[numberInArray]
-            aim = endung
-        } else if verbo[1] == "poder" {
-            endung = presentePoder[numberInArray]
-            aim = endung
-        } else if verbo[1] == "perder" {
-            endung = presentePerder[numberInArray]
-            aim = endung
-        } else if verbo[1] == "querer" {
-            endung = presenteQuerer[numberInArray]
-            aim = endung
-        } else if verbo[1] == "por" {
-            endung = presentePor[numberInArray]
-            aim = endung
+            aim = stamm + presenteIzer[numberInArray]
         } else if verbo[1] == "oir" {
             stamm = String(verbo[0].prefix(1))
-            endung = presenteOir[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteOir[numberInArray]
         }
+        
+        //stamm = String(verbo[0].dropLast(2))
     } else if caso == "Perfeito Simples Indicativo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "ear" {
-            endung = perfeitoAr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + perfeitoAr[numberInArray]
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "perder" {
-            endung = perfeitoEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + perfeitoEr[numberInArray]
         } else if verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir" {
-            endung = perfeitoIr[numberInArray]
-            aim = stamm + endung
-        } else if verbo[1] == "ser" || verbo[1] == "ira" {
-            endung = perfeitoSer[numberInArray]
-            aim = endung
-        } else if verbo[1] == "estar" {
-            endung = perfeitoEstar[numberInArray]
-            aim = endung
-        } else if verbo[1] == "vir" {
-            endung = perfeitoVir[numberInArray]
-            aim = endung
-        } else if verbo[1] == "ter" {
-            endung = perfeitoTer[numberInArray]
-            aim = endung
-        } else if verbo[1] == "fazer" {
-            endung = perfeitoFazer[numberInArray]
-            aim = endung
+            aim = stamm + perfeitoIr[numberInArray]
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(3))
-            endung = perfeitoIzer[numberInArray]
-            aim = stamm + endung
+            aim = stamm + perfeitoIzer[numberInArray]
+        } else if verbo[1] == "ser" || verbo[1] == "ira" {
+            aim = perfeitoSer[numberInArray]
+        } else if verbo[1] == "estar" {
+            aim = perfeitoEstar[numberInArray]
+        } else if verbo[1] == "vir" {
+            aim = perfeitoVir[numberInArray]
+        } else if verbo[1] == "ter" {
+            aim = perfeitoTer[numberInArray]
+        } else if verbo[1] == "fazer" {
+            aim = perfeitoFazer[numberInArray]
         } else if verbo[1] == "trazer" {
-            endung = perfeitoTrazer[numberInArray]
-            aim = endung
+            aim = perfeitoTrazer[numberInArray]
         } else if verbo[1] == "saber" {
-            endung = perfeitoSaber[numberInArray]
-            aim = endung
+            aim = perfeitoSaber[numberInArray]
         } else if verbo[1] == "poder" {
-            endung = perfeitoPoder[numberInArray]
-            aim = endung
+            aim = perfeitoPoder[numberInArray]
         } else if verbo[1] == "querer" {
-            endung = perfeitoQuerer[numberInArray]
-            aim = endung
+            aim = perfeitoQuerer[numberInArray]
         } else if verbo[1] == "por" {
-            endung = perfeitoPor[numberInArray]
-            aim = endung
+            aim = perfeitoPor[numberInArray]
         }
     } else if caso == "Imperfeito Indicativo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "estar" || verbo[1] == "ear" {
-            endung = imperfeitoAr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + imperfeitoAr[numberInArray]
         } else if verbo[1] == "er" || verbo[1] == "ver" || verbo[1] == "ler" || verbo[1] == "fazer" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = imperfeitoEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + imperfeitoEr[numberInArray]
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "izer" || verbo[1] == "oir" {
-            endung = imperfeitoIr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + imperfeitoIr[numberInArray]
         } else if verbo[1] == "ser" {
-            endung = imperfeitoSer[numberInArray]
-            aim = endung
+            aim = imperfeitoSer[numberInArray]
         } else if verbo[1] == "vir" {
-            endung = imperfeitoVir[numberInArray]
-            aim = endung
+            aim = imperfeitoVir[numberInArray]
         } else if verbo[1] == "ter" {
-            endung = imperfeitoTer[numberInArray]
-            aim = endung
+            aim = imperfeitoTer[numberInArray]
         } else if verbo[1] == "por" {
-            endung = imperfeitoPor[numberInArray]
-            aim = endung
+            aim = imperfeitoPor[numberInArray]
         }
     } else if caso == "Perfeito Composto Indicativo" {
         hilfsverb  = ppcHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
-            endung = participioDizer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioDizer
         } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
-            endung = participioAr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioAr
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[0] == "abrir" {
-            endung = participioAbrir
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioAbrir
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
-            endung = participioIr
-            aim = hilfsverb + " " + stamm + endung
-        } else if verbo[1] == "ser" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
-        } else if verbo[1] == "vir" {
-            endung = participioVir
-            aim = hilfsverb + " " + stamm + endung
-        } else if verbo[1] == "ver" {
-            endung = participioVer
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "fazer" {
-            endung = participioFazer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioIr
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(4))
-            endung = stamm + participioEr
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioEr
+        } else if verbo[1] == "ser" {
+            aim = hilfsverb + " " + stamm + participioEr
+        } else if verbo[1] == "vir" {
+            aim = hilfsverb + " " + stamm + participioVir
+        } else if verbo[1] == "ver" {
+            aim = hilfsverb + " " + participioVer
+        } else if verbo[1] == "fazer" {
+            aim = hilfsverb + " " + participioFazer
         } else if verbo[1] == "por" {
-            endung = participioPor
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioPor
         }
     } else if caso == "Pretérito Mais-que-Perfeito Composto Indicativo" {
         hilfsverb  = pmqpHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
-            endung = participioDizer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioDizer
         } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
-            endung = participioAr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioAr
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[0] == "abrir" {
-            endung = participioAbrir
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioAbrir
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
-            endung = participioIr
-            aim = hilfsverb + " " + stamm + endung
-        } else if verbo[1] == "ser" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
-        } else if verbo[1] == "vir" {
-            endung = participioVir
-            aim = hilfsverb + " " + stamm + endung
-        } else if verbo[1] == "ver" {
-            endung = participioVer
-            aim = hilfsverb + " " + endung
-        } else if verbo[1] == "fazer" {
-            endung = participioFazer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioIr
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(4))
-            endung = stamm + participioEr
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioEr
+        } else if verbo[1] == "ser" {
+            aim = hilfsverb + " " + stamm + participioEr
+        } else if verbo[1] == "vir" {
+            aim = hilfsverb + " " + stamm + participioVir
+        } else if verbo[1] == "ver" {
+            aim = hilfsverb + " " + participioVer
+        } else if verbo[1] == "fazer" {
+            aim = hilfsverb + " " + participioFazer
         } else if verbo[1] == "por" {
-            endung = participioPor
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioPor
         }
     } else if caso == "Pretérito Mais-que-Perfeito Indicativo" {
         // Hier brauche ich die 3. Person Plural Perfeito
         // dann konjugation
         // mit hilfsverb eventuell arbeiten und dann die sonderstellungen machen.
-        
         stamm = String(verbo[0])
         if verbo[1] == "ar" || verbo[1] == "ear" {
             if pessoa == 1 && numero == "Plural" {
                 stamm = String(verbo[0].dropLast(2))
             }
-            endung = pmqpAr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + pmqpAr[numberInArray]
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "perder" {
             if pessoa == 1 && numero == "Plural" {
                 stamm = String(verbo[0].dropLast(2))
             }
-            endung = pmqpEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + pmqpEr[numberInArray]
         } else if verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir" {
             if pessoa == 1 && numero == "Plural" {
                 stamm = String(verbo[0].dropLast(2))
             }
-            endung = pmqpIr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + pmqpIr[numberInArray]
         } else if verbo[1] == "ser" || verbo[1] == "ira" {
-            endung = pmqpSer[numberInArray]
-            aim = endung
+            aim = pmqpSer[numberInArray]
         } else if verbo[1] == "estar" {
-            endung = pmqpEstar[numberInArray]
-            aim = endung
+            aim = pmqpEstar[numberInArray]
         } else if verbo[1] == "vir" {
-            endung = pmqpVir[numberInArray]
-            aim = endung
+            aim = pmqpVir[numberInArray]
         } else if verbo[1] == "ver" {
-            endung = pmqpVer[numberInArray]
-            aim = endung
+            aim = pmqpVer[numberInArray]
         } else if verbo[1] == "ter" {
-            endung = pmqpTer[numberInArray]
-            aim = endung
+            aim = pmqpTer[numberInArray]
         } else if verbo[1] == "fazer" {
-            endung = pmqpFazer[numberInArray]
-            aim = endung
+            aim = pmqpFazer[numberInArray]
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(3))
-            endung = pmqpIzer[numberInArray]
-            aim = stamm + endung
+            aim = stamm + pmqpIzer[numberInArray]
         } else if verbo[1] == "trazer" {
-            endung = pmqpTrazer[numberInArray]
-            aim = endung
+            aim = pmqpTrazer[numberInArray]
         } else if verbo[1] == "saber" {
-            endung = pmqpSaber[numberInArray]
-            aim = endung
+            aim = pmqpSaber[numberInArray]
         } else if verbo[1] == "poder" {
-            endung = pmqpPoder[numberInArray]
-            aim = endung
+            aim = pmqpPoder[numberInArray]
         } else if verbo[1] == "querer" {
-            endung = pmqpQuerer[numberInArray]
-            aim = endung
+            aim = pmqpQuerer[numberInArray]
         } else if verbo[1] == "por" {
-            endung = pmqpPor[numberInArray]
-            aim = endung
+            aim = pmqpPor[numberInArray]
         }
     } else if caso == "Futuro Simples Indicativo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "ear" ||  verbo[1] == "estar" {
-            endung = futuroSimplesAr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + futuroSimplesAr[numberInArray]
         } else if verbo[1] == "er" || verbo[1] == "ver" || verbo[1] == "ter" || verbo[1] == "ler" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = futuroSimplesEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + futuroSimplesEr[numberInArray]
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "vir" || verbo[1] == "oir" {
-            endung = futuroSimplesIr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + futuroSimplesIr[numberInArray]
         } else if verbo[1] == "ser" {
-            endung = futuroSimplesSer[numberInArray]
+            aim = futuroSimplesSer[numberInArray]
         } else if verbo[1] == "fazer" {
-            endung = futuroSimplesFazer[numberInArray]
-            aim = endung
+            aim = futuroSimplesFazer[numberInArray]
         } else if verbo[1] == "izer" || verbo[1] == "trazer" {
             stamm = String(verbo[0].dropLast(3))
-            endung = futuroSimplesIzer[numberInArray]
-            aim = stamm + endung
+            aim = stamm + futuroSimplesIzer[numberInArray]
         } else if verbo[1] == "por" {
-            endung = futuroSimplesPor[numberInArray]
-            aim = endung
+            aim = futuroSimplesPor[numberInArray]
         }
     } else if caso == "Futuro Composto Indicativo" {
         hilfsverb  = futcomHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
-            endung = participioDizer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioDizer
         } else if verbo[1] == "ar" || verbo[1] == "ear" ||  verbo[1] == "estar" {
-            endung = participioAr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioAr
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[0] == "abrir" {
-            endung = participioAbrir
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioAbrir
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
-            endung = participioIr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioIr
         } else if verbo[1] == "ser" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "vir" {
-            endung = participioVir
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioVir
         } else if verbo[1] == "ver" {
-            endung = participioVer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioVer
         } else if verbo[1] == "fazer" {
-            endung = participioFazer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioFazer
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(4))
-            endung = stamm + participioEr
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "por" {
-            endung = participioPor
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioPor
         }
     } else if caso == "Presente Subjuntivo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[0] == "conhecer" {
-            endung = presenteSubConhecer[numberInArray]
-            aim = endung
+        if verbo[0] == "conhecer" || verbo[0]=="acontecer" {
+            stamm = String(verbo[0].dropLast(3))
+            aim = stamm + presenteSubConhecer[numberInArray]
         } else if verbo[0] == "desagradecer" {
-            endung = presenteSubDesagradecer[numberInArray]
-            aim = endung
+            aim = presenteSubDesagradecer[numberInArray]
         } else if verbo[0] == "pagar" {
-            endung = presenteSubPagar[numberInArray]
-            aim = endung
+            aim = presenteSubPagar[numberInArray]
         } else if verbo[0] == "significar" {
-            endung = presenteSubSignificar[numberInArray]
-            aim = endung
+            aim = presenteSubSignificar[numberInArray]
         } else if verbo[1] == "ar" {
-            endung = presenteSubAr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteSubAr[numberInArray]
         }  else if verbo[1] == "ear" {
-            endung = presenteSubEar[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteSubEar[numberInArray]
         } else if verbo[1] == "er" {
-            endung = presenteSubEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteSubEr[numberInArray]
         } else if verbo[1] == "ir" {
-            endung = presenteSubIr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteSubIr[numberInArray]
         } else if verbo[1] == "ser" {
-            endung = presenteSubSer[numberInArray]
+            aim = presenteSubSer[numberInArray]
         } else if verbo[1] == "estar" {
-            endung = presenteSubEstar[numberInArray]
-            aim = endung
+            aim = presenteSubEstar[numberInArray]
         } else if verbo[1] == "ira" {
-            endung = presenteSubIra[numberInArray]
-            aim = endung
+            aim = presenteSubIra[numberInArray]
         } else if verbo[1] == "vir" {
-            endung = presenteSubVir[numberInArray]
-            aim = endung
+            aim = presenteSubVir[numberInArray]
         } else if verbo[1] == "ver" {
-            endung = presenteSubVer[numberInArray]
-            aim = endung
+            aim = presenteSubVer[numberInArray]
         } else if verbo[1] == "ter" {
-            endung = presenteSubTer[numberInArray]
-            aim = endung
+            aim = presenteSubTer[numberInArray]
         } else if verbo[1] == "ler" {
-            endung = presenteSubLer[numberInArray]
-            aim = endung
+            aim = presenteSubLer[numberInArray]
         } else if verbo[1] == "fazer" {
-            endung = presenteSubFazer[numberInArray]
-            aim = endung
+            aim = presenteSubFazer[numberInArray]
         } else if verbo[1] == "izer" || verbo[1] == "trazer" {
             stamm = String(verbo[0].dropLast(3))
-            endung = presenteSubIzer[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteSubIzer[numberInArray]
         } else if verbo[1] == "saber" {
-            endung = presenteSubSaber[numberInArray]
-            aim = endung
+            aim = presenteSubSaber[numberInArray]
         } else if verbo[1] == "poder" {
-            endung = presenteSubPoder[numberInArray]
-            aim = endung
+            aim = presenteSubPoder[numberInArray]
         } else if verbo[1] == "perder" {
-            endung = presenteSubPerder[numberInArray]
-            aim = endung
+            aim = presenteSubPerder[numberInArray]
         } else if verbo[1] == "querer" {
-            endung = presenteSubQuerer[numberInArray]
-            aim = endung
+            aim = presenteSubQuerer[numberInArray]
         } else if verbo[1] == "por" {
-            endung = presenteSubPor[numberInArray]
-            aim = endung
+            aim = presenteSubPor[numberInArray]
         } else if verbo[1] == "oir" {
             stamm = String(verbo[0].prefix(1))
-            endung = presenteSubOir[numberInArray]
-            aim = stamm + endung
+            aim = stamm + presenteSubOir[numberInArray]
         }
     } else if caso == "Perfeito Simples Subjuntivo" {
         hilfsverb  = perfeitoSubHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
-            endung = participioDizer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioDizer
         } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
-            endung = participioAr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioAr
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[0] == "abrir" {
-            endung = participioAbrir
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioAbrir
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
-            endung = participioIr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioIr
         } else if verbo[1] == "ser" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "vir" {
-            endung = participioVir
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioVir
         } else if verbo[1] == "ver" {
-            endung = participioVer
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioVer
         } else if verbo[1] == "fazer" {
-            endung = participioFazer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioFazer
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(4))
-            endung = stamm + participioEr
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "por" {
-            endung = participioPor
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioPor
         }
     } else if caso == "Imperfeito Subjuntivo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "ear" {
-            endung = imperfeitoSubAr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + imperfeitoSubAr[numberInArray]
         } else if verbo[1] == "er" || verbo[1] == "ler"  || verbo[1] == "perder" {
-            endung = imperfeitoSubEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + imperfeitoSubEr[numberInArray]
         } else if verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir" {
-            endung = imperfeitoSubIr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + imperfeitoSubIr[numberInArray]
         } else if verbo[1] == "ser" {
-            endung = imperfeitoSubSer[numberInArray]
-            aim = endung
+            aim = imperfeitoSubSer[numberInArray]
         } else if verbo[1] == "estar" {
-            endung = imperfeitoSubEstar[numberInArray]
-            aim = endung
+            aim = imperfeitoSubEstar[numberInArray]
         } else if verbo[1] == "ira" {
-            endung = imperfeitoSubIra[numberInArray]
-            aim = endung
+            aim = imperfeitoSubIra[numberInArray]
         } else if verbo[1] == "vir" {
-            endung = imperfeitoSubVir[numberInArray]
-            aim = endung
+            aim = imperfeitoSubVir[numberInArray]
         } else if verbo[1] == "ter" {
-            endung = imperfeitoSubTer[numberInArray]
-            aim = endung
+            aim = imperfeitoSubTer[numberInArray]
         } else if verbo[1] == "fazer" {
-            endung = imperfeitoSubFazer[numberInArray]
-            aim = endung
+            aim = imperfeitoSubFazer[numberInArray]
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(3))
-            endung = imperfeitoSubIzer[numberInArray]
-            aim = stamm + endung
+            aim = stamm + imperfeitoSubIzer[numberInArray]
         } else if verbo[1] == "trazer" {
-            endung = imperfeitoSubTrazer[numberInArray]
-            aim = endung
+            aim = imperfeitoSubTrazer[numberInArray]
         } else if verbo[1] == "saber" {
-            endung = imperfeitoSubSaber[numberInArray]
-            aim = endung
+            aim = imperfeitoSubSaber[numberInArray]
         } else if verbo[1] == "poder" {
-            endung = imperfeitoSubPoder[numberInArray]
-            aim = endung
+            aim = imperfeitoSubPoder[numberInArray]
         } else if verbo[1] == "querer" {
-            endung = imperfeitoSubQuerer[numberInArray]
-            aim = endung
+            aim = imperfeitoSubQuerer[numberInArray]
         } else if verbo[1] == "por" {
-            endung = imperfeitoSubPor[numberInArray]
-            aim = endung
+            aim = imperfeitoSubPor[numberInArray]
         }
     } else if caso == "Pretérito Mais-que-Perfeito Subjuntivo"{
         hilfsverb  = pmqpCompSubHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
-            endung = participioDizer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioDizer
         } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
-            endung = participioAr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioAr
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[0] == "abrir" {
-            endung = participioAbrir
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioAbrir
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
-            endung = participioIr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioIr
         } else if verbo[1] == "ser" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "vir" {
-            endung = participioVir
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioVir
         } else if verbo[1] == "ver" {
-            endung = participioVer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioVer
         } else if verbo[1] == "fazer" {
-            endung = participioFazer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioFazer
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(4))
-            endung = stamm + participioEr
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "por" {
-            endung = participioPor
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioPor
         }
     } else if caso == "Futuro Simples Subjuntivo" {
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "ear" {
-            endung = futuroSubAr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + futuroSubAr[numberInArray]
         } else if verbo[1] == "er" || verbo[1] == "ler"  || verbo[1] == "perder" {
-            endung = futuroSubEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + futuroSubEr[numberInArray]
         } else if verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir" {
-            endung = futuroSubIr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + futuroSubIr[numberInArray]
         } else if verbo[1] == "ser" {
-            endung = futuroSubSer[numberInArray]
-            aim = endung
+            aim = futuroSubSer[numberInArray]
         } else if verbo[1] == "estar" {
-            endung = futuroSubEstar[numberInArray]
-            aim = endung
+            aim = futuroSubEstar[numberInArray]
         } else if verbo[1] == "ira" {
-            endung = futuroSubIra[numberInArray]
-            aim = endung
+            aim = futuroSubIra[numberInArray]
         }  else if verbo[1] == "vir" {
-            endung = futuroSubVir[numberInArray]
-            aim = endung
+            aim = futuroSubVir[numberInArray]
         } else if verbo[1] == "ter" {
-            endung = futuroSubTer[numberInArray]
-            aim = endung
+            aim = futuroSubTer[numberInArray]
         } else if verbo[1] == "fazer" {
-            endung = futuroSubFazer[numberInArray]
-            aim = endung
+            aim = futuroSubFazer[numberInArray]
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(3))
-            endung = futuroSubIzer[numberInArray]
-            aim = stamm + endung
+            aim = stamm + futuroSubIzer[numberInArray]
         } else if verbo[1] == "trazer" {
-            endung = futuroSubTrazer[numberInArray]
-            aim = endung
+            aim = futuroSubTrazer[numberInArray]
         } else if verbo[1] == "saber" {
-            endung = futuroSubSaber[numberInArray]
-            aim = endung
+            aim = futuroSubSaber[numberInArray]
         } else if verbo[1] == "poder" {
-            endung = futuroSubPoder[numberInArray]
-            aim = endung
+            aim = futuroSubPoder[numberInArray]
         } else if verbo[1] == "querer" {
-            endung = futuroSubQuerer[numberInArray]
-            aim = endung
+            aim = futuroSubQuerer[numberInArray]
         } else if verbo[1] == "por" {
-            endung = futuroSubPor[numberInArray]
-            aim = endung
+            aim = futuroSubPor[numberInArray]
         }
     } else if caso == "Futuro Composto Subjuntivo" {
         hilfsverb  = futuroCompSubHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
-            endung = participioDizer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioDizer
         } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
-            endung = participioAr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioAr
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[0] == "abrir" {
-            endung = participioAbrir
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioAbrir
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
-            endung = participioIr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioIr
         } else if verbo[1] == "ser" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "vir" {
-            endung = participioVir
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioVir
         } else if verbo[1] == "ver" {
-            endung = participioVer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioVer
         } else if verbo[1] == "fazer" {
-            endung = participioFazer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioFazer
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(4))
-            endung = stamm + participioEr
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "por" {
-            endung = participioPor
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioPor
         }
     } else if caso == "Futuro do Préterito (Condicional I)"{
         stamm = String(verbo[0].dropLast(2))
         if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
-            endung = condicionalIAr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + condicionalIAr[numberInArray]
         } else if verbo[1] == "er" || verbo[1] == "ver"  || verbo[1] == "ter" || verbo[1] == "ler" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = condicionalIEr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + condicionalIEr[numberInArray]
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "oir" {
-            endung = condicionalIIr[numberInArray]
-            aim = stamm + endung
+            aim = stamm + condicionalIIr[numberInArray]
         } else if verbo[1] == "ser" {
-            endung = condicionalIEr[numberInArray]
-            aim = endung
+            aim = condicionalIEr[numberInArray]
         } else if verbo[1] == "vir" {
-            endung = condicionalIVir[numberInArray]
-            aim = endung
+            aim = condicionalIVir[numberInArray]
         } else if verbo[1] == "fazer" {
-            endung = condicionalIFazer[numberInArray]
-            aim = endung
+            aim = condicionalIFazer[numberInArray]
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(3))
-            endung = condicionalIIzer[numberInArray]
-            aim = stamm + endung
+            aim = stamm + condicionalIIzer[numberInArray]
         } else if verbo[1] == "por" {
-            endung = condicionalIPor[numberInArray]
-            aim = endung
+            aim = condicionalIPor[numberInArray]
         }
     } else if caso == "Futuro do Préterito Composto (Condicional II)"{
         hilfsverb  = condIIHv[numberInArray]
         stamm = String(verbo[0].dropLast(2))
         if verbo[0] == "dizer" {
-            endung = participioDizer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioDizer
         } else if verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar" {
-            endung = participioAr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioAr
         } else if verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "perder" || verbo[1] == "querer" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[0] == "abrir" {
-            endung = participioAbrir
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioAbrir
         } else if verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir" {
-            endung = participioIr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioIr
         } else if verbo[1] == "ser" {
-            endung = participioEr
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "vir" {
-            endung = participioVir
-            aim = hilfsverb + " " + stamm + endung
+            aim = hilfsverb + " " + stamm + participioVir
         } else if verbo[1] == "ver" {
-            endung = participioVer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioVer
         } else if verbo[1] == "fazer" {
-            endung = participioFazer
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioFazer
         } else if verbo[1] == "izer" {
             stamm = String(verbo[0].dropLast(4))
-            endung = stamm + participioEr
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + stamm + participioEr
         } else if verbo[1] == "por" {
-            endung = participioPor
-            aim = hilfsverb + " " + endung
+            aim = hilfsverb + " " + participioPor
         }
     }
 
     stamm = "";
-    endung = "";
     hilfsverb = "";
     numberInArray = 0;
     
