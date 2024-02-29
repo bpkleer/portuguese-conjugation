@@ -598,6 +598,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubEr = ["a", "a", "a", "amos", "am", "am"]
     let presenteSubIr = ["a", "a", "a", "amos", "am", "am"]
     let presenteSubEar = ["ie", "ie" , "ie", "emos", "iem", "iem"]
+    let presenteSubSentir = ["sinta", "sinta", "sinta", "sintamos", "sintam", "sintam"]
     let presenteSubSer = ["seja", "seja", "seja", "sejamos", "sejam", "sejam"]
     let presenteSubEstar = ["esteja", "esteja", "esteja", "estejamos", "estejam", "estejam"]
     let presenteSubIra = ["vá", "vá", "vá", "vamos", "vão", "vão"]
@@ -917,6 +918,8 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         if verbo[0] == "conhecer" || verbo[0]=="acontecer" {
             stamm = String(verbo[0].dropLast(3))
             aim = stamm + presenteSubConhecer[numberInArray]
+        } else if verbo[0] == "sentir" {
+            aim = presenteSubSentir[numberInArray]
         } else if verbo[0] == "desagradecer" {
             aim = presenteSubDesagradecer[numberInArray]
         } else if verbo[0] == "pagar" {
