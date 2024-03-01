@@ -551,7 +551,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let imperfeitoEr = ["ia", "ia", "ia", "íamos", "iam", "iam"]
     let imperfeitoIr = ["ia", "ia", "ia", "íamos", "iam", "iam"]
     let imperfeitoSer = ["era", "era", "era", "éramos", "eram", "eram"]
-    let imperfeitoVir = ["vinha", "vinha", "vinha", "vinhamos", "vinham", "vinham"]
+    let imperfeitoVir = ["vinha", "vinha", "vinha", "vínhamos", "vinham", "vinham"]
     let imperfeitoTer = ["tinha", "tinha", "tinha", "tínhamos", "tinham", "tinham"]
     let imperfeitoPor = ["punha", "punha", "punha", "púnhamos", "punham", "punham"]
     
