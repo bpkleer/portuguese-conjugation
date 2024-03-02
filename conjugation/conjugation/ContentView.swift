@@ -677,7 +677,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "ar" {
             aim = stamm + presenteAr[numberInArray]
         } else if verbo[1] == "ear" {
-            aim = stamm + presenteEar[numberInArray]
+            aim = stamm + presenteEarf[numberInArray]
         } else if verbo[1] == "er" {
             aim = stamm + presenteEr[numberInArray]
         } else if verbo[1] == "ir" {
