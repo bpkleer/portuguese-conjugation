@@ -172,17 +172,44 @@ struct ContentView: View {
                             isTextFocused = false
                         } .disabled(tipp == "")
                             .alert(isPresented:$showingAlert) {
-                                Alert(
-                                    title: Text(message),
-                                    dismissButton: .default(Text("Okay")) {
-                                        person = setPerson()
-                                        sing = setAnzahl()
-                                        tempus = setTempus()
-                                        verbHilfe = setVerb()
-                                        verb = verbHilfe[0]
-                                        tipp = ""
-                                    }
-                                )
+                                if (ergebnis == false) {
+                                    Alert(
+                                        title: Text(message),
+                                        primaryButton:.cancel(Text("Joia!")) {
+                                            person = setPerson()
+                                            sing = setAnzahl()
+                                            tempus = setTempus()
+                                            verbHilfe = setVerb()
+                                            verb = verbHilfe[0]
+                                            tipp = ""
+                                        },
+                                        secondaryButton:
+                                            .default(Text("Erro de digitação! 🤦🏽‍♂️")) {
+                                                    correto = correto + 1
+                                                    if (falso > 0 ) {
+                                                        falso = falso - 1
+                                                    }
+                                                    person = setPerson()
+                                                    sing = setAnzahl()
+                                                    tempus = setTempus()
+                                                    verbHilfe = setVerb()
+                                                    verb = verbHilfe[0]
+                                                    tipp = ""
+                                                }
+                                    )
+                                } else {
+                                    Alert(
+                                        title: Text(message),
+                                        dismissButton: .default(Text("Okay")) {
+                                            person = setPerson()
+                                            sing = setAnzahl()
+                                            tempus = setTempus()
+                                            verbHilfe = setVerb()
+                                            verb = verbHilfe[0]
+                                            tipp = ""
+                                        }
+                                    )
+                                }
                             }
                             .font(.title)
                             .foregroundColor(Color("style"))
@@ -677,7 +704,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if verbo[1] == "ar" {
             aim = stamm + presenteAr[numberInArray]
         } else if verbo[1] == "ear" {
-            aim = stamm + presenteEarf[numberInArray]
+            aim = stamm + presenteEar[numberInArray]
         } else if verbo[1] == "er" {
             aim = stamm + presenteEr[numberInArray]
         } else if verbo[1] == "ir" {
