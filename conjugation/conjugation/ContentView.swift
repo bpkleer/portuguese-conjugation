@@ -175,7 +175,7 @@ struct ContentView: View {
                                 if (ergebnis == false) {
                                     Alert(
                                         title: Text(message),
-                                        primaryButton:.cancel(Text("Joia!")) {
+                                        primaryButton:.default(Text("Que pena! ☹️")) {
                                             person = setPerson()
                                             sing = setAnzahl()
                                             tempus = setTempus()
@@ -184,7 +184,7 @@ struct ContentView: View {
                                             tipp = ""
                                         },
                                         secondaryButton:
-                                            .default(Text("Erro de digitação! 🤦🏽‍♂️")) {
+                                            .destructive(Text("Erro de digitação! 🤦🏽‍♂️")) {
                                                     correto = correto + 1
                                                     if (falso > 0 ) {
                                                         falso = falso - 1
@@ -200,7 +200,7 @@ struct ContentView: View {
                                 } else {
                                     Alert(
                                         title: Text(message),
-                                        dismissButton: .default(Text("Okay")) {
+                                        dismissButton: .cancel(Text("Joia! 👍🏾")) {
                                             person = setPerson()
                                             sing = setAnzahl()
                                             tempus = setTempus()
