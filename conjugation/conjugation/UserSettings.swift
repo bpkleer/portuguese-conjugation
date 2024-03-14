@@ -1,14 +1,13 @@
-//
-//  UserSettings.swift
-//  conjugation
-//
-//  Created by Philipp Kleer on 04.06.21.
-//
-
 import Foundation
 import Combine
 
 class UserSettings: ObservableObject {
+    @Published var isTu: Bool {
+        didSet{
+            UserDefaults.standard.set(isTu, forKey: "isTu")
+        }
+    }
+    
     @Published var irregulares: Bool {
         didSet{
             UserDefaults.standard.set(irregulares, forKey: "irregulares")
@@ -124,7 +123,7 @@ class UserSettings: ObservableObject {
         self.isCondicionalII = UserDefaults.standard.object(forKey: "isCondicionalII") as? Bool ?? false
         self.irregulares = UserDefaults.standard.object(forKey: "irregulares") as? Bool ?? true
         self.regulares = UserDefaults.standard.object(forKey: "regulares") as? Bool ?? true
-
+        self.isTu = UserDefaults.standard.object(forKey: "isTu") as? Bool ?? true
     }
 }
 

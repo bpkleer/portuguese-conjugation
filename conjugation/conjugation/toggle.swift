@@ -1,10 +1,3 @@
-//
-//  toggle.swift
-//  conjugation
-//
-//  Created by Philipp Kleer on 03.06.21.
-//
-
 import SwiftUI
 
 
@@ -13,9 +6,17 @@ struct ToggleStates: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            Text("Escolhe os verbos e as conjugações!")
+            Text("Opcões")
                 .font(.title2)
                 .foregroundColor(Color("style"))
+            
+            Toggle(isOn: $userSettings.isTu, label: {
+                Text("Tu e Vocês?")
+                    .font(.subheadline)
+            })
+            .padding(.horizontal, 15.0)
+            .tint(Color("style"))
+            .foregroundColor(Color("style"))
             
             VStack (spacing: 7.5) {
                 Text("Verbos")
@@ -187,8 +188,6 @@ struct ToggleStates: View {
     }
     
     //methods
-    
-    
     func atLeastOneTempus() {
         if self.userSettings.isPresenteInd == false && self.userSettings.isPerfeitoInd == false && self.userSettings.isImperfeitoInd == false && self.userSettings.isPerfeitoCompInd == false && self.userSettings.isPMQPInd == false && self.userSettings.isPMQPCompInd == false && self.userSettings.isFuturoIInd == false && self.userSettings.isFuturoIIInd == false && self.userSettings.isPresenteSub == false && self.userSettings.isPerfeitoSub == false && self.userSettings.isImperfeitoSub == false && self.userSettings.isPMQPSub == false && self.userSettings.isFuturoISub == false && self.userSettings.isFuturoIISub == false && self.userSettings.isCondicionalI == false && self.userSettings.isCondicionalII == false {
             self.userSettings.isPresenteInd = true

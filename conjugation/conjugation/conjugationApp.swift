@@ -1,10 +1,3 @@
-//
-//  conjugationApp.swift
-//  conjugation
-//
-//  Created by Philipp Kleer on 31.05.21.
-//
-
 import SwiftUI
 
 @main

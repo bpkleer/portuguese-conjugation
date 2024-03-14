@@ -1,7 +1,3 @@
-// Portuguese Conjugation app (just a start)
-// Created by Philipp Kleer, last changes 2024-03-13
-// CC-BY-NC 4.0
-
 import SwiftUI
 
 @available(iOS 16.0, *)
@@ -43,8 +39,8 @@ struct ContentView: View {
     @EnvironmentObject var userSettings: UserSettings
     @FocusState private var isTextFocused: Bool
     // Person variable
-    // second person excluded, because not important in português do Brasil
-    let personArray = [1, 3]
+    // second person excluded, because not important in português do Brasil (default, can be changed by toggle)
+    @State private var personArray: Array<Int> = [1, 3]
     
     // Singular or Plural Variable
     let numerusArray = ["Singular", "Plural"]
@@ -227,6 +223,11 @@ struct ContentView: View {
     //Methods
     // get the person for conjugation
     func setPerson() -> (Int) {
+        if (self.userSettings.isTu == true) {
+            personArray = [1, 2, 3]
+        } else {
+            personArray = [1, 3]
+        }
         let hilfePerson = personArray.randomElement()!
         return(hilfePerson)
     }
@@ -240,170 +241,170 @@ struct ContentView: View {
     
     // get tempus for conjugation
     func setTense() -> (String) {
-        if self.userSettings.isPresenteInd == false {
-            if allTense.contains("Presente Indicativo") {
+        if (self.userSettings.isPresenteInd == false) {
+            if (allTense.contains("Presente Indicativo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Presente Indicativo")!)
             }
         }
-        if self.userSettings.isPresenteInd == true {
+        if (self.userSettings.isPresenteInd == true) {
             if !(allTense.contains("Presente Indicativo")) {
                 allTense.append("Presente Indicativo")
             }
         }
-        if self.userSettings.isPerfeitoInd == false {
-            if allTense.contains("Pretérito Perfeito Simples Indivativo") {
+        if (self.userSettings.isPerfeitoInd == false) {
+            if (allTense.contains("Pretérito Perfeito Simples Indivativo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Pretérito Perfeito Simples Indivativo")!)
             }
         }
-        if self.userSettings.isPerfeitoInd == true {
+        if (self.userSettings.isPerfeitoInd == true) {
             if !(allTense.contains("Pretérito Perfeito Simples Indivativo")) {
                 allTense.append("Pretérito Perfeito Simples Indivativo")
             }
         }
-        if self.userSettings.isImperfeitoInd == false {
-            if allTense.contains("Pretérito Imperfeito Indicativo") {
+        if (self.userSettings.isImperfeitoInd == false) {
+            if (allTense.contains("Pretérito Imperfeito Indicativo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Pretérito Imperfeito Indicativo")!)
             }
         }
-        if self.userSettings.isImperfeitoInd == true{
+        if (self.userSettings.isImperfeitoInd == true) {
             if !(allTense.contains("Pretérito Imperfeito Indicativo")) {
                 allTense.append("Pretérito Imperfeito Indicativo")
             }
         }
-        if self.userSettings.isPerfeitoCompInd == false {
-            if allTense.contains("Perfeito Composto Indicativo") {
+        if (self.userSettings.isPerfeitoCompInd == false) {
+            if (allTense.contains("Perfeito Composto Indicativo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Perfeito Composto Indicativo")!)
             }
         }
-        if self.userSettings.isPerfeitoCompInd == true {
+        if (self.userSettings.isPerfeitoCompInd == true) {
             if !(allTense.contains("Perfeito Composto Indicativo")) {
                 allTense.append("Perfeito Composto Indicativo")
             }
         }
-        if self.userSettings.isPMQPCompInd == false {
-            if allTense.contains("Pretérito Mais-que-Perfeito Composto Indicativo") {           
+        if (self.userSettings.isPMQPCompInd == false) {
+            if (allTense.contains("Pretérito Mais-que-Perfeito Composto Indicativo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Pretérito Mais-que-Perfeito Composto Indicativo")!)
             }
         }
-        if self.userSettings.isPMQPCompInd == true {
-            if !(allTense.contains("Pretérito Mais-que-Perfeito Composto Indicativo")) {          
+        if (self.userSettings.isPMQPCompInd == true) {
+            if !(allTense.contains("Pretérito Mais-que-Perfeito Composto Indicativo")) {
                 allTense.append("Pretérito Mais-que-Perfeito Composto Indicativo")
             }
         }
-        if self.userSettings.isPMQPInd == false {
-            if allTense.contains("Pretérito Mais-que-Perfeito Indicativo") {
+        if (self.userSettings.isPMQPInd == false) {
+            if (allTense.contains("Pretérito Mais-que-Perfeito Indicativo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Pretérito Mais-que-Perfeito Indicativo")!)
             }
         }
-        if self.userSettings.isPMQPInd == true {
+        if (self.userSettings.isPMQPInd == true) {
             if !(allTense.contains("Pretérito Mais-que-Perfeito Indicativo")) {
                 allTense.append("Pretérito Mais-que-Perfeito Indicativo")
             }
         }
-        if self.userSettings.isFuturoIInd == false {
-            if allTense.contains("Futuro Simples Indicativo") {
+        if (self.userSettings.isFuturoIInd == false) {
+            if (allTense.contains("Futuro Simples Indicativo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Futuro Simples Indicativo")!)
             }
         }
-        if self.userSettings.isFuturoIInd == true {
+        if (self.userSettings.isFuturoIInd == true) {
             if !(allTense.contains("Futuro Simples Indicativo")) {
                 allTense.append("Futuro Simples Indicativo")
             }
         }
-        if self.userSettings.isFuturoIIInd == false {
-            if allTense.contains("Futuro Composto Indicativo") {
+        if (self.userSettings.isFuturoIIInd == false) {
+            if (allTense.contains("Futuro Composto Indicativo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Futuro Composto Indicativo")!)
             }
         }
-        if userSettings.isFuturoIIInd == true {
+        if (userSettings.isFuturoIIInd == true) {
             if !(allTense.contains("Futuro Composto Indicativo")) {
                 allTense.append("Futuro Composto Indicativo")
             }
         }
-        if self.userSettings.isPresenteSub == false {
-            if allTense.contains("Presente Subjuntivo") {
+        if (self.userSettings.isPresenteSub == false) {
+            if (allTense.contains("Presente Subjuntivo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Presente Subjuntivo")!)
             }
         }
-        if self.userSettings.isPresenteSub == true {
+        if (self.userSettings.isPresenteSub == true) {
             if !(allTense.contains("Presente Subjuntivo")) {
                 allTense.append("Presente Subjuntivo")
             }
         }
-        if self.userSettings.isPerfeitoSub == false {
-            if allTense.contains("Pretérito Perfeito Simples Subjuntivo") {
+        if (self.userSettings.isPerfeitoSub == false) {
+            if (allTense.contains("Pretérito Perfeito Simples Subjuntivo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Pretérito Perfeito Simples Subjuntivo")!)
             }
         }
-        if self.userSettings.isPerfeitoSub == true {
+        if (self.userSettings.isPerfeitoSub == true) {
             if !(allTense.contains("Pretérito Perfeito Simples Subjuntivo")) {
                 allTense.append("Pretérito Perfeito Simples Subjuntivo")
             }
         }
-        if self.userSettings.isImperfeitoSub == false {
-            if allTense.contains("Pretérito Imperfeito Subjuntivo") {
+        if (self.userSettings.isImperfeitoSub == false) {
+            if (allTense.contains("Pretérito Imperfeito Subjuntivo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Pretérito Imperfeito Subjuntivo")!)
             }
         }
-        if self.userSettings.isImperfeitoSub == true {
+        if (self.userSettings.isImperfeitoSub == true) {
             if !(allTense.contains("Pretérito Imperfeito Subjuntivo")) {
                 allTense.append("Pretérito Imperfeito Subjuntivo")
             }
         }
-        if self.userSettings.isPMQPSub == false {
-            if allTense.contains("Pretérito Mais-que-Perfeito Subjuntivo") {
+        if (self.userSettings.isPMQPSub == false) {
+            if (allTense.contains("Pretérito Mais-que-Perfeito Subjuntivo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Pretérito Mais-que-Perfeito Subjuntivo")!)
             }
         }
-        if self.userSettings.isPMQPSub == true {
+        if (self.userSettings.isPMQPSub == true) {
             if !(allTense.contains("Pretérito Mais-que-Perfeito Subjuntivo")) {
                 allTense.append("Pretérito Mais-que-Perfeito Subjuntivo")
             }
         }
-        if self.userSettings.isFuturoISub == false {
-            if allTense.contains("Futuro Simples Subjuntivo") {
+        if (self.userSettings.isFuturoISub == false) {
+            if (allTense.contains("Futuro Simples Subjuntivo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Futuro Simples Subjuntivo")!)
             }
         }
-        if self.userSettings.isFuturoISub == true {
+        if (self.userSettings.isFuturoISub == true) {
             if !(allTense.contains("Futuro Simples Subjuntivo")) {
                 allTense.append("Futuro Simples Subjuntivo")
             }
         }
-        if self.userSettings.isFuturoIISub == false {
-            if allTense.contains("Futuro Composto Subjuntivo") {
+        if (self.userSettings.isFuturoIISub == false) {
+            if (allTense.contains("Futuro Composto Subjuntivo")) {
                 allTense.remove(at: allTense.firstIndex(of: "Futuro Composto Subjuntivo")!)
             }
         }
-        if self.userSettings.isFuturoIISub == true {
+        if (self.userSettings.isFuturoIISub == true) {
             if !(allTense.contains("Futuro Composto Subjuntivo")) {
                 allTense.append("Futuro Composto Subjuntivo")
             }
         }
-        if self.userSettings.isCondicionalI == false {
-            if allTense.contains("Futuro do Préterito (Condicional I)") {
+        if (self.userSettings.isCondicionalI == false) {
+            if (allTense.contains("Futuro do Préterito (Condicional I)")) {
                 allTense.remove(at: allTense.firstIndex(of: "Futuro do Préterito (Condicional I)")!)
             }
         }
-        if self.userSettings.isCondicionalI == true {
+        if (self.userSettings.isCondicionalI == true) {
             if !(allTense.contains("Futuro do Préterito (Condicional I)")) {
                 allTense.append("Futuro do Préterito (Condicional I)")
             }
         }
-        if self.userSettings.isCondicionalII == false {
-            if allTense.contains("Futuro do Préterito Composto (Condicional II)") {
+        if (self.userSettings.isCondicionalII == false) {
+            if (allTense.contains("Futuro do Préterito Composto (Condicional II)")) {
                 allTense.remove(at: allTense.firstIndex(of: "Futuro do Préterito Composto (Condicional II)")!)
             }
         }
-        if self.userSettings.isCondicionalII == true {
+        if (self.userSettings.isCondicionalII == true) {
             if !(allTense.contains("Futuro do Préterito Composto (Condicional II)")) {
                 allTense.append("Futuro do Préterito Composto (Condicional II)")
             }
         }
         
         // if more than 3 tenses, it will control that one tense does not get repeated too fast (check of last three)
-        if allTense.count > 3 {
-            if lastCase == ["", "", ""] {
+        if (allTense.count > 3) {
+            if (lastCase == ["", "", ""]) {
                 trainTense = allTense.randomElement()!
                 lastCase[0] = trainTense
                 countCase = countCase + 1
@@ -414,14 +415,14 @@ struct ContentView: View {
                 
                 countCase = countCase + 1
                 
-                if countCase > 3 {
+                if (countCase > 3) {
                     countCase = 0
                     lastCase[0] = trainTense
-                } else if countCase == 3 {
+                } else if (countCase == 3) {
                     lastCase[2] = trainTense
-                } else if countCase == 2 {
+                } else if (countCase == 2) {
                     lastCase[1] = trainTense
-                } else if countCase == 1 {
+                } else if (countCase == 1) {
                     lastCase[0] = trainTense
                 }
                 
@@ -434,10 +435,10 @@ struct ContentView: View {
     
     // function to set verb array
     func setVerbArray(irregular: [[String]], regular: [[String]]) -> ([[String]]) {
-        if userSettings.irregulares == true && userSettings.regulares == false {
+        if (userSettings.irregulares == true && userSettings.regulares == false) {
             let verbHilfeArray = irregular
             return(verbHilfeArray)
-        } else if userSettings.irregulares == false && userSettings.regulares == true {
+        } else if (userSettings.irregulares == false && userSettings.regulares == true) {
             let verbHilfeArray = regular
             return(verbHilfeArray)
         } else {
@@ -448,12 +449,11 @@ struct ContentView: View {
     
     // get verb for conjugation
     func setVerb() -> (Array<String>) {
-    
-        if userSettings.irregulares == false && userSettings.regulares == true {
+        if (userSettings.irregulares == false && userSettings.regulares == true) {
                 let zufallsZahl = Int.random(in: 0...verbArray.count - 1)
                 let hilfeVerb = verbArray[zufallsZahl]
                 return (hilfeVerb)
-        } else if userSettings.irregulares == true && userSettings.regulares == false {
+        } else if (userSettings.irregulares == true && userSettings.regulares == false) {
                 let zufallsZahl = Int.random(in: 0...verbIrrArray.count - 1)
                 let hilfeVerb = verbIrrArray[zufallsZahl]
             return (hilfeVerb)
@@ -569,12 +569,13 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteSubIra = ["vá", "vás", "vá", "vamos", "vades", "vão"]
     
     // Pretérito Pretérito Imperfeito Subjuntivo
-    // special case 1. plural is solved by extra arrays
-    let imperfeitoSub = ["sse", "sse", "sse", "---", "ssem", "ssem"]
-    let imperfeitoSubAr = ["---", "---", "---", "ássemos", "---", "---"]
-    let imperfeitoSubEr = ["---", "---", "---", "éssemos", "---", "---"]
-    let imperfeitoSubIr = ["---", "---", "---", "íssemos", "---", "---"]
-    let imperfeitoSubSer = ["---", "---", "---", "ôssemos", "---", "---"]
+    let imperfeitoSub = ["sse", "sses", "sse", "---", "---", "ssem"]
+    let imperfeitoSubAr = ["---", "---", "---", "ássemos", "ásseis", "---"]
+    let imperfeitoSubEr = ["---", "---", "---", "êssemos", "êsseis", "---"]
+    // irregulares ending on -er like vir, fazer, ter, estiver, trazer, saber, poder, querer, pôr, dizer
+    let imperfeitoSubEr2 = ["---", "---", "---", "éssemos", "ésseis", "---"]
+    let imperfeitoSubIr = ["---", "---", "---", "íssemos", "ísseis", "---"]
+    let imperfeitoSubSer = ["---", "---", "---", "ôssemos", "ôsseis", "---"]
 
     // Futuro Subjuntivo
     let futuroSub = ["", "", "", "mos", "des", "em"]
@@ -872,18 +873,13 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             ziel = hilfsverb + " " + participioPor
         }
     } else if caso == "Pretérito Imperfeito Subjuntivo" {
-        if (nummerInArray == 3) {
+        if (nummerInArray == 3 || nummerInArray == 4) {
             hilfsverbPerfeito = buildPerfeitoHelper(entrada: verbo, cair: 4)
             if (verbo[1] == "ar" || verbo[1] == "ear") {
                 // case ássemos
                 ziel = hilfsverbPerfeito + imperfeitoSubAr[nummerInArray]
-            } else if (
-                verbo[1] == "er" || verbo[1] == "ler"  || verbo[1] == "estar"
-                ||  verbo[1] == "vir" || verbo[1] == "ter" || verbo[1] == "fazer" || verbo[1] == "dizer"
-                || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder" || verbo[1] == "querer"
-                || verbo[1] == "por"
-            ) {
-                // case éssemos
+            } else if (verbo[1] == "er" || verbo[1] == "ler") {
+                // case êssemos
                 ziel = hilfsverbPerfeito + imperfeitoSubEr[nummerInArray]
                 
             } else if (verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir") {
@@ -892,6 +888,13 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             } else if (verbo[1] == "ser" || verbo[1] == "ira") {
                 // case óssemos
                 ziel = hilfsverbPerfeito + imperfeitoSubSer[nummerInArray]
+            }  else if (
+                verbo[1] == "estar" || verbo[1] == "vir" || verbo[1] == "ter" || verbo[1] == "fazer"
+                || verbo[1] == "dizer" || verbo[1] == "trazer" || verbo[1] == "saber"
+                || verbo[1] == "poder" || verbo[1] == "querer" || verbo[1] == "por"
+            ) {
+                // case éssemos
+                ziel = hilfsverbPerfeito + imperfeitoSubEr2[nummerInArray]
             }
         } else {
             hilfsverbPerfeito = buildPerfeitoHelper(entrada: verbo, cair: 3)
