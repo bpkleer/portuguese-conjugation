@@ -293,7 +293,7 @@
 				DEVELOPMENT_TEAM = 76YVJ2LNXM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = conjugation/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Conjugação";
+				INFOPLIST_KEY_CFBundleDisplayName = Conjugador;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -305,9 +305,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -321,7 +322,7 @@
 				DEVELOPMENT_TEAM = 76YVJ2LNXM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = conjugation/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Conjugação";
+				INFOPLIST_KEY_CFBundleDisplayName = Conjugador;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,9 +334,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
