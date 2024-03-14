@@ -66,7 +66,7 @@ struct ToggleStates: View {
                 .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isImperfeitoInd, label: {
-                    Text("Imperfeito Indicativo")
+                    Text("Pretérito Imperfeito Indicativo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
@@ -124,7 +124,7 @@ struct ToggleStates: View {
                 .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isPerfeitoSub, label: {
-                    Text("Perfeito Simples Subjuntivo")
+                    Text("Pretérito Perfeito Simples Subjuntivo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
@@ -132,7 +132,7 @@ struct ToggleStates: View {
                 .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isImperfeitoSub, label: {
-                    Text("Imperfeito Subjuntivo")
+                    Text("Pretérito Imperfeito Subjuntivo")
                         .font(.subheadline)
                 })
                 .padding(/*@START_MENU_TOKEN@*/.horizontal, 15.0/*@END_MENU_TOKEN@*/)
