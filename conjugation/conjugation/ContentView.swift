@@ -517,7 +517,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteConhecer = ["ço", "ces", "ce", "cemos", "ceis", "cem"]
     
     // Pretérito Perfeito Indicativo
-    let perfeitoAr = ["ei", "aste", "ou", "ámos", "astes", "aram"]
+    let perfeitoAr = ["ei", "aste", "ou", "amos", "astes", "aram"]
     let perfeitoEr = ["i", "este", "eu", "emos", "estes", "eram"]
     let perfeitoIr = ["i", "iste", "iu", "imos", "istes", "iram"]
     let perfeitoSer = ["fui", "foste", "foi", "fomos", "fostes", "foram"]
