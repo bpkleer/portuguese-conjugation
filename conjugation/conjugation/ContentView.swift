@@ -814,6 +814,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             ziel = hilfsverb + " " + participioPor
         }
     } else if caso == "Presente Subjuntivo" {
+        stamm = buildPresenteHelper(entrada: verbo, cair: 1)
         if (verbo[1] == "ar") {
             if (verbo[0] == "pagar") {
                 stamm = buildPresenteHelper(entrada: verbo, cair: 1) + "u"
@@ -822,7 +823,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
                 stamm = buildPresenteHelper(entrada: verbo, cair: 2) + "qu"
                 ziel = stamm + presenteSubAr[nummerInArray]
             } else {
-                stamm = buildPresenteHelper(entrada: verbo, cair: 1)
                 ziel = stamm + presenteSubAr[nummerInArray]
             }
         } else if (
@@ -837,7 +837,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
                 stamm = buildPresenteHelper(entrada: verbo, cair: 2) + "ir"
                 ziel = stamm + presenteSubErIr[nummerInArray]
             } else {
-                stamm = buildPresenteHelper(entrada: verbo, cair: 1)
                 ziel = stamm + presenteSubErIr[nummerInArray]
             }
         } else if (verbo[1] == "ear") {
