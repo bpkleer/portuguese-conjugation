@@ -46,9 +46,9 @@ struct ContentView: View {
     let numerusArray = ["Singular", "Plural"]
     
     // verbs
-    let verbArray = [["comprar", "ar", "kaufen"], ["vender", "er", "verkaufen"], ["dividir", "ir", "teilen, aufteilen"], ["ler", "ler", "lesen"], ["levar", "ar", "bringen, mitnehmen"], ["dormir", "oir", "schlafen"], ["conhecer", "er", "kennen, kennenlernen"], ["pagar", "ar", "bezahlen"], ["atravessar", "ar", "überqueren, durchqueren"], ["assistir", "ir", "zuschauen, sehen, helfen"], ["decidir", "ir", "entscheiden, beschließen"], ["sentir", "ir", "fühlen, empfinden"], ["abrir", "ir", "öffnen"], ["arrumar", "ar", "aufräumen, organisieren"], ["lavar", "ar", "waschen"], ["limpar", "ar", "putzen, reinigen"], ["deixar", "ar", "erlauben, lassen, aufgeben"], ["falar", "ar", "sprechen"], ["cumprimentar", "ar", "begrüßen, grüßen"], ["responder", "er", "antworten, beantworten"], ["recomendar", "ar", "empfehlen, raten"], ["precisar", "ar", "benötigen, brauchen (mit de)"], ["procurar", "ar", "suchen"], ["passar", "ar", "(vorbei)gehen", "verbringen"], ["comer", "er", "essen"], ["beber", "er", "trinken"], ["ganhar", "ar", "gewinnen, verdienen"], ["melhorar", "ar", "verbessern"], ["cuidar", "ar", "aufpassen, sorgen (mit de)"], ["confiar", "ar", "vertrauen, hoffen auf (mit em)"], ["pensar", "ar", "denken, glauben (an mit em)"], ["deitar", "ar", "hinlegen, legen"], ["acordar", "ar", "aufwachen"], ["gostar", "ar", "mögen, gefallen"], ["discutir", "ir", "diskutieren"], ["acompanhar", "ar", "begleiten, mitmachen"], ["levantar", "ar", "aufbrechen, aufstehen"], ["acontecer", "er", "passieren, geschehen"], ["desagradecer", "er", "missfallen"], ["detestar", "ar", "hassen, verabschauen"], ["significar", "ar", "bedeuten, meinen"], ["tornar", "ar", "(tornar-se) werden"], ["sortear", "ear", "auslosen"], ["passear", "ear", "spazieren gehen"]]
+    let verbArray = [["comprar", "ar", "kaufen"], ["vender", "er", "verkaufen"], ["dividir", "ir", "teilen, aufteilen"], ["ler", "er", "lesen"], ["levar", "ar", "bringen, mitnehmen"], ["dormir", "ir", "schlafen"], ["conhecer", "er", "kennen, kennenlernen"], ["pagar", "ar", "bezahlen"], ["atravessar", "ar", "überqueren, durchqueren"], ["assistir", "ir", "zuschauen, sehen, helfen"], ["decidir", "ir", "entscheiden, beschließen"], ["sentir", "ir", "fühlen, empfinden"], ["abrir", "ir", "öffnen"], ["arrumar", "ar", "aufräumen, organisieren"], ["lavar", "ar", "waschen"], ["limpar", "ar", "putzen, reinigen"], ["deixar", "ar", "erlauben, lassen, aufgeben"], ["falar", "ar", "sprechen"], ["cumprimentar", "ar", "begrüßen, grüßen"], ["responder", "er", "antworten, beantworten"], ["recomendar", "ar", "empfehlen, raten"], ["precisar", "ar", "benötigen, brauchen (mit de)"], ["procurar", "ar", "suchen"], ["passar", "ar", "(vorbei)gehen", "verbringen"], ["comer", "er", "essen"], ["beber", "er", "trinken"], ["ganhar", "ar", "gewinnen, verdienen"], ["melhorar", "ar", "verbessern"], ["cuidar", "ar", "aufpassen, sorgen (mit de)"], ["confiar", "ar", "vertrauen, hoffen auf (mit em)"], ["pensar", "ar", "denken, glauben (an mit em)"], ["deitar", "ar", "hinlegen, legen"], ["acordar", "ar", "aufwachen"], ["gostar", "ar", "mögen, gefallen"], ["discutir", "ir", "diskutieren"], ["acompanhar", "ar", "begleiten, mitmachen"], ["levantar", "ar", "aufbrechen, aufstehen"], ["acontecer", "er", "passieren, geschehen"], ["desagradecer", "er", "missfallen"], ["detestar", "ar", "hassen, verabschauen"], ["significar", "ar", "bedeuten, meinen"], ["tornar", "ar", "(tornar-se) werden"], ["sortear", "ear", "auslosen"], ["passear", "ear", "spazieren gehen"]]
     
-    let verbIrrArray = [["ser", "ser", "sein"], ["estar", "estar", "sein"], ["ir", "ira", "gehen"], ["vir", "vir", "kommen"], ["ver", "ver", "sehen, ansehen"], ["ter", "ter", "haben"], ["fazer", "fazer", "machen, tun"], ["dizer", "dizer", "sagen, sprechen"], ["trazer", "trazer", "bringen, tragen"], ["saber", "saber", "wissen, können"], ["poder", "poder", "können, dürfen"], ["querer", "querer", "wollen"], ["pôr", "por", "setzen, stellen, legen"], ["perder", "er", "verlieren"]]
+    let verbIrrArray = [["ser", "ser", "sein"], ["estar", "estar", "sein"], ["ir", "ira", "gehen"], ["vir", "vir", "kommen"], ["ver", "ver", "sehen, ansehen"], ["ter", "ter", "haben"], ["fazer", "fazer", "machen, tun"], ["dizer", "er", "sagen, sprechen"], ["trazer", "trazer", "bringen, tragen"], ["saber", "saber", "wissen, können"], ["poder", "poder", "können, dürfen"], ["querer", "querer", "wollen"], ["pôr", "por", "setzen, stellen, legen"], ["perder", "er", "verlieren"]]
     
     var body: some View {
         NavigationView{
@@ -497,24 +497,30 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteAr = ["o", "as", "a", "amos", "ais", "am"]
     let presenteEr = ["o", "es", "e", "emos", "eis", "em"]
     let presenteIr = ["o", "es", "e", "imos", "is", "em"]
-    let presenteSer = ["sou", "és", "é", "somos", "sois", "são"]
+    // partly irregular
     let presenteEar = ["io", "ias", "ia", "amos", "ais", "iam"]
+    // only first person (er)
+    let presenteFazer = ["faço", "---", "---", "---", "---", "---"]
+    let presenteDizer = ["digo", "---", "---", "---", "---", "---"]
+    // only thirs person (er)
+    let presenteQuerer = ["---", "---", "quer", "---", "---", "---"]
+    // dormir, only first person (ir)
+    let presenteDormir = ["durmo", "---", "---", "---", "---", "---"]
+    // only first person (er)
+    let presenteCer = ["ço", "---", "---", "---", "---", "---"]
+    let presenteSaber = ["sei", "---", "---", "---", "---", "---"]
+    let presentePoder = ["posso", "---", "---", "---", "---", "---"]
+    let presentePerder = ["perco", "---", "---", "---", "---", "---"]
+    // completely irregular
+    let presenteSer = ["sou", "és", "é", "somos", "sois", "são"]
     let presenteEstar = ["estou", "estás", "está", "estamos", "estais", "estão"]
     let presenteIra = ["vou", "vais", "vai", "vamos", "ides", "vão"]
     let presenteVir = ["venho", "vens", "vem", "vimos", "vindes", "vêm"]
     let presenteVer = ["vejo", "vês", "vê", "vemos", "vedes", "vêem"]
     let presenteTer = ["tenho", "tens", "tem", "temos", "tendes", "têm"]
     let presenteLer = ["leio", "lês", "lê", "lemos", "ledes", "leem"]
-    let presenteFazer = ["faço", "fazes", "faz", "fazemos", "fazeis", "fazem"]
-    let presenteDizer = ["go", "zes", "z", "zemos", "zeis", "zem"]
     let presenteTrazer = ["trago", "trazes", "traz", "trazemos", "trazeis", "trazem"]
-    let presenteSaber = ["sei", "sabes", "sabe", "sabemos", "sabeis", "sabem"]
-    let presentePoder = ["posso", "podes", "pode", "podemos", "podeis", "podem"]
-    let presentePerder = ["perco", "perdes", "perde", "perdemos", "perdeis", "perdem"]
-    let presenteQuerer = ["quero", "queres", "quer", "queremos", "quereis", "querem"]
     let presentePor = ["ponho", "pões", "põe", "pomos", "pondes", "põem"]
-    let presenteOir = ["urmo", "ormes", "orme", "ormimos", "ormis", "ormem"]
-    let presenteConhecer = ["ço", "ces", "ce", "cemos", "ceis", "cem"]
     
     // Pretérito Perfeito Indicativo
     let perfeitoAr = ["ei", "aste", "ou", "amos", "astes", "aram"]
@@ -543,7 +549,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     
     // Pretérito Mais-que-perfeito Indicativo
     let pmqp = ["a", "as", "a", "---", "---", "am"]
-    let pmqpAr = ["a", "as", "a", "áramos", "áreis", "---"]
+    let pmqpAr = ["---", "---", "---", "áramos", "áreis", "---"]
     let pmqpEr = ["---", "---", "---", "êramos", "êreis", "---"]
     let pmqpIr = ["---", "---", "---", "íramos", "íreis", "---"]
     // irregulares ending on -er like vir, fazer, ter, estiver, trazer, saber, poder, querer, pôr, dizer
@@ -607,16 +613,35 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     // Test cases across Tenses
     if caso == "Presente Indicativo" {
         stamm = String(verbo[0].dropLast(2))
-        if verbo[0] == "conhecer" || verbo[0] == "acontecer" {
-            stamm = String(verbo[0].dropLast(3))
-            ziel = stamm + presenteConhecer[nummerInArray]
-        } else if (verbo[1] == "ar") {
+        if (verbo[1] == "ar") {
             ziel = stamm + presenteAr[nummerInArray]
         } else if (verbo[1] == "ear") {
             ziel = stamm + presenteEar[nummerInArray]
         } else if (verbo[1] == "er") {
-            ziel = stamm + presenteEr[nummerInArray]
+            if (nummerInArray == 1 && (verbo[0] == "conhecer" || verbo[0] == "acontecer")) {
+                stamm = String(verbo[0].dropLast(3))
+                ziel = stamm + presenteCer[nummerInArray]
+            } else if (nummerInArray == 1 && verbo[0] == "saber") {
+                ziel = presenteSaber[nummerInArray]
+            } else if (nummerInArray == 1 && verbo[0] == "poder") {
+                ziel = presentePoder[nummerInArray]
+            } else if (nummerInArray == 1 && verbo[0] == "perder") {
+                ziel = presentePerder[nummerInArray]
+            } else if (nummerInArray == 3 && verbo[0] == "querer") {
+                ziel = presenteQuerer[nummerInArray]
+            } else if (nummerInArray == 3 && verbo[0] == "fazer") {
+                ziel = presenteFazer[nummerInArray]
+            } else if (nummerInArray == 3 && verbo[0] == "dizer") {
+                ziel = presenteDizer[nummerInArray]
+            } else if (verbo[0] == "ler") {
+                ziel = presenteLer[nummerInArray]
+            } else {
+                ziel = stamm + presenteEr[nummerInArray]
+            }
         } else if (verbo[1] == "ir") {
+            if (nummerInArray == 1 && verbo[0] == "dormir") {
+               ziel = presenteDormir[nummerInArray]
+           }
             ziel = stamm + presenteIr[nummerInArray]
         } else if (verbo[1] == "ira") {
             ziel = presenteIra[nummerInArray]
@@ -630,40 +655,24 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             ziel = presenteVer[nummerInArray]
         } else if (verbo[1] == "ter") {
             ziel = presenteTer[nummerInArray]
-        } else if (verbo[1] == "ler") {
-            ziel = presenteLer[nummerInArray]
-        } else if (verbo[1] == "fazer") {
-            ziel = presenteFazer[nummerInArray]
         } else if (verbo[1] == "trazer") {
             ziel = presenteTrazer[nummerInArray]
-        } else if (verbo[1] == "saber") {
-            ziel = presenteSaber[nummerInArray]
-        } else if (verbo[1] == "poder") {
-            ziel = presentePoder[nummerInArray]
-        } else if (verbo[1] == "perder") {
-            ziel = presentePerder[nummerInArray]
-        } else if (verbo[1] == "querer") {
-            ziel = presenteQuerer[nummerInArray]
         } else if (verbo[1] == "por") {
             ziel = presentePor[nummerInArray]
-        } else if (verbo[1] == "dizer") {
-            stamm = String(verbo[0].dropLast(3))
-            ziel = stamm + presenteDizer[nummerInArray]
-        } else if (verbo[1] == "oir") {
-            stamm = String(verbo[0].prefix(1))
-            ziel = stamm + presenteOir[nummerInArray]
         }
     } else if caso == "Pretérito Perfeito Simples Indivativo" {
         stamm = String(verbo[0].dropLast(2))
         if (verbo[1] == "ar" || verbo[1] == "ear") {
             ziel = stamm + perfeitoAr[nummerInArray]
-        } else if (verbo[1] == "er" || verbo[1] == "ler") {
-            ziel = stamm + perfeitoEr[nummerInArray]
-        } else if (verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir") {
+        } else if (verbo[1] == "er" ) {
+            if (verbo[0] == "dizer") {
+                stamm = String(verbo[0].dropLast(3))
+                ziel = stamm + perfeitoDizer[nummerInArray]
+            } else {
+                ziel = stamm + perfeitoEr[nummerInArray]
+            }
+        } else if (verbo[1] == "ir" || verbo[1] == "ver") {
             ziel = stamm + perfeitoIr[nummerInArray]
-        } else if (verbo[1] == "dizer") {
-            stamm = String(verbo[0].dropLast(3))
-            ziel = stamm + perfeitoDizer[nummerInArray]
         } else if (verbo[1] == "ser" || verbo[1] == "ira") {
             ziel = perfeitoSer[nummerInArray]
         } else if (verbo[1] == "estar") {
@@ -689,9 +698,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         stamm = String(verbo[0].dropLast(2))
         if (verbo[1] == "ar" || verbo[1] == "estar" || verbo[1] == "ear") {
             ziel = stamm + imperfeitoAr[nummerInArray]
-        } else if (verbo[1] == "er" || verbo[1] == "ver" || verbo[1] == "ler" || verbo[1] == "fazer" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "querer") {
+        } else if (verbo[1] == "er" || verbo[1] == "ver"  || verbo[1] == "fazer" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "querer") {
             ziel = stamm + imperfeitoEr[nummerInArray]
-        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "dizer" || verbo[1] == "oir") {
+        } else if (verbo[1] == "ir" || verbo[1] == "ira") {
             ziel = stamm + imperfeitoIr[nummerInArray]
         } else if (verbo[1] == "ser") {
             ziel = imperfeitoSer[nummerInArray]
@@ -705,15 +714,17 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     } else if caso == "Perfeito Composto Indicativo" {
         hilfsverb  = ppcHv[nummerInArray]
         stamm = String(verbo[0].dropLast(2))
-        if (verbo[1] == "dizer") {
-            ziel = hilfsverb + " " + participioDizer
-        } else if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
+        if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
             ziel = hilfsverb + " " + stamm + participioAr
-        } else if (verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "querer") {
-            ziel = hilfsverb + " " + stamm + participioEr
+        } else if (verbo[1] == "er"  || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "querer") {
+            if (verbo[0] == "dizer") {
+                ziel = hilfsverb + " " + participioDizer
+            } else {
+                ziel = hilfsverb + " " + stamm + participioEr
+            }
         } else if (verbo[0] == "abrir") {
             ziel = hilfsverb + " " + participioAbrir
-        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir") {
+        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter") {
             ziel = hilfsverb + " " + stamm + participioIr
         } else if (verbo[1] == "ser") {
             ziel = hilfsverb + " " + stamm + participioEr
@@ -729,15 +740,17 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     } else if caso == "Pretérito Mais-que-Perfeito Composto Indicativo" {
         hilfsverb  = pmqpHv[nummerInArray]
         stamm = String(verbo[0].dropLast(2))
-        if (verbo[1] == "dizer") {
-            ziel = hilfsverb + " " + participioDizer
-        } else if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
+        if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
             ziel = hilfsverb + " " + stamm + participioAr
-        } else if (verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder" || verbo[1] == "querer") {
-            ziel = hilfsverb + " " + stamm + participioEr
+        } else if (verbo[1] == "er"  || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder" || verbo[1] == "querer") {
+            if (verbo[0] == "dizer") {
+                ziel = hilfsverb + " " + participioDizer
+            } else {
+                ziel = hilfsverb + " " + stamm + participioEr
+            }
         } else if (verbo[0] == "abrir") {
             ziel = hilfsverb + " " + participioAbrir
-        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir") {
+        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter") {
             ziel = hilfsverb + " " + stamm + participioIr
         } else if (verbo[1] == "ser") {
             ziel = hilfsverb + " " + stamm + participioEr
@@ -753,33 +766,33 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     } else if caso == "Pretérito Mais-que-Perfeito Indicativo" {
         if (nummerInArray == 3 || nummerInArray == 4) {
             hilfsverbPerfeito = buildPerfeitoHelper(entrada: verbo, cair: 4)
-            if (verbo[1] == "ar" || verbo[1] == "ear") {
+            if (
+                verbo[1] == "estar" || verbo[1] == "vir" || verbo[1] == "ter" || verbo[1] == "fazer"
+                || verbo[0] == "dizer" || verbo[1] == "trazer" || verbo[1] == "saber"
+                || verbo[1] == "poder" || verbo[1] == "querer" || verbo[1] == "por"
+            ) {
+                // case éssemos
+                ziel = hilfsverbPerfeito + pmqpEr2[nummerInArray]
+            } else if (verbo[1] == "ar" || verbo[1] == "ear") {
                 // case ássemos
                 ziel = hilfsverbPerfeito + pmqpAr[nummerInArray]
-            } else if (verbo[1] == "er" || verbo[1] == "ler") {
+            } else if (verbo[1] == "er" ) {
                 // case êssemos
                 ziel = hilfsverbPerfeito + pmqpEr[nummerInArray]
                 
-            } else if (verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir") {
+            } else if (verbo[1] == "ir" || verbo[1] == "ver") {
                 // case íssemos
                 ziel = hilfsverbPerfeito + pmqpIr[nummerInArray]
             } else if (verbo[1] == "ser" || verbo[1] == "ira") {
                 // case óssemos
                 ziel = hilfsverbPerfeito + pmqpSer[nummerInArray]
-            } else if (
-                verbo[1] == "estar" || verbo[1] == "vir" || verbo[1] == "ter" || verbo[1] == "fazer"
-                || verbo[1] == "dizer" || verbo[1] == "trazer" || verbo[1] == "saber"
-                || verbo[1] == "poder" || verbo[1] == "querer" || verbo[1] == "por"
-            ) {
-                // case éssemos
-                ziel = hilfsverbPerfeito + pmqpEr2[nummerInArray]
             }
         } else {
             hilfsverbPerfeito = buildPerfeitoHelper(entrada: verbo, cair: 2)
             ziel = hilfsverbPerfeito + pmqp[nummerInArray]
         }
     } else if caso == "Futuro Simples Indicativo" {
-        if (verbo[1] == "fazer" || verbo[1] == "trazer" || verbo[1] == "dizer") {
+        if (verbo[1] == "fazer" || verbo[1] == "trazer" || verbo[0] == "dizer") {
             stamm = String(verbo[0].dropLast(3))
             ziel = stamm + futuroSimplesFazer[nummerInArray]
         } else if (verbo[1] == "por") {
@@ -792,15 +805,15 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     } else if caso == "Futuro Composto Indicativo" {
         hilfsverb  = futcomHv[nummerInArray]
         stamm = String(verbo[0].dropLast(2))
-        if (verbo[1] == "dizer") {
+        if (verbo[0] == "dizer") {
             ziel = hilfsverb + " " + participioDizer
         } else if (verbo[1] == "ar" || verbo[1] == "ear" ||  verbo[1] == "estar") {
             ziel = hilfsverb + " " + stamm + participioAr
-        } else if (verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder" || verbo[1] == "querer") {
+        } else if (verbo[1] == "er"  || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder" || verbo[1] == "querer") {
             ziel = hilfsverb + " " + stamm + participioEr
         } else if (verbo[0] == "abrir") {
             ziel = hilfsverb + " " + participioAbrir
-        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir") {
+        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter") {
             ziel = hilfsverb + " " + stamm + participioIr
         } else if (verbo[1] == "ser") {
             ziel = hilfsverb + " " + stamm + participioEr
@@ -826,8 +839,8 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
                 ziel = stamm + presenteSubAr[nummerInArray]
             }
         } else if (
-            verbo[1] == "er" || verbo[1] == "ir" || verbo[1] == "dizer" || verbo[1] == "por" || verbo[1] == "oir"
-            || verbo[1] == "vir" || verbo[1] == "ver" || verbo[1] == "ter" || verbo[1] == "poder" || verbo[1] == "ler"
+            verbo[1] == "er" || verbo[1] == "ir" || verbo[0] == "dizer" || verbo[1] == "por"
+            || verbo[1] == "vir" || verbo[1] == "ver" || verbo[1] == "ter" || verbo[1] == "poder" 
             || verbo[1] == "saber" || verbo[1] == "querer" || verbo[1] == "fazer"
         ) {
             if (verbo[1] == "saber") {
@@ -850,15 +863,15 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     } else if caso == "Pretérito Perfeito Simples Subjuntivo" {
         hilfsverb  = perfeitoSubHv[nummerInArray]
         stamm = String(verbo[0].dropLast(2))
-        if (verbo[1] == "dizer") {
+        if (verbo[0] == "dizer") {
             ziel = hilfsverb + " " + participioDizer
         } else if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
             ziel = hilfsverb + " " + stamm + participioAr
-        } else if (verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder" || verbo[1] == "querer") {
+        } else if (verbo[1] == "er"  || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder" || verbo[1] == "querer") {
             ziel = hilfsverb + " " + stamm + participioEr
         } else if (verbo[0] == "abrir") {
             ziel = hilfsverb + " " + participioAbrir
-        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir") {
+        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter") {
             ziel = hilfsverb + " " + stamm + participioIr
         } else if (verbo[1] == "ser") {
             ziel = hilfsverb + " " + stamm + participioEr
@@ -877,11 +890,11 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             if (verbo[1] == "ar" || verbo[1] == "ear") {
                 // case ássemos
                 ziel = hilfsverbPerfeito + imperfeitoSubAr[nummerInArray]
-            } else if (verbo[1] == "er" || verbo[1] == "ler") {
+            } else if (verbo[1] == "er" ) {
                 // case êssemos
                 ziel = hilfsverbPerfeito + imperfeitoSubEr[nummerInArray]
                 
-            } else if (verbo[1] == "ir" || verbo[1] == "ver" || verbo[1] == "oir") {
+            } else if (verbo[1] == "ir" || verbo[1] == "ver") {
                 // case íssemos
                 ziel = hilfsverbPerfeito + imperfeitoSubIr[nummerInArray]
             } else if (verbo[1] == "ser" || verbo[1] == "ira") {
@@ -889,7 +902,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
                 ziel = hilfsverbPerfeito + imperfeitoSubSer[nummerInArray]
             }  else if (
                 verbo[1] == "estar" || verbo[1] == "vir" || verbo[1] == "ter" || verbo[1] == "fazer"
-                || verbo[1] == "dizer" || verbo[1] == "trazer" || verbo[1] == "saber"
+                || verbo[0] == "dizer" || verbo[1] == "trazer" || verbo[1] == "saber"
                 || verbo[1] == "poder" || verbo[1] == "querer" || verbo[1] == "por"
             ) {
                 // case éssemos
@@ -902,16 +915,16 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     } else if caso == "Pretérito Mais-que-Perfeito Subjuntivo"{
         hilfsverb  = pmqpCompSubHv[nummerInArray]
         stamm = String(verbo[0].dropLast(2))
-        if verbo[1] == "dizer" {
+        if verbo[0] == "dizer" {
             ziel = hilfsverb + " " + participioDizer
         } else if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
             ziel = hilfsverb + " " + stamm + participioAr
-        } else if (verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  
+        } else if (verbo[1] == "er"  || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  
                    || verbo[1] == "querer" || verbo[1] == "ser") {
             ziel = hilfsverb + " " + stamm + participioEr
         } else if (verbo[0] == "abrir") {
             ziel = hilfsverb + " " + participioAbrir
-        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir") {
+        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter") {
             ziel = hilfsverb + " " + stamm + participioIr
         } else if (verbo[1] == "vir") {
             ziel = hilfsverb + " " + stamm + participioVir
@@ -928,18 +941,18 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     } else if caso == "Futuro Composto Subjuntivo" {
         hilfsverb  = futuroCompSubHv[nummerInArray]
         stamm = String(verbo[0].dropLast(2))
-        if (verbo[1] == "dizer") {
+        if (verbo[0] == "dizer") {
             ziel = hilfsverb + " " + participioDizer
         } else if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
             ziel = hilfsverb + " " + stamm + participioAr
         } else if (
-            verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  
+            verbo[1] == "er"  || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  
             || verbo[1] == "querer" || verbo[1] == "ser"
         ) {
             ziel = hilfsverb + " " + stamm + participioEr
         } else if (verbo[0] == "abrir") {
             ziel = hilfsverb + " " + participioAbrir
-        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir") {
+        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter") {
             ziel = hilfsverb + " " + stamm + participioIr
         } else if (verbo[1] == "vir") {
             ziel = hilfsverb + " " + stamm + participioVir
@@ -963,15 +976,15 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     } else if caso == "Futuro do Préterito Composto (Condicional II)"{
         hilfsverb  = condIIHv[nummerInArray]
         stamm = String(verbo[0].dropLast(2))
-        if (verbo[1] == "dizer") {
+        if (verbo[0] == "dizer") {
             ziel = hilfsverb + " " + participioDizer
         } else if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
             ziel = hilfsverb + " " + stamm + participioAr
-        } else if (verbo[1] == "er" || verbo[1] == "ler" || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "querer") {
+        } else if (verbo[1] == "er"  || verbo[1] == "trazer" || verbo[1] == "saber" || verbo[1] == "poder"  || verbo[1] == "querer") {
             ziel = hilfsverb + " " + stamm + participioEr
         } else if (verbo[0] == "abrir") {
             ziel = hilfsverb + " " + participioAbrir
-        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter" || verbo[1] == "oir") {
+        } else if (verbo[1] == "ir" || verbo[1] == "ira" || verbo[1] == "ter") {
             ziel = hilfsverb + " " + stamm + participioIr
         } else if (verbo[1] == "ser") {
             ziel = hilfsverb + " " + stamm + participioEr
