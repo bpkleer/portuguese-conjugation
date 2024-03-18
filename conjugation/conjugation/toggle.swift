@@ -92,7 +92,7 @@ struct ToggleStates: View {
                 }
 
                 Toggle(isOn: $userSettings.isPerfeitoInd, label: {
-                    Text("Perfeito Indicativo")
+                    Text("Pretérito Perfeito Simples Indicativo")
                     .font(.subheadline)
                 })
                 .padding(.horizontal, 15.0)
@@ -108,7 +108,7 @@ struct ToggleStates: View {
                 .foregroundColor(Color("style"))
                 
                 Toggle(isOn: $userSettings.isPerfeitoCompInd, label: {
-                    Text("Perfeito Composto Indicativo")
+                    Text("Pretérito Perfeito Composto Indicativo")
                     .font(.subheadline)
                 })
                 .padding(.horizontal, 15.0)

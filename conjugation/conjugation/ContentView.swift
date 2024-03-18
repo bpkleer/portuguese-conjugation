@@ -272,13 +272,13 @@ struct ContentView: View {
             }
         }
         if (self.userSettings.isPerfeitoCompInd == false) {
-            if (allTense.contains("Perfeito Composto Indicativo")) {
-                allTense.remove(at: allTense.firstIndex(of: "Perfeito Composto Indicativo")!)
+            if (allTense.contains("Pretérito Perfeito Composto Indicativo")) {
+                allTense.remove(at: allTense.firstIndex(of: "Pretérito Perfeito Composto Indicativo")!)
             }
         }
         if (self.userSettings.isPerfeitoCompInd == true) {
-            if !(allTense.contains("Perfeito Composto Indicativo")) {
-                allTense.append("Perfeito Composto Indicativo")
+            if !(allTense.contains("Pretérito Perfeito Composto Indicativo")) {
+                allTense.append("Pretérito Perfeito Composto Indicativo")
             }
         }
         if (self.userSettings.isPMQPCompInd == false) {
@@ -711,7 +711,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if (verbo[1] == "por") {
             ziel = imperfeitoPor[nummerInArray]
         }
-    } else if caso == "Perfeito Composto Indicativo" {
+    } else if caso == "Pretérito Perfeito Composto Indicativo" {
         hilfsverb  = ppcHv[nummerInArray]
         stamm = String(verbo[0].dropLast(2))
         if (verbo[1] == "ar" || verbo[1] == "ear" || verbo[1] == "estar") {
