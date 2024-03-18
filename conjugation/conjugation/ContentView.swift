@@ -46,9 +46,80 @@ struct ContentView: View {
     let numerusArray = ["Singular", "Plural"]
     
     // verbs
-    let verbArray = [["comprar", "ar"], ["vender", "er"], ["dividir", "ir"], ["ler", "er"], ["levar", "ar"], ["dormir", "ir"], ["conhecer", "er"], ["pagar", "ar"], ["atravessar", "ar"], ["assistir", "ir"], ["decidir", "ir"], ["sentir", "ir"], ["abrir", "ir"], ["arrumar", "ar"], ["lavar", "ar"], ["limpar", "ar"], ["deixar", "ar"], ["falar", "ar"], ["cumprimentar", "ar"], ["responder", "er"], ["recomendar", "ar"], ["precisar", "ar"], ["procurar", "ar"], ["passar", "ar"], ["comer", "er"], ["beber", "er"], ["ganhar", "ar"], ["melhorar", "ar"], ["cuidar", "ar"], ["confiar", "ar"], ["pensar", "ar"], ["deitar", "ar"], ["acordar", "ar"], ["gostar", "ar"], ["discutir", "ir"], ["acompanhar", "ar"], ["levantar", "ar"], ["acontecer", "er"], ["desagradecer", "er"], ["detestar", "ar"], ["significar", "ar"], ["tornar", "ar"], ["sortear", "ear"], ["passear", "ear"]]
+    let verbArray = [
+        // ar verbs (15 verbs)
+        ["acordar", "ar"],
+        ["comprar", "ar"],
+        ["cuidar", "ar"],
+        ["detestar", "ar"],
+        ["deitar", "ar"],
+        ["falar", "ar"],
+        ["gostar", "ar"],
+        ["levar", "ar"],
+        ["limpar", "ar"],
+        ["melhorar", "ar"],
+        ["pagar", "ar"],
+        ["pensar", "ar"],
+        ["procurar", "ar"],
+        ["significar", "ar"],
+        ["tornar", "ar"],
+        // er verbs (15 verbs)
+        ["aprender", "er"],
+        ["acontecer", "er"],
+        ["bater", "er"],
+        ["beber", "er"],
+        ["comer", "er"],
+        ["conhecer", "er"],
+        ["correr", "er"],
+        ["encher", "er"],
+        ["entender", "er"],
+        ["escolher", "er"],
+        ["escrever", "er"],
+        ["ler", "er"],
+        ["receber", "er"],
+        ["responder", "er"],
+        ["vender", "er"],
+        // ir verbs (15 verbs)
+        ["abrir", "ir"],
+        ["assistir", "ir"],
+        ["decidir", "ir"],
+        ["desistir", "ir"],
+        ["discutir", "ir"],
+        ["dividir", "ir"],
+        ["dormir", "ir"], 
+        ["existir", "ir"],
+        ["insistir", "ir"],
+        ["mentir", "ir"],
+        ["partir", "ir"],
+        ["permitir", "ir"],
+        ["proibir", "ir"],
+        ["sentir", "ir"],
+        ["servir", "ir"],
+        // ear
+        ["passear", "ear"],
+        ["sortear", "ear"],
+        // air
+        ["cair", "iar"],
+        ["sair", "iar"]
+    ]
     
-    let verbIrrArray = [["ser", "ser"], ["estar", "estar"], ["ir", "ira"], ["vir", "vir"], ["ver", "ver"], ["ter", "ter"], ["fazer", "fazer"], ["dizer", "er"], ["trazer", "trazer"], ["saber", "saber"], ["poder", "poder"], ["querer", "querer"], ["pôr", "por"], ["perder", "er"]]
+    let verbIrrArray = [
+        ["dizer", "er"],
+        ["estar", "estar"],
+        ["ir", "ira"],
+        ["fazer", "fazer"],
+        ["perder", "er"],
+        ["poder", "poder"],
+        ["pôr", "por"],
+        ["querer", "querer"],
+        ["saber", "saber"],
+        ["ser", "ser"],
+        ["trazer", "trazer"],
+        ["ter", "ter"],
+        ["ver", "ver"],
+        ["vir", "vir"],
+        
+    ]
     
     var body: some View {
         NavigationView{
