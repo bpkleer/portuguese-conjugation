@@ -98,7 +98,6 @@ struct ContentView: View {
     ]
     
     let verbIrrArray = [
-        ["dizer", "er"],
         ["estar", "estar"],
         ["ir", "ira"],
         ["fazer", "fazer"],
@@ -112,6 +111,8 @@ struct ContentView: View {
         ["ter", "ter"],
         ["ver", "ver"],
         ["vir", "vir"],
+        // only some differences form er
+        ["dizer", "er"],
         // ear (only some differences from ar)
         ["passear", "ar"],
         ["sortear", "ar"],
