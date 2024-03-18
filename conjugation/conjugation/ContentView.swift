@@ -698,7 +698,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if (String(verbo[0].suffix(3)) == "ear") {
             ziel = stamm + presenteEar[nummerInArray]
         } else if (verbo[1] == "er") {
-            if (nummerInArray == 1 && (verbo[0] == "conhecer" || verbo[0] == "acontecer")) {
+            if (nummerInArray == 1 && (String(verbo[0].suffix(3)) == "cer")) {
                 stamm = String(verbo[0].dropLast(3))
                 ziel = stamm + presenteCer[nummerInArray]
             } else if (nummerInArray == 1 && verbo[0] == "saber") {
