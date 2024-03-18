@@ -289,14 +289,14 @@
 				DEVELOPMENT_TEAM = 76YVJ2LNXM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = conjugation/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Conjugador;
+				INFOPLIST_KEY_CFBundleDisplayName = "Conjugador Português";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bpkleer.conjugation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -318,14 +318,14 @@
 				DEVELOPMENT_TEAM = 76YVJ2LNXM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = conjugation/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Conjugador;
+				INFOPLIST_KEY_CFBundleDisplayName = "Conjugador Português";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bpkleer.conjugation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
