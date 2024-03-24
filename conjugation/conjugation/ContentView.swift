@@ -156,92 +156,104 @@ struct ContentView: View {
                         
                     }
                 }
-                
-                VStack(spacing: 35) {
-                    Text("Correto: " + String(correct) + " / Falso: " + String(wrong))
-                        .foregroundColor(Color("style"))
-                        .padding(.top, 20)
-                    
-                    Button(action: {
-                        correct = 0
-                        wrong = 0
-                    }){ HStack(spacing: 0) {
-                        Text("Reiniciar o números").foregroundColor(Color("style"))
-                        Image(systemName: "arrow.2.squarepath")
-                            .scaleEffect(1.0)
-                            .rotationEffect(.degrees(180))
-                            .foregroundColor(Color("style"))
-                    }}.padding(.all, 0.0)
-                    
-                    HStack() {
-                        Text(String(person) + ". " + numerus)
-                            .multilineTextAlignment(.trailing)
-                            .lineLimit(1)
-                            .padding(0.0)
-                            .font(.title)
-                            .foregroundColor(Color("style"))
-                            .frame(width: 200.0)
-                        
-                    }
-                    
-                    Text(String(tense))
-                        .font(.title2)
-                        .foregroundColor(Color("style"))
-                        .frame(width: 350)
-                        .multilineTextAlignment(.center)
-                    
-                    
-                    Text(String(verb))
-                        .font(.title)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color("style"))
-                    
-                    TextField("Digite sua dica!",
-                              text: $hint,
-                              onCommit: {
-                        showingAlert = true
-                        aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
-                        result = proof(entrada: hint, alvo: aim)
-                        correct = add(resultado: result, correto: correct)
-                        wrong = substract(resultado: result, falso: wrong)
-                        message = createAlertMessage(resultado: result, alvo: aim)
-                        proveHidden = false
-                        if showingAlert == false {
-                            person = setPerson()
-                            numerus = setNumerus()
-                            tense = setTense()
-                            verbHelper = setVerb()
-                            verb = verbHelper[0]
-                        }
-                        isTextFocused = false
-                    }
-                    )
-                    
-                    .padding(.all, 5)
-                    .disableAutocorrection(true)
-                    .multilineTextAlignment(.center)
-                    .autocapitalization(.none)
-                    .font(.title)
-                    .focused($isTextFocused)
                     
                     //visibility Change versuchen
                     if proveHidden == false {
-                        Button("Teste") {
-                            showingAlert = true
-                            aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
-                            result = proof(entrada: hint, alvo: aim)
-                            message = createAlertMessage(resultado: result, alvo: aim)
-                            hint = ""
-                            proveHidden = false
-                            if showingAlert == false {
-                                person = setPerson()
-                                numerus = setNumerus()
-                                tense = setTense()
-                                verbHelper = setVerb()
-                                verb = verbHelper[0]
+                        VStack(spacing: 35) {
+                            Text("Correto: " + String(correct) + " / Falso: " + String(wrong))
+                                .foregroundColor(Color("style"))
+                                .padding(.top, 20)
+                            
+                            Button(action: {
+                                correct = 0
+                                wrong = 0
+                            }){ HStack(spacing: 0) {
+                                Text("Reiniciar o números")
+                                    .foregroundColor(Color("style"))
+                                Image(systemName: "arrow.2.squarepath")
+                                    .scaleEffect(1.0)
+                                    .rotationEffect(.degrees(180))
+                                    .foregroundColor(Color("style"))
+                            }}.padding(.all, 0.0)
+                            
+                            Text("Forme a conjugação de ...")
+                                .padding(0.0)
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("style"))
+                                .frame(width: 350)
+                            
+                            Text(String(verb))
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color("style"))
+                            
+//                            Text("na ...")
+//                                .padding(0.0)
+//                                .font(.title2)
+//                                .fontWeight(.bold)
+//                                .foregroundColor(Color("style"))
+//                                .frame(width: 350)
+                            
+                            Text("na " + String(person) + "a pessoa " + numerus)
+                                .padding(0.0)
+                                .font(.title2)
+                                .foregroundColor(Color("style"))
+                                .frame(width: 350)
+                                .multilineTextAlignment(.center)
+                            
+                            Text("de " + String(tense))
+                                .padding(0.0)
+                                .font(.title2)
+                                .foregroundColor(Color("style"))
+                                .frame(width: 350)
+                                .multilineTextAlignment(.center)
+                            
+                            TextField("Digite sua dica!",
+                                      text: $hint,
+                                      onCommit: {
+                                showingAlert = true
+                                aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
+                                result = proof(entrada: hint, alvo: aim)
+                                correct = add(resultado: result, correto: correct)
+                                wrong = substract(resultado: result, falso: wrong)
+                                message = createAlertMessage(resultado: result, alvo: aim)
+                                proveHidden = false
+                                if showingAlert == false {
+                                    person = setPerson()
+                                    numerus = setNumerus()
+                                    tense = setTense()
+                                    verbHelper = setVerb()
+                                    verb = verbHelper[0]
+                                }
+                                isTextFocused = false
                             }
-                            isTextFocused = false
-                        } .disabled(hint == "")
+                            )
+                            .padding(.all, 5)
+                            .disableAutocorrection(true)
+                            .multilineTextAlignment(.center)
+                            .autocapitalization(.none)
+                            .font(.title)
+                            .focused($isTextFocused)
+                            
+                            Button("Teste") {
+                                showingAlert = true
+                                aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
+                                result = proof(entrada: hint, alvo: aim)
+                                message = createAlertMessage(resultado: result, alvo: aim)
+                                hint = ""
+                                proveHidden = false
+                                if showingAlert == false {
+                                    person = setPerson()
+                                    numerus = setNumerus()
+                                    tense = setTense()
+                                    verbHelper = setVerb()
+                                    verb = verbHelper[0]
+                                }
+                                isTextFocused = false
+                            }
+                            .disabled(hint == "")
                             .alert(isPresented:$showingAlert) {
                                 if (result == false) {
                                     Alert(
@@ -255,7 +267,7 @@ struct ContentView: View {
                                             hint = ""
                                         },
                                         secondaryButton:
-                                            .destructive(Text("Erro de digitação! 🤦🏽‍♂️")) {
+                                                .destructive(Text("Erro de digitação! 🤦🏽‍♂️")) {
                                                     correct = correct + 1
                                                     if (wrong > 0 ) {
                                                         wrong = wrong - 1
@@ -284,9 +296,8 @@ struct ContentView: View {
                             }
                             .font(.title)
                             .foregroundColor(Color("style"))
-                        
+                        }
                     }
-                }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
