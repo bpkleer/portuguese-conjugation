@@ -4,6 +4,11 @@ This is an application for iOS to learn basic portuguese conjugation (brazilian 
 
 If you like this app, you can [buy me a coffee](https://buymeacoffee.com/bpkleerw).
 
+## Example
+Here you can see an example (Version: 11.4)
+
+![](example.mp4)
+
 ## Available conjugations
 ### Indicativo
 Presente
