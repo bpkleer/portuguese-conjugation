@@ -335,13 +335,13 @@ struct ContentView: View {
             }
         }
         if (self.userSettings.isPerfeitoInd == false) {
-            if (allTense.contains("Pretérito Perfeito Simples Indivativo")) {
-                allTense.remove(at: allTense.firstIndex(of: "Pretérito Perfeito Simples Indivativo")!)
+            if (allTense.contains("Pretérito Perfeito Simples Indicativo")) {
+                allTense.remove(at: allTense.firstIndex(of: "Pretérito Perfeito Simples Indicativo")!)
             }
         }
         if (self.userSettings.isPerfeitoInd == true) {
-            if !(allTense.contains("Pretérito Perfeito Simples Indivativo")) {
-                allTense.append("Pretérito Perfeito Simples Indivativo")
+            if !(allTense.contains("Pretérito Perfeito Simples Indicativo")) {
+                allTense.append("Pretérito Perfeito Simples Indicativo")
             }
         }
         if (self.userSettings.isImperfeitoInd == false) {
@@ -768,7 +768,7 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
         } else if (verbo[1] == "por") {
             ziel = presentePor[nummerInArray]
         }
-    } else if caso == "Pretérito Perfeito Simples Indivativo" {
+    } else if caso == "Pretérito Perfeito Simples Indicativo" {
         stamm = String(verbo[0].dropLast(2))
         if (verbo[1] == "ar") {
             ziel = stamm + perfeitoAr[nummerInArray]
@@ -1203,7 +1203,7 @@ func substract(resultado: Bool, falso: Int) -> Int {
 // helper function to build cases for different tenses
 func buildPerfeitoHelper(entrada: Array<String>, cair: Int) -> String {
     var helfer: String = ""
-    helfer = trainAim(pessoa: 3, numero: "Plural", caso: "Pretérito Perfeito Simples Indivativo", verbo: entrada)
+    helfer = trainAim(pessoa: 3, numero: "Plural", caso: "Pretérito Perfeito Simples Indicativo", verbo: entrada)
     helfer = String(helfer.dropLast(cair))
     return(helfer)
 }
