@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var allTense: Array<String> = ["Presente Indicativo"]
     @State var verb = ""
     @State var verbHelper: Array<String> = [""]
+    
     @State var hint: String = ""
     @State var aim: String = ""
     @State private var showingAlert = false
@@ -31,7 +32,8 @@ struct ContentView: View {
     @State var trainTense: String = ""
     
     // variables for check on verbs (not yet implemented)
-    @State var lastVerb: [[String]] = []
+    @State var lastVerb: [String] = []
+    @State var lastConjugation: [String] = []
     @State var trainVerb: [String] = []
     @State var countArray: Int = 0
     
@@ -86,7 +88,7 @@ struct ContentView: View {
         ["desistir", "ir"],
         ["discutir", "ir"],
         ["dividir", "ir"],
-        ["dormir", "ir"], 
+        ["dormir", "ir"],
         ["existir", "ir"],
         ["insistir", "ir"],
         ["mentir", "ir"],
@@ -147,75 +149,75 @@ struct ContentView: View {
                         proveHidden = false
                     }){ HStack(spacing: 0) {
                         Text("Comece o treino!")
-                        .fontWeight(.semibold)
-                        .padding()
-                        .font(.title)
-                        .foregroundColor(Color("style"))
+                            .fontWeight(.semibold)
+                            .padding()
+                            .font(.title)
+                            .foregroundColor(Color("style"))
                         Image(systemName: "restart")
-                        .scaleEffect(2.0)
-                        .rotationEffect(.degrees(180))
-                        .foregroundColor(Color("style"))
+                            .scaleEffect(2.0)
+                            .rotationEffect(.degrees(180))
+                            .foregroundColor(Color("style"))
                     }
                     .padding(/*@START_MENU_TOKEN@*/.all, 0.0/*@END_MENU_TOKEN@*/)
                         
                     }
                 }
-                    
+                
                 //visibility Change versuchen
                 if proveHidden == false {
                     NavigationLink(destination: ToggleStates()) {
                         Text("Mude as conjugações")
-                        .font(.title2)
-                        .foregroundColor(Color("style"))
+                            .font(.title2)
+                            .foregroundColor(Color("style"))
                         Image(systemName: "chevron.forward.circle")
-                        .scaleEffect(1.5)
-                        .foregroundColor(Color("style"))
+                            .scaleEffect(1.5)
+                            .foregroundColor(Color("style"))
                     }.padding(.top, 40)
-                        
+                    
                     VStack(spacing: 35) {
                         Text("Correto: " + String(correct) + " / Falso: " + String(wrong))
-                        .foregroundColor(Color("style"))
-                        .padding(.top, 20)
-                            
-                    Button(action: {
-                        correct = 0
-                        wrong = 0
-                    }){ HStack(spacing: 0) {
+                            .foregroundColor(Color("style"))
+                            .padding(.top, 20)
+                        
+                        Button(action: {
+                            correct = 0
+                            wrong = 0
+                        }){ HStack(spacing: 0) {
                             Text("Reiniciar o números")
-                            .foregroundColor(Color("style"))
+                                .foregroundColor(Color("style"))
                             Image(systemName: "arrow.2.squarepath")
-                            .scaleEffect(1.0)
-                            .rotationEffect(.degrees(180))
-                            .foregroundColor(Color("style"))
+                                .scaleEffect(1.0)
+                                .rotationEffect(.degrees(180))
+                                .foregroundColor(Color("style"))
                         }}.padding(.all, 0.0)
-                            
+                        
                         Text("Forme a conjugação de ...")
-                        .padding(0.0)
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("style"))
-                        .frame(width: 350)
-                            
+                            .padding(0.0)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("style"))
+                            .frame(width: 350)
+                        
                         Text(String(verb))
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color("style"))
-                            
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(Color("style"))
+                        
                         Text("na " + String(person) + "a pessoa " + numerus)
-                        .padding(0.0)
-                        .font(.title2)
-                        .foregroundColor(Color("style"))
-                        .frame(width: 350)
-                        .multilineTextAlignment(.center)
-                            
+                            .padding(0.0)
+                            .font(.title2)
+                            .foregroundColor(Color("style"))
+                            .frame(width: 350)
+                            .multilineTextAlignment(.center)
+                        
                         Text("de " + String(tense))
-                        .padding(0.0)
-                        .font(.title2)
-                        .foregroundColor(Color("style"))
-                        .frame(width: 350)
-                        .multilineTextAlignment(.center)
-                            
+                            .padding(0.0)
+                            .font(.title2)
+                            .foregroundColor(Color("style"))
+                            .frame(width: 350)
+                            .multilineTextAlignment(.center)
+                        
                         TextField(
                             "Digite sua dica!",
                             text: $hint,
@@ -243,11 +245,11 @@ struct ContentView: View {
                         .autocapitalization(.none)
                         .font(.title)
                         .focused($isTextFocused)
-                            
+                        
                         Button("Teste") {
                             showingAlert = true
                             aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
-                                result = proof(entrada: hint, alvo: aim)
+                            result = proof(entrada: hint, alvo: aim)
                             message = createAlertMessage(resultado: result, alvo: aim)
                             hint = ""
                             proveHidden = false
@@ -260,6 +262,7 @@ struct ContentView: View {
                             }
                             isTextFocused = false
                         }
+                        .font(.body)
                         .disabled(hint == "")
                         .alert(isPresented:$showingAlert) {
                             if (result == false) {
@@ -272,20 +275,20 @@ struct ContentView: View {
                                         verbHelper = setVerb()
                                         verb = verbHelper[0]
                                         hint = ""
-                                        },
+                                    },
                                     secondaryButton:
-                                        .destructive(Text("Erro de digitação! 🤦🏽‍♂️")) {
-                                            correct = correct + 1
-                                            if (wrong > 0 ) {
-                                                wrong = wrong - 1
+                                            .destructive(Text("Erro de digitação! 🤦🏽‍♂️")) {
+                                                correct = correct + 1
+                                                if (wrong > 0 ) {
+                                                    wrong = wrong - 1
+                                                }
+                                                person = setPerson()
+                                                numerus = setNumerus()
+                                                tense = setTense()
+                                                verbHelper = setVerb()
+                                                verb = verbHelper[0]
+                                                hint = ""
                                             }
-                                            person = setPerson()
-                                            numerus = setNumerus()
-                                            tense = setTense()
-                                            verbHelper = setVerb()
-                                            verb = verbHelper[0]
-                                            hint = ""
-                                        }
                                 )
                             } else {
                                 Alert(
@@ -526,33 +529,108 @@ struct ContentView: View {
     // function to set verb array
     func setVerbArray(irregular: [[String]], regular: [[String]]) -> ([[String]]) {
         if (userSettings.irregulares == true && userSettings.regulares == false) {
-            let verbHilfeArray = irregular
+            let verbHilfeArray = verbIrrArray
+            countArray = 5
             return(verbHilfeArray)
         } else if (userSettings.irregulares == false && userSettings.regulares == true) {
-            let verbHilfeArray = regular
+            let verbHilfeArray = verbArray
+            countArray = 20
             return(verbHilfeArray)
         } else {
-            let verbHilfeArray = irregular + regular
+            let verbHilfeArray = verbArray + verbIrrArray
+            countArray = 12
             return(verbHilfeArray)
         }
     }
     
     // get verb for conjugation
     func setVerb() -> (Array<String>) {
-        if (userSettings.irregulares == false && userSettings.regulares == true) {
-                let zufallsZahl = Int.random(in: 0...verbArray.count - 1)
-                let hilfeVerb = verbArray[zufallsZahl]
-                return (hilfeVerb)
-        } else if (userSettings.irregulares == true && userSettings.regulares == false) {
-                let zufallsZahl = Int.random(in: 0...verbIrrArray.count - 1)
-                let hilfeVerb = verbIrrArray[zufallsZahl]
-            return (hilfeVerb)
+        let abfrageVerben = setVerbArray(irregular: verbIrrArray, regular: verbArray)
+
+        // case only regular verbs, controlling for change in conjuugations
+        if (countArray == 20) {
+            // case: start of conjugation app
+            if (lastVerb == [] && lastConjugation == []) {
+                let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                trainVerb = abfrageVerben[zufallsZahl]
+                lastVerb.append(trainVerb[0])
+                lastConjugation.append(trainVerb[1])
+            } else if (lastVerb.count < countArray) {
+                // case: verb array is between 1 and 19
+                let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                trainVerb = abfrageVerben[zufallsZahl]
+                if (lastConjugation.count == 3) {
+                    // subcase: conjugation has 3 entries
+                    lastConjugation.remove(at: 0)
+                    let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                    trainVerb = abfrageVerben[zufallsZahl]
+                    while (lastConjugation.contains(trainVerb[1]) || lastVerb.contains(trainVerb[0])) {
+                        let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                        trainVerb = abfrageVerben[zufallsZahl]
+                    }
+                    lastVerb.append(trainVerb[0])
+                    lastConjugation.append(trainVerb[1])
+                } else {
+                    // subcase: conjugation has less than 3 entries
+                    let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                    trainVerb = abfrageVerben[zufallsZahl]
+                    while (lastConjugation.contains(trainVerb[1]) || lastVerb.contains(trainVerb[0])) {
+                        let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                        trainVerb = abfrageVerben[zufallsZahl]
+                    }
+                    lastVerb.append(trainVerb[0])
+                    lastConjugation.append(trainVerb[1])
+                }
+            } else {
+                // case: when verb array reaches count
+                lastVerb.remove(at: 0)
+                let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                trainVerb = abfrageVerben[zufallsZahl]
+                if lastConjugation.count == 3 {
+                    // subcase: conjugation has 3 entries
+                    lastConjugation.remove(at: 0)
+                    while (lastConjugation.contains(trainVerb[1]) || lastVerb.contains(trainVerb[0])) {
+                        let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                        trainVerb = abfrageVerben[zufallsZahl]
+                    }
+                    lastConjugation.append(trainVerb[1])
+                    lastVerb.append(trainVerb[0])
+                } else {
+                    // subcase: conjugation has less than 3 entries
+                    while (lastConjugation.contains(trainVerb[1]) || lastVerb.contains(trainVerb[0])) {
+                        let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                        trainVerb = abfrageVerben[zufallsZahl]
+                    }
+                    lastConjugation.append(trainVerb[1])
+                    lastVerb.append(trainVerb[0])
+                }
+            }
         } else {
-            let hilfeArray = verbArray + verbIrrArray
-            let zufallsZahl = Int.random(in: 0...hilfeArray.count - 1)
-            let hilfeVerb = hilfeArray[zufallsZahl]
-            return (hilfeVerb)
+            // case: verbs are irregular and regular or only irregular
+            if (lastVerb == []) {
+                let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                trainVerb = abfrageVerben[zufallsZahl]
+                lastVerb.append(trainVerb[0])
+            } else if (lastVerb.count < countArray) {
+                let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                trainVerb = abfrageVerben[zufallsZahl]
+                while (lastVerb.contains(trainVerb[0])) {
+                    let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                    trainVerb = abfrageVerben[zufallsZahl]
+                }
+                lastVerb.append(trainVerb[0])
+            } else {
+                lastVerb.remove(at: 0)
+                let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                trainVerb = abfrageVerben[zufallsZahl]
+                while (lastVerb.contains(trainVerb[0])) {
+                    let zufallsZahl = Int.random(in: 0...abfrageVerben.count - 1)
+                    trainVerb = abfrageVerben[zufallsZahl]
+                }
+                lastVerb.append(trainVerb[0])
+            }
         }
+        return (trainVerb)
     }
 }
 

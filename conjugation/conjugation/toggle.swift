@@ -38,8 +38,11 @@ struct ToggleStates: View {
                     .padding(.horizontal, 15.0)
                     .tint(Color("style"))
                     .foregroundColor(Color("style"))
-                    .onChange(of: self.userSettings.isPresenteInd) { value in
-                        atLeastOneTempus()
+                    .onChange(of: self.userSettings.regulares) { value in
+                        atLeastOneVerbGroup()
+                    }
+                    .onChange(of: self.userSettings.irregulares) { value in
+                        atLeastOneVerbGroup()
                     }
                 }
                 
