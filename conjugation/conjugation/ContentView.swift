@@ -125,19 +125,19 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .center) {
-                
-                // choosing tenses
-                NavigationLink(destination: ToggleStates()) {
-                    Text("Conjugações")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color("style"))
-                    Image(systemName: "chevron.forward.circle")
-                        .scaleEffect(1.5)
-                        .foregroundColor(Color("style"))
-                }.padding(.top, 40)
-                
                 if proveHidden == true {
+                    NavigationLink(destination: ToggleStates()) {
+                        Text("Escolha as conjugações ")
+                            .font(.title)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color("style"))
+                        Image(systemName: "chevron.forward.circle")
+                            .scaleEffect(2.0)
+                            .foregroundColor(Color("style"))
+                    }.padding(.top, 40)
+                    
+                    Divider()
+                    
                     Button(action: {
                         person = setPerson()
                         numerus = setNumerus()
@@ -146,73 +146,80 @@ struct ContentView: View {
                         verb = verbHelper[0]
                         proveHidden = false
                     }){ HStack(spacing: 0) {
-                        Text("Comece o treino!").fontWeight(.semibold).padding().font(.title).foregroundColor(Color("style"))
+                        Text("Comece o treino!")
+                        .fontWeight(.semibold)
+                        .padding()
+                        .font(.title)
+                        .foregroundColor(Color("style"))
                         Image(systemName: "restart")
-                            .scaleEffect(2.0)
-                            .rotationEffect(.degrees(180))
-                            .foregroundColor(Color("style"))
+                        .scaleEffect(2.0)
+                        .rotationEffect(.degrees(180))
+                        .foregroundColor(Color("style"))
                     }
                     .padding(/*@START_MENU_TOKEN@*/.all, 0.0/*@END_MENU_TOKEN@*/)
                         
                     }
                 }
                     
-                    //visibility Change versuchen
-                    if proveHidden == false {
-                        VStack(spacing: 35) {
-                            Text("Correto: " + String(correct) + " / Falso: " + String(wrong))
-                                .foregroundColor(Color("style"))
-                                .padding(.top, 20)
+                //visibility Change versuchen
+                if proveHidden == false {
+                    NavigationLink(destination: ToggleStates()) {
+                        Text("Mude as conjugações")
+                        .font(.title2)
+                        .foregroundColor(Color("style"))
+                        Image(systemName: "chevron.forward.circle")
+                        .scaleEffect(1.5)
+                        .foregroundColor(Color("style"))
+                    }.padding(.top, 40)
+                        
+                    VStack(spacing: 35) {
+                        Text("Correto: " + String(correct) + " / Falso: " + String(wrong))
+                        .foregroundColor(Color("style"))
+                        .padding(.top, 20)
                             
-                            Button(action: {
-                                correct = 0
-                                wrong = 0
-                            }){ HStack(spacing: 0) {
-                                Text("Reiniciar o números")
-                                    .foregroundColor(Color("style"))
-                                Image(systemName: "arrow.2.squarepath")
-                                    .scaleEffect(1.0)
-                                    .rotationEffect(.degrees(180))
-                                    .foregroundColor(Color("style"))
-                            }}.padding(.all, 0.0)
+                    Button(action: {
+                        correct = 0
+                        wrong = 0
+                    }){ HStack(spacing: 0) {
+                            Text("Reiniciar o números")
+                            .foregroundColor(Color("style"))
+                            Image(systemName: "arrow.2.squarepath")
+                            .scaleEffect(1.0)
+                            .rotationEffect(.degrees(180))
+                            .foregroundColor(Color("style"))
+                        }}.padding(.all, 0.0)
                             
-                            Text("Forme a conjugação de ...")
-                                .padding(0.0)
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("style"))
-                                .frame(width: 350)
+                        Text("Forme a conjugação de ...")
+                        .padding(0.0)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("style"))
+                        .frame(width: 350)
                             
-                            Text(String(verb))
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color("style"))
+                        Text(String(verb))
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color("style"))
                             
-//                            Text("na ...")
-//                                .padding(0.0)
-//                                .font(.title2)
-//                                .fontWeight(.bold)
-//                                .foregroundColor(Color("style"))
-//                                .frame(width: 350)
+                        Text("na " + String(person) + "a pessoa " + numerus)
+                        .padding(0.0)
+                        .font(.title2)
+                        .foregroundColor(Color("style"))
+                        .frame(width: 350)
+                        .multilineTextAlignment(.center)
                             
-                            Text("na " + String(person) + "a pessoa " + numerus)
-                                .padding(0.0)
-                                .font(.title2)
-                                .foregroundColor(Color("style"))
-                                .frame(width: 350)
-                                .multilineTextAlignment(.center)
+                        Text("de " + String(tense))
+                        .padding(0.0)
+                        .font(.title2)
+                        .foregroundColor(Color("style"))
+                        .frame(width: 350)
+                        .multilineTextAlignment(.center)
                             
-                            Text("de " + String(tense))
-                                .padding(0.0)
-                                .font(.title2)
-                                .foregroundColor(Color("style"))
-                                .frame(width: 350)
-                                .multilineTextAlignment(.center)
-                            
-                            TextField("Digite sua dica!",
-                                      text: $hint,
-                                      onCommit: {
+                        TextField(
+                            "Digite sua dica!",
+                            text: $hint,
+                            onCommit: {
                                 showingAlert = true
                                 aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
                                 result = proof(entrada: hint, alvo: aim)
@@ -229,61 +236,49 @@ struct ContentView: View {
                                 }
                                 isTextFocused = false
                             }
-                            )
-                            .padding(.all, 5)
-                            .disableAutocorrection(true)
-                            .multilineTextAlignment(.center)
-                            .autocapitalization(.none)
-                            .font(.title)
-                            .focused($isTextFocused)
+                        )
+                        .padding(.all, 5)
+                        .disableAutocorrection(true)
+                        .multilineTextAlignment(.center)
+                        .autocapitalization(.none)
+                        .font(.title)
+                        .focused($isTextFocused)
                             
-                            Button("Teste") {
-                                showingAlert = true
-                                aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
+                        Button("Teste") {
+                            showingAlert = true
+                            aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
                                 result = proof(entrada: hint, alvo: aim)
-                                message = createAlertMessage(resultado: result, alvo: aim)
-                                hint = ""
-                                proveHidden = false
-                                if showingAlert == false {
-                                    person = setPerson()
-                                    numerus = setNumerus()
-                                    tense = setTense()
-                                    verbHelper = setVerb()
-                                    verb = verbHelper[0]
-                                }
-                                isTextFocused = false
+                            message = createAlertMessage(resultado: result, alvo: aim)
+                            hint = ""
+                            proveHidden = false
+                            if showingAlert == false {
+                                person = setPerson()
+                                numerus = setNumerus()
+                                tense = setTense()
+                                verbHelper = setVerb()
+                                verb = verbHelper[0]
                             }
-                            .disabled(hint == "")
-                            .alert(isPresented:$showingAlert) {
-                                if (result == false) {
-                                    Alert(
-                                        title: Text(message),
-                                        primaryButton:.default(Text("Que pena! ☹️")) {
-                                            person = setPerson()
-                                            numerus = setNumerus()
-                                            tense = setTense()
-                                            verbHelper = setVerb()
-                                            verb = verbHelper[0]
-                                            hint = ""
+                            isTextFocused = false
+                        }
+                        .disabled(hint == "")
+                        .alert(isPresented:$showingAlert) {
+                            if (result == false) {
+                                Alert(
+                                    title: Text(message),
+                                    primaryButton:.default(Text("Que pena! ☹️")) {
+                                        person = setPerson()
+                                        numerus = setNumerus()
+                                        tense = setTense()
+                                        verbHelper = setVerb()
+                                        verb = verbHelper[0]
+                                        hint = ""
                                         },
-                                        secondaryButton:
-                                                .destructive(Text("Erro de digitação! 🤦🏽‍♂️")) {
-                                                    correct = correct + 1
-                                                    if (wrong > 0 ) {
-                                                        wrong = wrong - 1
-                                                    }
-                                                    person = setPerson()
-                                                    numerus = setNumerus()
-                                                    tense = setTense()
-                                                    verbHelper = setVerb()
-                                                    verb = verbHelper[0]
-                                                    hint = ""
-                                                }
-                                    )
-                                } else {
-                                    Alert(
-                                        title: Text(message),
-                                        dismissButton: .cancel(Text("Joia! 👍🏾")) {
+                                    secondaryButton:
+                                        .destructive(Text("Erro de digitação! 🤦🏽‍♂️")) {
+                                            correct = correct + 1
+                                            if (wrong > 0 ) {
+                                                wrong = wrong - 1
+                                            }
                                             person = setPerson()
                                             numerus = setNumerus()
                                             tense = setTense()
@@ -291,13 +286,25 @@ struct ContentView: View {
                                             verb = verbHelper[0]
                                             hint = ""
                                         }
-                                    )
-                                }
+                                )
+                            } else {
+                                Alert(
+                                    title: Text(message),
+                                    dismissButton: .cancel(Text("Joia! 👍🏾")) {
+                                        person = setPerson()
+                                        numerus = setNumerus()
+                                        tense = setTense()
+                                        verbHelper = setVerb()
+                                        verb = verbHelper[0]
+                                        hint = ""
+                                    }
+                                )
                             }
-                            .font(.title)
-                            .foregroundColor(Color("style"))
                         }
+                        .font(.title)
+                        .foregroundColor(Color("style"))
                     }
+                }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
