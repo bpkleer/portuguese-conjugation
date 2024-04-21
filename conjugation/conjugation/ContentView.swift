@@ -809,10 +809,10 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
                 ziel = presentePoder[nummerInArray]
             } else if (nummerInArray == 0 && verbo[0] == "perder") {
                 ziel = presentePerder[nummerInArray]
-            } else if (nummerInArray == 0 && verbo[0] == "dizer") {
-                ziel = presenteDizer[nummerInArray]
             } else if (nummerInArray == 2 && verbo[0] == "querer") {
                 ziel = presenteQuerer[nummerInArray]
+            } else if ((nummerInArray == 0 || nummerInArray == 2)  && verbo[0] == "dizer") {
+                ziel = presenteDizer[nummerInArray]
             } else if ((nummerInArray == 0 || nummerInArray == 2) && verbo[0] == "fazer") {
                 ziel = presenteFazer[nummerInArray]
             } else if ((nummerInArray == 0 || nummerInArray == 2) && verbo[0] == "trazer") {
