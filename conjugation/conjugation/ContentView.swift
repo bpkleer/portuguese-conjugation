@@ -667,9 +667,10 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     let presenteIr = ["o", "es", "e", "imos", "is", "em"]
     // partly irregular
     let presenteEar = ["io", "ias", "ia", "amos", "ais", "iam"]
-    // only first person (er)
-    let presenteFazer = ["faço", "---", "---", "---", "---", "---"]
-    let presenteDizer = ["digo", "---", "---", "---", "---", "---"]
+    // first and third person singular (er)
+    let presenteFazer = ["faço", "---", "faz", "---", "---", "---"]
+    let presenteDizer = ["digo", "---", "diz", "---", "---", "---"]
+    let presenteTrazer = ["trago", "---", "traz", "---", "---", "---"]
     // only thirs person (er)
     let presenteQuerer = ["---", "---", "quer", "---", "---", "---"]
     // dormir, only first person (ir)
@@ -680,7 +681,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
     // only first person (er)
     let presenteCer = ["ço", "---", "---", "---", "---", "---"]
     let presenteSaber = ["sei", "---", "---", "---", "---", "---"]
-    let presenteTrazer = ["trago", "---", "---", "---", "---", "---"]
     let presentePoder = ["posso", "---", "---", "---", "---", "---"]
     let presentePerder = ["perco", "---", "---", "---", "---", "---"]
     // completely irregular
@@ -813,9 +813,9 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
                 ziel = presenteDizer[nummerInArray]
             } else if (nummerInArray == 2 && verbo[0] == "querer") {
                 ziel = presenteQuerer[nummerInArray]
-            } else if (nummerInArray == 0 && verbo[0] == "fazer") {
+            } else if ((nummerInArray == 0 || nummerInArray == 2) && verbo[0] == "fazer") {
                 ziel = presenteFazer[nummerInArray]
-            } else if (nummerInArray == 0 && verbo[0] == "trazer") {
+            } else if ((nummerInArray == 0 || nummerInArray == 2) && verbo[0] == "trazer") {
                 ziel = presenteTrazer[nummerInArray]
             } else if (verbo[0] == "ler") {
                 ziel = presenteLer[nummerInArray]
