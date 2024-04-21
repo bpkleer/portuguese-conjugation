@@ -900,7 +900,6 @@ func trainAim(pessoa: Int, numero: String, caso: String, verbo: Array<String>) -
             ziel = stamm + imperfeitoEr[nummerInArray]
         } else if (verbo[1] == "ir" || verbo[1] == "ira") {
             if (String(verbo[0].suffix(3)) == "air") {
-                stamm = String(verbo[0].dropLast(3))
                 ziel = stamm + imperfeitoAir[nummerInArray]
             } else {
                 ziel = stamm + imperfeitoIr[nummerInArray]
