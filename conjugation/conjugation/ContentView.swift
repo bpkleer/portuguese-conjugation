@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 16.0, *)
+@available(iOS 18.0, *)
 
 struct ContentView: View {
     // variables for body view
@@ -225,8 +225,6 @@ struct ContentView: View {
                                 showingAlert = true
                                 aim = trainAim(pessoa: person, numero: numerus, caso: tense, verbo: verbHelper)
                                 result = proof(entrada: hint, alvo: aim)
-                                correct = add(resultado: result, correto: correct)
-                                wrong = substract(resultado: result, falso: wrong)
                                 message = createAlertMessage(resultado: result, alvo: aim)
                                 proveHidden = false
                                 if showingAlert == false {
@@ -275,19 +273,17 @@ struct ContentView: View {
                                         verbHelper = setVerb()
                                         verb = verbHelper[0]
                                         hint = ""
+                                        wrong = wrong + 1
                                     },
                                     secondaryButton:
                                             .destructive(Text("Erro de digitação! 🤦🏽‍♂️")) {
-                                                correct = correct + 1
-                                                if (wrong > 0 ) {
-                                                    wrong = wrong - 1
-                                                }
                                                 person = setPerson()
                                                 numerus = setNumerus()
                                                 tense = setTense()
                                                 verbHelper = setVerb()
                                                 verb = verbHelper[0]
                                                 hint = ""
+                                                correct = correct + 1
                                             }
                                 )
                             } else {
@@ -300,6 +296,7 @@ struct ContentView: View {
                                         verbHelper = setVerb()
                                         verb = verbHelper[0]
                                         hint = ""
+                                        correct = correct + 1
                                     }
                                 )
                             }
@@ -1258,30 +1255,6 @@ func proof(entrada: String, alvo: String) -> Bool {
     }
 
     return(ergebnis)
-}
-
-// set counter for correct results
-func add(resultado: Bool, correto: Int) -> Int {
-    let summe: Int
-    if resultado == true {
-        summe = correto + 1
-    } else {
-        summe = correto
-    }
-    
-    return(summe)
-}
-
-// set counter for wrong results
-func substract(resultado: Bool, falso: Int) -> Int {
-    let summe: Int
-    if resultado == false {
-        summe = falso + 1
-    } else {
-        summe = falso
-    }
-    
-    return(summe)
 }
 
 // helper function to build cases for different tenses
